@@ -1,19 +1,34 @@
+"""Typed contracts shared by data, service, and future intelligence layers."""
 from dataclasses import dataclass, field
-
-STANDARD_COLUMNS = {
-    "timestamp", "household_power_kw", "ac_power_kw", "water_heater_power_kw",
-    "washing_machine_power_kw", "temperature_c", "dr_event", "dr_peak",
-    "zone_demand_mw", "system_production_mw", "zone_pv_production_mw",
-}
 
 
 @dataclass(frozen=True)
 class ValidationReport:
+    source: str
     row_count: int
     start: object | None
     end: object | None
-    median_interval: object | None
-    missing_intervals: int
-    duplicate_timestamps: int
+    duplicate_keys: int
     missing_values: dict[str, int] = field(default_factory=dict)
-    warnings: tuple[str, ...] = ()
+    invalid_records: int = 0
+    notes: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class ForecastSlot:
+    timestamp: object
+    predicted_demand_kw: float
+    p50_kw: float
+    p90_kw: float
+    forecast_supply_kw: float | None
+    expected_margin_kw: float | None
+    peak_probability: float | None
+
+
+@dataclass(frozen=True)
+class ApplianceEstimate:
+    timestamp: object
+    appliance: str
+    estimated_power_kw: float
+    confidence: float | None
+    provenance: str = "model_estimate"

@@ -1,65 +1,50 @@
-"""Streamlit entry point for the intelligent energy monitoring platform."""
+"""Demand Response v3 Streamlit application."""
 import pandas as pd
 import streamlit as st
 
-from backend.config import get_dataset_config
-from backend.data import load_dataset, prepare_dataset, validate_dataset
-from backend.services.analytics_service import filter_dates
+from backend.config import canonical_data_signature
+from backend.data import (assert_v3_files, filter_time, load_grid, load_household,
+                          load_household_info, operational_grid, operational_household)
 from frontend.components import inject_styles, period_selector
-from frontend.pages import household, intelligence, overview, quality, regional
+from frontend.pages import consumer, operator
 from frontend.styles import CSS
 
-st.set_page_config(page_title="Intelligent Energy & DR Platform", page_icon="⚡", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Demand Response v3", page_icon="⚡", layout="wide", initial_sidebar_state="expanded")
 
 
-@st.cache_data(show_spinner="Loading 2025 energy measurements…")
-def cached_dataset(path: str, size: int, modified: int):
-    config=get_dataset_config()
-    raw=load_dataset(config)
-    return prepare_dataset(raw,config),validate_dataset(raw,config)
+@st.cache_data(show_spinner="Loading v3 community measurements…")
+def community_data(signature):
+    raw=load_grid(); return raw, operational_grid(raw)
 
 
-def application_data():
-    config=get_dataset_config()
-    if not config.path.is_file():
-        raise FileNotFoundError(f"Dataset not found: {config.path}")
-    stat=config.path.stat()
-    return cached_dataset(str(config.path),stat.st_size,stat.st_mtime_ns)
+@st.cache_data(show_spinner="Loading household smart-meter measurements…")
+def household_data(client_id: str, start: pd.Timestamp, end: pd.Timestamp, signature):
+    return operational_household(load_household(client_id,start,end))
 
 
 def main() -> None:
-    inject_styles(CSS)
-    st.markdown("""
-    <div class="hero"><h1>⚡ Intelligent Energy & Demand Response Platform</h1>
-    <h3>Household monitoring • Regional grid analytics • Future AI decision support</h3>
-    <p>A measurement-driven view of the 2025 C001 household and TUN regional energy dataset.
-    Historical labels remain separate from future model predictions and operational decisions.</p></div>
-    """,unsafe_allow_html=True)
-    try:
-        data,report=application_data()
-    except (OSError,ValueError,pd.errors.ParserError) as error:
-        st.error(f"The 2025 dataset could not be loaded: {error}")
-        st.stop()
-    pages={"Energy Overview":overview.render,"Household Analysis":household.render,"Regional Grid":regional.render,
-           "DR Intelligence":intelligence.render,"Data Quality":quality.render}
+    inject_styles(CSS); assert_v3_files(); signature=canonical_data_signature(); raw_grid, op_grid=community_data(signature)
+    st.markdown('<div class="hero"><h1>⚡ Intelligent Demand Response & Community Energy</h1><h3>Operator intelligence • Household insight • Research-ready infrastructure</h3><p>A synthetic 50-household Tunis neighborhood case study. Historical events and modeled supply assumptions are clearly separated from future AI capabilities.</p></div>',unsafe_allow_html=True)
     with st.sidebar:
-        st.markdown("## ⚡ Platform navigation")
-        page=st.radio("Workspace",list(pages),label_visibility="collapsed")
-        st.markdown("### Time range")
-        start,end,mode=period_selector(data.timestamp.min().date(),data.timestamp.max().date())
-        st.markdown("---")
-        st.caption("Source: dr_dataset_2025_1min_v2.csv")
-        st.caption("Native resolution: 1 minute • timezone unspecified")
-    filtered=filter_dates(data,start,end)
-    st.markdown(f'<div class="status-strip"><b>{page}</b> • {pd.Timestamp(start):%d %b %Y} to {pd.Timestamp(end):%d %b %Y} • {len(filtered):,} one-minute rows</div>',unsafe_allow_html=True)
-    if page=="DR Intelligence":
-        intelligence.render(data,filtered)
-    elif page=="Data Quality":
-        quality.render(data,filtered,report)
+        st.markdown("## Platform workspace")
+        perspective=st.radio("Perspective",["Operator Dashboard","Consumer Dashboard"],key="perspective")
+        pages=operator.PAGES if perspective.startswith("Operator") else consumer.PAGES
+        page=st.radio("Page",list(pages),key=f"page_{perspective}")
+        st.markdown("### Analysis period")
+        start_date,end_date,_=period_selector(raw_grid.timestamp.min().date(),raw_grid.timestamp.max().date())
+        client_id=None
+        if perspective.startswith("Consumer"):
+            ids=load_household_info().client_id.tolist(); client_id=st.selectbox("Demo household",ids,key="client_id")
+        st.markdown("---"); st.caption("Synthetic academic demonstration — not authentication or an operational STEG system."); st.caption("Canonical source: complete 1-minute synthetic v3 → 30-minute operational view • timestamps: naive local civil time")
+    start=pd.Timestamp(start_date); end=pd.Timestamp(end_date)+pd.DateOffset(days=1)
+    grid=filter_time(op_grid,start,end)
+    st.markdown(f'<div class="status-strip"><b>{perspective} · {page}</b> • {start:%d %b %Y} to {end-pd.DateOffset(days=1):%d %b %Y} • operational 30-minute layer</div>',unsafe_allow_html=True)
+    if perspective.startswith("Operator"):
+        if page=="Household Analytics": pages[page](grid,start,end)
+        else: pages[page](grid)
     else:
-        pages[page](filtered)
-    st.markdown('<div class="footer">Intelligent Energy Monitoring & Demand Response Research Platform</div>',unsafe_allow_html=True)
+        household=household_data(client_id,start,end,signature); pages[page](household,client_id,grid)
+    st.markdown('<div class="footer">Demand Response v3 • Synthetic neighborhood research platform • Energy-TTM forecasts use saved artifacts only</div>',unsafe_allow_html=True)
 
 
-if __name__=="__main__":
-    main()
+if __name__=="__main__": main()

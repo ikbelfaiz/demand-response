@@ -1,109 +1,60 @@
+"""Accessible Plotly builders shared by every dashboard."""
 import plotly.graph_objects as go
 import pandas as pd
-
 from .styles import COLORS, PLOTLY_THEME
 
 
-def style(fig: go.Figure, y_title: str, height: int = 390, x_title: str = "Time") -> go.Figure:
-    theme = PLOTLY_THEME
-    axis = dict(
-        showgrid=True, gridcolor=theme["grid"], gridwidth=1,
-        showline=True, linecolor=theme["axis_line"], linewidth=1,
-        zeroline=True, zerolinecolor=theme["axis_line"],
-        tickfont=dict(family=theme["font_family"], size=12, color=theme["secondary_text"]),
-        automargin=True,
-    )
-    fig.update_layout(
-        template="plotly_white", height=height, margin=dict(l=20,r=20,t=38,b=20),
-        paper_bgcolor=theme["paper"], plot_bgcolor=theme["plot"], hovermode="x unified",
-        font=dict(family=theme["font_family"], size=12, color=theme["secondary_text"]),
-        title_font=dict(family=theme["font_family"], size=16, color=theme["primary_text"]),
-        legend=dict(orientation="h",y=1.04,x=1,xanchor="right",bgcolor="rgba(255,255,255,.92)",
-                    bordercolor=theme["grid"],borderwidth=1,
-                    font=dict(family=theme["font_family"],size=12,color=theme["primary_text"])),
-        hoverlabel=dict(bgcolor=theme["hover_background"],bordercolor=theme["axis_line"],
-                        font=dict(family=theme["font_family"],size=13,color=theme["hover_text"])),
-        annotationdefaults=dict(font=dict(family=theme["font_family"],size=12,color=theme["primary_text"]),
-                                bgcolor="rgba(255,255,255,.94)",bordercolor=theme["grid"],borderwidth=1),
-        xaxis={**axis,"title":dict(text=x_title,font=dict(family=theme["font_family"],size=13,color=theme["primary_text"]))},
-        yaxis={**axis,"title":dict(text=y_title,font=dict(family=theme["font_family"],size=13,color=theme["primary_text"]))},
-    )
+def style(fig: go.Figure, y_title: str = "", x_title: str = "Time", height: int = 390) -> go.Figure:
+    axis = dict(showgrid=True, gridcolor="#E2E8F0", linecolor="#CBD5E1", tickfont=dict(color="#475569"),
+                title_font=dict(color="#334155"), automargin=True)
+    fig.update_layout(template="plotly_white", height=height, margin=dict(l=20, r=20, t=45, b=20),
+        paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF", hovermode="x unified",
+        font=dict(family=PLOTLY_THEME["font_family"], color="#334155"),
+        title_font=dict(color="#0F172A"), legend=dict(orientation="h", y=1.08, x=1, xanchor="right", font=dict(color="#334155")),
+        hoverlabel=dict(bgcolor="#0F172A", font_color="#F8FAFC"),
+        xaxis={**axis, "title":x_title}, yaxis={**axis, "title":y_title})
     return fig
 
 
-def household_load(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Scatter(x=data.timestamp,y=data.household_power_kw,name="Household demand",line=dict(color=COLORS["household"],width=2)))
-    return style(fig,"Household power (kW)",430)
+def lines(frame: pd.DataFrame, series: list[tuple[str, str, str]], y_title: str, height: int = 410) -> go.Figure:
+    fig = go.Figure()
+    for column, label, color in series:
+        if column in frame:
+            fig.add_trace(go.Scatter(x=frame.timestamp, y=frame[column], name=label, connectgaps=False,
+                line=dict(color=color,width=2),hovertemplate="%{x|%d %b %H:%M}<br>%{y:.3f} kW<extra></extra>"))
+    return style(fig, y_title, height=height)
 
 
-def regional_demand(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Scatter(x=data.timestamp,y=data.zone_demand_mw,name="Regional demand",line=dict(color=COLORS["zone"],width=2)))
-    return style(fig,"Regional power (MW)",400)
+def bars(frame: pd.DataFrame, x: str, y: str, label: str, y_title: str, color: str = COLORS["household"]) -> go.Figure:
+    return style(go.Figure(go.Bar(x=frame[x], y=frame[y], name=label, marker_color=color)), y_title, x.replace("_", " ").title())
 
 
-def production_demand(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure()
-    for col,label,color in (("zone_demand_mw","Regional demand",COLORS["zone"]),("system_production_mw","STEG production",COLORS["production"]),("zone_pv_production_mw","Regional PV",COLORS["pv"])):
-        if col in data:
-            fig.add_trace(go.Scatter(x=data.timestamp,y=data[col],name=label,line=dict(color=color,width=2)))
-    return style(fig,"Regional power (MW)",420)
+def heatmap(matrix: pd.DataFrame, unit: str = "kW") -> go.Figure:
+    fig = go.Figure(go.Heatmap(z=matrix.values, x=matrix.columns, y=[str(v) for v in matrix.index], colorscale="Blues",
+        colorbar=dict(title=unit, tickfont=dict(color="#475569")), hovertemplate="%{y}<br>%{x}:00<br>%{z:.2f} "+unit+"<extra></extra>"))
+    return style(fig, "Date", "Hour", 430)
 
 
-def pv_production(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Scatter(x=data.timestamp,y=data.zone_pv_production_mw,name="Regional PV",fill="tozeroy",
-                             fillcolor="rgba(16,185,129,.12)",line=dict(color=COLORS["pv"],width=2)))
-    return style(fig,"PV production (MW)",350)
+def donut(labels, values, title: str) -> go.Figure:
+    fig = go.Figure(go.Pie(labels=labels, values=values, hole=.62, marker_colors=["#0F766E", "#D97706", "#64748B", "#2563EB"]))
+    fig.update_layout(title=title)
+    return style(fig, "", "", 330)
 
 
-def daily_energy(data: pd.DataFrame) -> go.Figure:
-    custom=data.observed_coverage if "observed_coverage" in data else None
-    fig=go.Figure(go.Bar(x=data.date,y=data.energy_kwh,name="Integrated household energy",marker_color=COLORS["household"],customdata=custom,
-                         hovertemplate="%{x}<br>%{y:.2f} kWh<br>Source coverage %{customdata:.1%}<extra></extra>"))
-    return style(fig,"Integrated energy (kWh)",360,"Date")
-
-
-def hourly_pattern(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure()
-    fig.add_trace(go.Scatter(x=data.hour,y=data.average_power_kw,name="Mean",line=dict(color=COLORS["household"],width=3)))
-    fig.add_trace(go.Scatter(x=data.hour,y=data.p95_power_kw,name="95th percentile",line=dict(color=COLORS["event"],width=2,dash="dash")))
-    return style(fig,"Household power (kW)",360,"Hour of day")
-
-
-def appliance_stack(data: pd.DataFrame, labels: dict[str,str]) -> go.Figure:
-    palette=["#EF4444","#06B6D4","#8B5CF6","#F59E0B","#64748B"]
-    fig=go.Figure()
-    for (column,label),color in zip(labels.items(),palette):
-        if column in data:
-            fig.add_trace(go.Scatter(x=data.timestamp,y=data[column],name=label,stackgroup="appliances",line=dict(color=color,width=.6)))
-    return style(fig,"Measured appliance power (kW)",390)
-
-
-def appliance_energy(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Bar(x=data.appliance,y=data.energy_kwh,marker_color=["#EF4444","#06B6D4","#8B5CF6"][:len(data)],
-                         customdata=data.coverage,hovertemplate="%{x}<br>%{y:.2f} kWh<br>Coverage %{customdata:.1%}<extra></extra>"))
-    return style(fig,"Observed energy (kWh)",350,"Appliance")
-
-
-def load_heatmap(matrix: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Heatmap(z=matrix.values,x=matrix.columns,y=[str(v) for v in matrix.index],colorscale="Blues",
-                             colorbar=dict(title=dict(text="kW",font=dict(color=PLOTLY_THEME["primary_text"])),
-                                           tickfont=dict(color=PLOTLY_THEME["secondary_text"]),
-                                           outlinecolor=PLOTLY_THEME["axis_line"]),
-                             hovertemplate="Date %{y}<br>Hour %{x}:00<br>%{z:.2f} kW<extra></extra>"))
-    return style(fig,"Date",420,"Hour of day")
-
-
-def demand_distribution(values: pd.Series) -> go.Figure:
-    fig=go.Figure(go.Histogram(x=values,nbinsx=50,marker_color=COLORS["household"],name="Demand readings"))
-    return style(fig,"Count",350,"Household power (kW)")
-
-
-def regional_daily(data: pd.DataFrame) -> go.Figure:
-    return production_demand(data)
-
-
-def historical_labels(data: pd.DataFrame) -> go.Figure:
-    fig=go.Figure(go.Bar(x=data.start,y=data.duration_minutes,name="Dataset event label",marker_color=COLORS["event"],
-                         customdata=data[["peak_zone_mw","peak_household_kw"]],
-                         hovertemplate="%{x|%Y-%m-%d %H:%M}<br>%{y} min<br>Zone peak %{customdata[0]:.1f} MW<br>Household peak %{customdata[1]:.2f} kW<extra></extra>"))
-    return style(fig,"Label duration (minutes)",350,"Historical label start")
+def forecast_chart(frame: pd.DataFrame) -> go.Figure:
+    """Render actual and forecast as separate, high-contrast traces."""
+    fig = go.Figure()
+    if "actual_power_kw" in frame:
+        fig.add_trace(go.Scatter(
+            x=frame.timestamp, y=frame.actual_power_kw, name="Actual power",
+            mode="lines+markers", connectgaps=False,
+            line=dict(color="#2563EB", width=2), marker=dict(size=4),
+            hovertemplate="%{x|%d %b %H:%M}<br>Actual: %{y:.3f} kW<extra></extra>",
+        ))
+    fig.add_trace(go.Scatter(
+        x=frame.timestamp, y=frame.predicted_power_kw, name="Energy-TTM forecast",
+        mode="lines+markers", connectgaps=False,
+        line=dict(color="#7C3AED", width=2, dash="dash"), marker=dict(size=4),
+        hovertemplate="%{x|%d %b %H:%M}<br>Forecast: %{y:.3f} kW<extra></extra>",
+    ))
+    return style(fig, "Household power (kW)", "Forecast time", 430)

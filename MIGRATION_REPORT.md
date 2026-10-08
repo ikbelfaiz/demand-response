@@ -1,100 +1,38 @@
-# Dataset-Centered Platform Redesign Report
+# Demand Response v3 migration report
 
 ## Outcome
 
-The application is now an **Intelligent Energy Monitoring and Demand Response Decision Support Platform**, not a household scheduling simulator. Its runtime uses only `data/dr_dataset_2025_1min_v2.csv`. The legacy `household_energy.csv` remains an unreferenced archival file and is not loaded, mapped or mentioned by the operational interface.
-
-The prior three-tab layout was replaced with five sidebar workspaces: Energy Overview, Household Analysis, Regional Grid, DR Intelligence and Data Quality.
+The runtime uses one canonical complete v3 dataset. Navigation provides Operator and Consumer perspectives. A saved Energy-TTM household forecaster is exposed without fabricating future actuals; automatic DR decisions remain disabled.
 
 ## Verified dataset
 
-| Property | Result |
-|---|---|
-| Shape | 525,600 rows × 15 source columns |
-| Coverage | 2025-01-01 00:00 to 2025-12-31 23:59 |
-| Frequency | Continuous one-minute timestamps |
-| Timestamp timezone | Not supplied; retained as naive civil time |
-| Duplicate timestamps | 0 |
-| Missing timestamp intervals | 0 |
-| Household identity | `C001` |
-| Region identity | `TUN` |
-| Household measurement | aggregate power and AC/water-heater/washing-machine power in W |
-| Regional measurements | zone demand, STEG production and PV production in MW |
-| Historical labels | `is_dr_event`, `is_dr_peak` |
-| Price/tariff | absent |
+| Finding | Value |
+|---|---:|
+| Grid rows | 525,600 |
+| Household rows | 26,280,000 |
+| Household IDs | C001–C050 |
+| Submetered homes | 10 |
+| Historical events | 36 |
+| Participation rows | 1,800 |
+| Responses | 975 accept, 515 decline, 310 no response |
+| Duplicate measurement keys | 0 |
 
-The dataset contains 35 supplied `is_dr_event` windows of 120 minutes each. They start at several different hours between 18:00 and 22:00. These are retained as historical labels only and are never interpreted as current predictions.
+Canonical completion corrected 2,280 temperature, 214 feeder-demand, 315 PV, 106,025 aggregate household, 13,252 AC, 11,675 water-heater, and 16,230 washing-machine readings. The generator rule reconstructed 528 absent peak labels. Existing event, peak, and calendar labels were preserved. No boundary fallback was required.
 
-## Missing-data audit
+Pre-completion files and checksums are stored in `data/original_v3_backup/`. Appliance nulls remain only for the 40 homes without submeters.
 
-| Source channel | Missing rows | Longest outage (minutes) |
-|---|---:|---:|
-| `aggregate_power_w` | 1,739 | 563 |
-| `ac_power_w` | 2,164 | 1,328 |
-| `water_heater_power_w` | 1,037 | 302 |
-| `washing_machine_power_w` | 4,398 | 3,859 |
-| `temperature_c` | 2,280 | 60 |
-| `zone_consumption_mw` | 277 | 75 |
-| `pv_production_mw` | 151 | 30 |
-| `is_dr_peak` | 427 | 75 |
+## Generator interpretation
 
-The analysis copy time-interpolates only internal continuous-sensor gaps up to 180 minutes. Long outages stay missing. Provenance flags preserve original missingness. Labels are not interpolated or zero-filled. Energy summaries expose valid-observation coverage, and incomplete totals are labeled as observed energy rather than unqualified complete consumption.
+Available supply is derived from `STEG capacity - 0.35 × zone demand + PV` and calibrated to neighborhood scale. Feeder demand already includes the modeled 3% loss. Historical event decisions used an imperfect synthetic prior-day forecast. These assumptions do not describe verified real-world shortages.
 
-## Household versus regional scope
+## Delivered architecture and pages
 
-- `aggregate_power_w / 1000` is household demand in kW.
-- Appliance channels are household kW after conversion, but are not assumed to constitute all household demand.
-- `zone_consumption_mw`, `steg_production_mw` and `pv_production_mw` remain regional MW signals.
-- Regional production minus regional demand is shown only as an explicitly partial reported-signal comparison. No grid deficit, emergency or adequacy conclusion is inferred because imports, other generation, storage, losses and balancing actions may be absent.
-- Household peaks are descriptive and never used as automatic DR activations.
+Cached canonical loaders use CSV and Parquet pushdown. Operational aggregation produces mean kW and kWh at 30-minute resolution. Operator pages cover community, grid, events, and households; the Data Explorer page and navigation were removed while backend validation stayed intact. Consumer My Energy includes saved-model historical evaluation and January 1, 2026 next-day forecasting.
 
-## Removed legacy functionality
+## Future work and limitations
 
-- Fixed daily 18:00–20:00 DR window
-- Household threshold-based DR declarations
-- Household flexible-fraction scenario and before/after curve
-- Appliance shifting and hardcoded AC curtailment
-- Simulated savings, shifted-energy and optimization cards
-- Synthetic tariffs, electricity cost and cost-savings calculations
-- Household rooftop solar, self-consumption and grid import/export calculations
-- Dishwasher and synthetic base-load assumptions
-- Scenario recommendation rules
-- Three-tab dashboard and its legacy chart guides/controls
+Community forecasting, NILM inference, baseline estimation, flexibility modeling, automatic activation, tariffs, and real notifications remain future work. The household forecast alone does not trigger DR. Timestamps lack timezone metadata. Portfolio scans can take several seconds on first use. Scenario surcharge levels have no monetary interpretation.
 
-No disabled placeholders for these features remain in the redesigned interface.
+## Forecast model migration
 
-## Current page responsibilities
-
-| Page | Implemented behavior |
-|---|---|
-| Energy Overview | Household KPIs and trends plus separately identified regional demand/production/PV views |
-| Household Analysis | Load curve, hourly profile, heatmap, distribution, daily energy, top readings and three measured appliances |
-| Regional Grid | Regional demand/production/PV, daily trends, top demand readings and qualified signal comparison |
-| DR Intelligence | Empty model status, future pipeline, capability status and optional historical-label exploration |
-| Data Quality | Schema, identifiers, coverage, missing statistics, outages, descriptive statistics, preview/export |
-
-## AI-ready architecture
-
-`backend/intelligence` defines interfaces and provenance-carrying result objects for:
-
-- standardized monitoring features;
-- peak-demand forecasting;
-- candidate grid-condition detection;
-- separately governed DR activation decisions;
-- household flexibility estimation;
-- DR optimization plans;
-- versioned model registration/loading;
-- held-out detection evaluation.
-
-The registry is empty by default. Monitoring pages do not instantiate a detector and do not read historical event labels. Feature construction explicitly excludes `dr_event`. Therefore a source label cannot be accidentally displayed as an AI prediction.
-
-## Remaining limitations
-
-- No trained model, validated grid-stress definition or activation policy exists.
-- The CSV lacks timezone metadata.
-- No verified tariff supports monetary analysis.
-- Regional signal coverage may not represent a complete supply-demand balance.
-- No household PV or bidirectional meter supports household import/export analysis.
-- Appliance flexibility constraints and ground truth are unavailable.
-- Causal DR impact requires a validated counterfactual methodology.
-- Historical label provenance and activation criteria require external documentation before supervised modeling.
+The notebook-selected Energy-TTM architecture was adapted from 168 hourly inputs/24 outputs to 336 half-hour inputs/48 outputs by preserving seven daily patches (patch length/stride 24 → 48) and retraining the resized patcher and forecast head with the mixer core. Five CPU epochs used 13,300 training windows and 1,550 validation windows; best validation loss was 0.652229. On 3,050 held-out household-days, Energy-TTM achieved mean MAE 0.2472 kW and RMSE 0.3865 kW versus seasonal persistence at 0.2787 kW and 0.5052 kW. Peak timing remained much worse (367.2 versus 22.8 minutes), a material limitation documented in `FORECASTING_MODEL.md`.

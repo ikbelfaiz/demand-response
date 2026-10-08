@@ -1,0 +1,105 @@
+{
+  "backup_sha256": {
+    "grid_1min.csv": "0bd54fbc7e862238ded5947a92fe8b9b7f8e84440e6568a1391d382e79e35f10",
+    "households_1min_C001_C025.parquet": "c141febd24adb2b3cd7a755e1ed8cdf3d6fcddcb7be2963dc988b3fb75a0b0a7",
+    "households_1min_C026_C050.parquet": "698e96d9359c9965e3b7b87b39ffd3eae8ec5b8dbc9f90765910232a9c3730f7"
+  },
+  "completed_sha256": {
+    "grid_1min.csv": "07f12988e7e64a9efba7ec491734f9f764c090b7183c377291343f56954f1672",
+    "households_1min_C001_C025.parquet": "7764491671557dedc5729b77611e81b2039dfc5c166cb97efbbb595602b26867",
+    "households_1min_C026_C050.parquet": "d625b9d915b430953e25ddc2c7bd0d41c4525a308b41344d5b30073110697f68"
+  },
+  "boundary_policy": "nearest valid observation (forward/back fill); invoked only at series edges",
+  "grid": {
+    "temperature_c": {
+      "original_missing": 2280,
+      "linear_interpolated": 2280,
+      "boundary_nearest_value": 0,
+      "remaining_missing": 0
+    },
+    "households_consumption_kw": {
+      "original_missing": 214,
+      "linear_interpolated": 214,
+      "boundary_nearest_value": 0,
+      "remaining_missing": 0
+    },
+    "steg_production_kw": {
+      "original_missing": 0,
+      "linear_interpolated": 0,
+      "boundary_nearest_value": 0,
+      "remaining_missing": 0
+    },
+    "pv_production_kw": {
+      "original_missing": 315,
+      "linear_interpolated": 315,
+      "boundary_nearest_value": 0,
+      "remaining_missing": 0
+    },
+    "is_dr_peak": {
+      "deterministically_reconstructed": 528,
+      "rule": "centered 15-minute mean feeder demand > STEG + PV"
+    }
+  },
+  "households": {
+    "households_1min_C001_C025.parquet": {
+      "aggregate_power_w": {
+        "original_missing": 56586,
+        "linear_interpolated": 56586,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 0
+      },
+      "ac_power_w": {
+        "original_missing": 11935,
+        "linear_interpolated": 11935,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 8409600
+      },
+      "water_heater_power_w": {
+        "original_missing": 10901,
+        "linear_interpolated": 10901,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 8409600
+      },
+      "washing_machine_power_w": {
+        "original_missing": 14837,
+        "linear_interpolated": 14837,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 8409600
+      }
+    },
+    "households_1min_C026_C050.parquet": {
+      "aggregate_power_w": {
+        "original_missing": 49439,
+        "linear_interpolated": 49439,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 0
+      },
+      "ac_power_w": {
+        "original_missing": 1317,
+        "linear_interpolated": 1317,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 12614400
+      },
+      "water_heater_power_w": {
+        "original_missing": 774,
+        "linear_interpolated": 774,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 12614400
+      },
+      "washing_machine_power_w": {
+        "original_missing": 1393,
+        "linear_interpolated": 1393,
+        "boundary_nearest_value": 0,
+        "remaining_missing": 0,
+        "structurally_unavailable": 12614400
+      }
+    }
+  }
+}

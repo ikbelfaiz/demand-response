@@ -1,33 +1,53 @@
+"""Dataset-wide scientific and relational validation."""
+from __future__ import annotations
+
+from pathlib import Path
 import pandas as pd
+import pyarrow.parquet as pq
 
-from backend.config import DatasetConfig
+from backend.config import get_v3_paths
 from .schema import ValidationReport
+from .v3_loader import load_events, load_grid, load_household_info, load_participation
 
 
-def validate_dataset(raw: pd.DataFrame, config: DatasetConfig) -> ValidationReport:
-    timestamp_source = config.column_map.get("timestamp")
-    if not timestamp_source or timestamp_source not in raw.columns:
-        raise ValueError("The configured timestamp column is missing.")
-    if "household_power" not in config.column_map or config.column_map["household_power"] not in raw.columns:
-        raise ValueError("A mapped household consumption power column is required.")
-    parsed = pd.to_datetime(raw[timestamp_source], errors="coerce")
-    if parsed.isna().any():
-        raise ValueError(f"{int(parsed.isna().sum())} timestamps could not be parsed.")
-    ordered = parsed.sort_values()
-    deltas = ordered.diff().dropna()
-    median = deltas.median() if not deltas.empty else None
-    missing_intervals = 0
-    if median is not None and median > pd.Timedelta(0):
-        missing_intervals = int(((deltas / median) - 1).clip(lower=0).round().sum())
-    warnings = []
-    if parsed.dt.tz is None:
-        warnings.append("Timestamps have no timezone metadata; local civil time is retained without localization.")
-    missing = {c: int(v) for c, v in raw.isna().sum().items() if v}
+def _report(name: str, frame: pd.DataFrame, key: list[str], timestamp: str | None = None) -> ValidationReport:
+    parsed = pd.to_datetime(frame[timestamp], errors="coerce") if timestamp else None
+    invalid = int(parsed.isna().sum()) if parsed is not None else 0
     return ValidationReport(
-        row_count=len(raw), start=parsed.min() if len(raw) else None,
-        end=parsed.max() if len(raw) else None, median_interval=median,
-        missing_intervals=missing_intervals,
-        duplicate_timestamps=int(parsed.duplicated().sum()), missing_values=missing,
-        warnings=tuple(warnings),
+        source=name, row_count=len(frame), start=parsed.min() if parsed is not None else None,
+        end=parsed.max() if parsed is not None else None,
+        duplicate_keys=int(frame.duplicated(key).sum()),
+        missing_values={c: int(v) for c, v in frame.isna().sum().items() if v}, invalid_records=invalid,
     )
 
+
+def parquet_inventory(path: Path) -> dict[str, object]:
+    meta = pq.ParquetFile(path).metadata
+    return {"rows": meta.num_rows, "row_groups": meta.num_row_groups,
+            "columns": [meta.schema.column(i).name for i in range(meta.num_columns)]}
+
+
+def validate_v3() -> dict[str, object]:
+    paths = get_v3_paths()
+    grid, info, events, participation = load_grid(), load_household_info(), load_events(), load_participation()
+    ids = set(info.client_id)
+    event_ids = set(events.event_id)
+    relationship_errors = {
+        "participation_unknown_households": int((~participation.client_id.isin(ids)).sum()),
+        "participation_unknown_events": int((~participation.event_id.isin(event_ids)).sum()),
+        "missing_event_household_pairs": len(ids) * len(event_ids) - len(participation),
+    }
+    return {
+        "reports": [
+            _report("grid_1min.csv", grid, ["timestamp"], "timestamp"),
+            _report("households_info.csv", info, ["client_id"]),
+            _report("dr_events.csv", events, ["event_id"], "start_ts"),
+            _report("dr_participation.csv", participation, ["event_id", "client_id"]),
+        ],
+        "parquet": {p.name: parquet_inventory(p) for p in paths.households},
+        "relationships": relationship_errors,
+        "household_count": len(ids), "event_count": len(event_ids),
+        "submeter_count": int(info.has_submeter.sum()),
+        "grid_expected_minutes": 365 * 24 * 60,
+        "grid_complete_timeline": len(grid) == 365 * 24 * 60 and not grid.timestamp.duplicated().any(),
+    }

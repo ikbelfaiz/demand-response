@@ -1,0 +1,26 @@
+{
+  "test_start": "2025-11-01",
+  "test_end": "2025-12-31",
+  "households": 50,
+  "test_windows": 3050,
+  "overall": [
+    {
+      "method": "Energy-TTM",
+      "mae_kw": 0.24721975833306703,
+      "rmse_kw": 0.38650215326601894,
+      "wape_pct": 65.6157006727417,
+      "daily_energy_error_kwh": 0.2738702583793917,
+      "peak_magnitude_error_kw": -0.8747374607549339,
+      "peak_timing_error_minutes": 367.16065573770493
+    },
+    {
+      "method": "Seasonal persistence",
+      "mae_kw": 0.2786629185923792,
+      "rmse_kw": 0.5052442540214646,
+      "wape_pct": 73.97645557582594,
+      "daily_energy_error_kwh": -0.3698909425994641,
+      "peak_magnitude_error_kw": -0.08090402217184911,
+      "peak_timing_error_minutes": 22.79016393442623
+    }
+  ]
+}
