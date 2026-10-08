@@ -1,0 +1,64 @@
+{
+  "model_name": "Causal multi-output Ridge profile forecaster",
+  "model_version": "community-profile-ridge-v1",
+  "forecast_slots": 48,
+  "frequency": "30min",
+  "issuance_hour": 14,
+  "targets": {
+    "households_consumption_kw": "kW",
+    "steg_production_kw": "kW",
+    "pv_production_kw": "kW"
+  },
+  "features": [
+    "48 half-hours ending D-1 13:30",
+    "D-2 profile",
+    "D-7 profile",
+    "mean profile D-8 through D-2",
+    "target day-of-week one-hot",
+    "target month sine/cosine",
+    "known holiday flag",
+    "known Ramadan flag"
+  ],
+  "weather_features": "omitted: no archived day-ahead weather forecast exists",
+  "source": "original pre-completion grid; >=80% source-minute coverage per slot; no two-sided interpolation",
+  "normalization": "StandardScaler fitted only on the training split for each target",
+  "split": {
+    "train": "2025-01-09/2025-05-31",
+    "validation": "2025-06-01/2025-06-30",
+    "test": "2025-07-01/2025-08-31"
+  },
+  "intervention_strategy": "Historical intervention target days excluded from demand training/validation; supply models retain them.",
+  "counts": {
+    "households_consumption_kw": {
+      "training_windows": 121,
+      "validation_windows": 27,
+      "selected_alpha": 100.0,
+      "validation_rmse_kw": 15.41342409342625
+    },
+    "steg_production_kw": {
+      "training_windows": 143,
+      "validation_windows": 30,
+      "selected_alpha": 1.0,
+      "validation_rmse_kw": 3.550822738952542
+    },
+    "pv_production_kw": {
+      "training_windows": 126,
+      "validation_windows": 30,
+      "selected_alpha": 100.0,
+      "validation_rmse_kw": 3.684880584021035
+    }
+  },
+  "alpha_candidates": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "randomness": "deterministic closed-form Ridge",
+  "trained_at_utc": "2026-10-08T13:28:12.605099+00:00",
+  "held_out_evaluation": {
+    "test_period": "2025-07-01/2025-08-31",
+    "replay_days": 62,
+    "summary_file": "backtest_summary.json"
+  }
+}

@@ -18,15 +18,23 @@ def forecast_metrics(actual_kw, predicted_kw, *, interval_hours: float = 0.5) ->
     actual_peak, predicted_peak = int(np.argmax(actual)), int(np.argmax(predicted))
     actual_energy = float(actual.sum() * interval_hours)
     predicted_energy = float(predicted.sum() * interval_hours)
+    energy_bias = predicted_energy - actual_energy
+    peak_magnitude_bias = float(predicted[predicted_peak] - actual[actual_peak])
+    peak_timing_bias_minutes = float((predicted_peak - actual_peak) * interval_hours * 60)
     return {
         "mae_kw": float(np.mean(np.abs(error))),
         "rmse_kw": float(np.sqrt(np.mean(error ** 2))),
         "wape_pct": float(np.abs(error).sum() / denominator * 100) if denominator > 0 else float("nan"),
-        "daily_energy_error_kwh": predicted_energy - actual_energy,
-        "daily_energy_error_pct": ((predicted_energy - actual_energy) / actual_energy * 100)
+        "daily_energy_error_kwh": energy_bias,
+        "daily_energy_absolute_error_kwh": abs(energy_bias),
+        "daily_energy_error_pct": (energy_bias / actual_energy * 100)
         if actual_energy != 0 else float("nan"),
-        "peak_magnitude_error_kw": float(predicted[predicted_peak] - actual[actual_peak]),
-        "peak_timing_error_minutes": float((predicted_peak - actual_peak) * interval_hours * 60),
+        "daily_energy_absolute_error_pct": (abs(energy_bias) / abs(actual_energy) * 100)
+        if actual_energy != 0 else float("nan"),
+        "peak_magnitude_error_kw": abs(peak_magnitude_bias),
+        "peak_magnitude_bias_kw": peak_magnitude_bias,
+        "peak_timing_error_minutes": abs(peak_timing_bias_minutes),
+        "peak_timing_bias_minutes": peak_timing_bias_minutes,
     }
 
 

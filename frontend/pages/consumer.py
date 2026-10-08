@@ -69,15 +69,24 @@ def _forecast_section(client_id: str) -> None:
     ]
     for col, (label, value) in zip(cols, metrics): col.metric(label, value)
     render_chart(forecast_chart(series))
+    st.caption(
+        f"Model version: {result['model_version']}. Forecasts are estimates; individual appliance "
+        "events and their exact timing may not be predictable from aggregate consumption alone."
+    )
     if result["actual_comparison"] == "held_out" and result["metrics"]:
         error = result["metrics"]
+        actual_energy = float(series.actual_energy_kwh.sum())
         cols = st.columns(4)
         metrics = [
             ("MAE", f"{error['mae_kw']:.3f} kW"), ("RMSE", f"{error['rmse_kw']:.3f} kW"),
             ("WAPE", f"{error['wape_pct']:.1f}%"),
-            ("Daily energy error", f"{error['daily_energy_error_kwh']:+.2f} kWh"),
+            ("Peak timing error", f"{error['peak_timing_error_minutes']:.0f} min"),
         ]
         for col, (label, value) in zip(cols, metrics): col.metric(label, value)
+        cols = st.columns(3)
+        cols[0].metric("Forecast daily energy", f"{kpis['daily_energy_kwh']:.2f} kWh")
+        cols[1].metric("Actual daily energy", f"{actual_energy:.2f} kWh")
+        cols[2].metric("Daily energy error", f"{error['daily_energy_error_kwh']:+.2f} kWh")
         st.caption("WAPE is total absolute forecast error divided by total actual consumption; it is undefined when actual daily consumption is zero.")
     elif result["actual_comparison"] == "unavailable":
         st.info("No actual measurements exist for this future date; only the forecast is shown.")
@@ -86,7 +95,7 @@ def _forecast_section(client_id: str) -> None:
 
 
 def household(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> None:
-    page_header("Consumer / profile", "My household", "Dataset attributes and isolated demonstration preferences.")
+    page_header("Consumer / profile", "My household", "Dataset attributes and optional shiftable-appliance demo inputs.")
     info=load_household_info().set_index("client_id").loc[client_id]
     cols=st.columns(3)
     values=[("Occupants",info.n_occupants),("Air conditioning","Yes" if info.has_ac else "No"),("Second AC","Yes" if info.has_second_ac else "No"),("Electric water heater","Yes" if info.has_electric_water_heater else "No"),("Washing machine","Yes" if info.has_washing_machine else "No"),("Daytime occupancy","Yes" if info.occupied_daytime else "No"),("Measured submeters","Yes" if info.has_submeter else "No")]
@@ -125,17 +134,4 @@ def participation(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> 
     if st.button("Save demo response",key=f"save_response_{client_id}"): st.session_state.setdefault("demo_responses",{})[client_id]=choice; st.success("Demo response saved in session state.")
 
 
-def preferences(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> None:
-    page_header("Consumer / settings", "Preferences", "Local demonstration settings designed for future account-backed storage.")
-    saved=st.session_state.setdefault("preferences",{}).get(client_id,{})
-    with st.form(f"prefs_{client_id}"):
-        language=st.selectbox("Preferred language",["English","French","Arabic"],index=["English","French","Arabic"].index(saved.get("language","English")))
-        quiet=st.slider("Quiet hours",0,23,(saved.get("quiet_start",22),saved.get("quiet_end",7)))
-        notifications=st.multiselect("Notifications",["DR invitations","High-use alerts","Weekly summary"],default=saved.get("notifications",["DR invitations"]))
-        willingness=st.select_slider("General participation willingness",["Low","Conditional","High"],value=saved.get("willingness","Conditional"))
-        shifts=st.multiselect("Shiftable appliances",["Air conditioning","Water heater","Washing machine"],default=saved.get("shifts",[]))
-        if st.form_submit_button("Save preferences"):
-            st.session_state["preferences"][client_id]={"language":language,"quiet_start":quiet[0],"quiet_end":quiet[1],"notifications":notifications,"willingness":willingness,"shifts":shifts}; st.success("Saved locally for this session.")
-
-
-PAGES={"My Energy":energy,"My Household":household,"My Appliances":appliances,"My DR Participation":participation,"Preferences":preferences}
+PAGES={"My Energy":energy,"My Household":household,"My Appliances":appliances,"My DR Participation":participation}

@@ -1,0 +1,7 @@
+scope,case,client_id,forecast_date,model_rmse_kw,baseline_rmse_kw,completed_target_slots,plot
+household,good,C039,2025-11-06,0.0706238735453904,0.1435304645835469,4.0,household_good.png
+household,median,C050,2025-12-06,0.3654923505596121,0.5698659403731418,1.0,household_median.png
+household,poor,C017,2025-12-18,1.4837738949128083,1.5364181254243383,39.0,household_poor.png
+community,good,,2025-08-07,4.890046627419686,7.445736346153176,,community_good.png
+community,median,,2025-07-18,14.079585188179252,3.3000550379491083,,community_median.png
+community,poor,,2025-07-08,35.98990189666283,6.8698505528171285,,community_poor.png

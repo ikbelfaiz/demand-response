@@ -36,3 +36,9 @@ Community forecasting, NILM inference, baseline estimation, flexibility modeling
 ## Forecast model migration
 
 The notebook-selected Energy-TTM architecture was adapted from 168 hourly inputs/24 outputs to 336 half-hour inputs/48 outputs by preserving seven daily patches (patch length/stride 24 → 48) and retraining the resized patcher and forecast head with the mixer core. Five CPU epochs used 13,300 training windows and 1,550 validation windows; best validation loss was 0.652229. On 3,050 held-out household-days, Energy-TTM achieved mean MAE 0.2472 kW and RMSE 0.3865 kW versus seasonal persistence at 0.2787 kW and 0.5052 kW. Peak timing remained much worse (367.2 versus 22.8 minutes), a material limitation documented in `FORECASTING_MODEL.md`.
+
+## Community DR replay migration
+
+A separate Operator page now runs saved-model historical replay for the July–August held-out period. Causal profile models forecast demand, STEG allocation, and PV at 30-minute resolution from information available by D-1 14:00. Consecutive predicted deficits feed an independent, fixed decision policy; outputs remain separate from recorded events.
+
+The final 62-day backtest did not establish superiority over seasonal persistence. Demand Ridge MAE/RMSE were 12.63/16.16 kW versus 10.98/13.90 kW for persistence. Supply Ridge improved to 4.92/5.76 kW versus 6.95/7.82 kW. After excluding 36 source-affected peak-label slots, recommended-interval precision, recall, and F1 were 0.438, 0.113, and 0.179. These limitations are retained in the UI and `DR_BACKTEST_REPORT.md`.

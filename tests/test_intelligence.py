@@ -8,7 +8,8 @@ from backend.intelligence.orchestrator import status
 
 
 def test_registry_status_matches_artifact_availability():
-    assert bool(MODEL_REGISTRY.status()) == MODEL_REGISTRY.available()
+    assert ("energy_ttm" in MODEL_REGISTRY.status()) == MODEL_REGISTRY.available()
+    assert ("community_dr" in MODEL_REGISTRY.status()) == MODEL_REGISTRY.community_available()
     assert empty_forecast().empty
 
 

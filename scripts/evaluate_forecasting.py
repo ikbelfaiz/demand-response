@@ -9,7 +9,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-import numpy as np
 import pandas as pd
 
 from backend.data import load_household, operational_household
@@ -41,7 +40,8 @@ def main() -> None:
     results = pd.DataFrame(rows)
     results.to_csv(args.artifact_dir / "test_predictions_metrics.csv", index=False)
     metrics = ["mae_kw","rmse_kw","wape_pct","daily_energy_error_kwh",
-               "peak_magnitude_error_kw","peak_timing_error_minutes"]
+               "daily_energy_absolute_error_kwh","peak_magnitude_error_kw",
+               "peak_magnitude_bias_kw","peak_timing_error_minutes","peak_timing_bias_minutes"]
     overall = results.groupby("method", as_index=False)[metrics].mean()
     per_household = results.groupby(["client_id","method"], as_index=False)[metrics].mean()
     per_month = results.assign(month=results.forecast_date.dt.to_period("M").astype(str)).groupby(

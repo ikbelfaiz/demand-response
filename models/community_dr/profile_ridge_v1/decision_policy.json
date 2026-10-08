@@ -1,0 +1,10 @@
+{
+  "min_deficit_kw": 1.0,
+  "min_duration_minutes": 60,
+  "min_shortage_energy_kwh": 1.0,
+  "safety_margin_kw": 0.0,
+  "max_event_duration_minutes": 120,
+  "min_gap_minutes": 60,
+  "max_events_per_day": 2,
+  "version": "research-policy-v1"
+}

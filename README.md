@@ -18,7 +18,8 @@ python scripts/complete_v3.py
 ## Implemented
 
 - Operator: Community Overview, Community Grid, DR Events, Household Analytics.
-- Consumer: My Energy, My Household, My Appliances, My DR Participation, Preferences.
+- Operator AI research: DR Detection & Forecasting with D-1 14:00 historical replay, community demand/supply forecasts, risk windows, and simulated recommendations.
+- Consumer: My Energy, My Household, My Appliances, My DR Participation.
 - Saved Energy-TTM next-day household forecasts in My Energy: 336 half-hour inputs and 48 half-hour power predictions, with held-out actual comparisons.
 - Complete one-minute canonical data and 30-minute operational resampling.
 - Parquet predicate/column pushdown and cached portfolio scanning.
@@ -48,6 +49,18 @@ py -3.13 scripts/evaluate_forecasting.py --households 50
 ```
 
 Artifacts are written to `models/household_forecasting/energy_ttm_v1/`. The UI gives a setup instruction if that compatible artifact is absent.
+
+## Community DR historical replay
+
+The community pipeline is separate from the household forecaster. It uses causal multi-output Ridge profile models because the 14:00 issuance cutoff creates a ten-hour gap before the next calendar day, which is incompatible with directly applying the contiguous Energy-TTM household horizon. Training uses the original pre-completion grid with past-only aggregation and excludes historical intervention target days from demand training.
+
+```powershell
+py -3.13 scripts/train_community_forecast.py
+py -3.13 scripts/evaluate_dr_detection.py
+py -3.13 -m streamlit run app.py
+```
+
+Saved models and backtest outputs are under `models/community_dr/profile_ridge_v1/`. See [DR_DETECTION_MODEL.md](DR_DETECTION_MODEL.md) and [DR_BACKTEST_REPORT.md](DR_BACKTEST_REPORT.md). Recommendations are historical simulations only and never write to `dr_events.csv`.
 
 ## Test
 

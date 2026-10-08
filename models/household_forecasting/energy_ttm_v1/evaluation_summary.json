@@ -10,8 +10,11 @@
       "rmse_kw": 0.38650215326601894,
       "wape_pct": 65.6157006727417,
       "daily_energy_error_kwh": 0.2738702583793917,
-      "peak_magnitude_error_kw": -0.8747374607549339,
-      "peak_timing_error_minutes": 367.16065573770493
+      "daily_energy_absolute_error_kwh": 2.079029915676773,
+      "peak_magnitude_error_kw": 0.9121248506082863,
+      "peak_magnitude_bias_kw": -0.8747374607549339,
+      "peak_timing_error_minutes": 409.02295081967213,
+      "peak_timing_bias_minutes": 367.16065573770493
     },
     {
       "method": "Seasonal persistence",
@@ -19,8 +22,11 @@
       "rmse_kw": 0.5052442540214646,
       "wape_pct": 73.97645557582594,
       "daily_energy_error_kwh": -0.3698909425994641,
-      "peak_magnitude_error_kw": -0.08090402217184911,
-      "peak_timing_error_minutes": 22.79016393442623
+      "daily_energy_absolute_error_kwh": 2.559253208389483,
+      "peak_magnitude_error_kw": 0.7017849917880824,
+      "peak_magnitude_bias_kw": -0.08090402217184911,
+      "peak_timing_error_minutes": 382.927868852459,
+      "peak_timing_bias_minutes": 22.79016393442623
     }
   ]
 }

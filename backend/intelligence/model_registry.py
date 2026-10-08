@@ -7,6 +7,7 @@ from pathlib import Path
 from backend.config import PROJECT_ROOT
 
 DEFAULT_FORECAST_ARTIFACT = PROJECT_ROOT / "models" / "household_forecasting" / "energy_ttm_v1"
+DEFAULT_COMMUNITY_ARTIFACT = PROJECT_ROOT / "models" / "community_dr" / "profile_ridge_v1"
 
 
 class ModelArtifactError(RuntimeError):
@@ -14,8 +15,10 @@ class ModelArtifactError(RuntimeError):
 
 
 class ModelRegistry:
-    def __init__(self, forecast_path: Path = DEFAULT_FORECAST_ARTIFACT) -> None:
+    def __init__(self, forecast_path: Path = DEFAULT_FORECAST_ARTIFACT,
+                 community_path: Path = DEFAULT_COMMUNITY_ARTIFACT) -> None:
         self.forecast_path = Path(forecast_path)
+        self.community_path = Path(community_path)
 
     def metadata(self, path: Path | None = None) -> dict:
         artifact = Path(path or self.forecast_path)
@@ -48,8 +51,29 @@ class ModelRegistry:
         except ModelArtifactError:
             return False
 
+    def community_metadata(self) -> dict:
+        metadata_path = self.community_path / "metadata.json"
+        model_path = self.community_path / "models.joblib"
+        if not metadata_path.is_file() or not model_path.is_file():
+            raise ModelArtifactError(
+                f"Community replay model is not installed at {self.community_path}. Run: "
+                "py -3.13 scripts/train_community_forecast.py"
+            )
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        if metadata.get("forecast_slots") != 48 or metadata.get("issuance_hour") != 14:
+            raise ModelArtifactError("Community replay artifact is incompatible.")
+        return metadata
+
+    def community_available(self) -> bool:
+        try:
+            self.community_metadata(); return True
+        except (ModelArtifactError, OSError, json.JSONDecodeError):
+            return False
+
     def status(self) -> dict[str, str]:
-        return {"energy_ttm": str(self.forecast_path)} if self.available() else {}
+        result = {"energy_ttm": str(self.forecast_path)} if self.available() else {}
+        if self.community_available(): result["community_dr"] = str(self.community_path)
+        return result
 
 
 MODEL_REGISTRY = ModelRegistry()

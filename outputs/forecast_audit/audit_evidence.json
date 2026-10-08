@@ -1,0 +1,159 @@
+{
+  "household_model_sha256": "5fa42561cc885d1d75a036c8f55aa782b90b11bd3254dbb85232cdd71bf62140",
+  "community_model_sha256": "3138cbb6d73ed848c3b29f48b2801a0a9ebc434db0baab8f311253907150863e",
+  "household_weight_update": {
+    "status": "verified_updated",
+    "common_same_shape_tensors": 278,
+    "changed_tensors": 278,
+    "unchanged_tensors": 0,
+    "changed_parameters": 30610,
+    "total_compared_parameters": 30610,
+    "changed_core_tensors": 274,
+    "core_tensors": 274,
+    "largest_changes": [
+      {
+        "name": "head.base_forecast_block.weight",
+        "max_absolute_change": 0.28769683837890625
+      },
+      {
+        "name": "decoder.decoder_block.mixers.6.feature_mixer.mlp.fc1.weight",
+        "max_absolute_change": 0.28715693950653076
+      },
+      {
+        "name": "decoder.decoder_block.mixers.6.feature_mixer.mlp.fc2.weight",
+        "max_absolute_change": 0.2529151141643524
+      },
+      {
+        "name": "backbone.encoder.mlp_mixer_encoder.mixers.1.mixer_layers.2.patch_mixer.mlp.fc2.weight",
+        "max_absolute_change": 0.24017509818077087
+      },
+      {
+        "name": "decoder.decoder_block.mixers.6.patch_mixer.norm.norm.weight",
+        "max_absolute_change": 0.22172203660011292
+      },
+      {
+        "name": "backbone.encoder.mlp_mixer_encoder.mixers.1.mixer_layers.2.patch_mixer.mlp.fc1.weight",
+        "max_absolute_change": 0.21528729796409607
+      },
+      {
+        "name": "backbone.encoder.mlp_mixer_encoder.mixers.2.mixer_layers.2.feature_mixer.mlp.fc1.weight",
+        "max_absolute_change": 0.21074005961418152
+      },
+      {
+        "name": "backbone.encoder.mlp_mixer_encoder.mixers.1.mixer_layers.1.patch_mixer.mlp.fc1.weight",
+        "max_absolute_change": 0.20940899848937988
+      }
+    ]
+  },
+  "community_artifact": {
+    "households_consumption_kw": {
+      "coefficient_shape": [
+        48,
+        203
+      ],
+      "nonzero_coefficients": 9744,
+      "coefficient_l2_norm": 24.118144989013672,
+      "scaler_features": 203,
+      "ridge_alpha": 100.0
+    },
+    "steg_production_kw": {
+      "coefficient_shape": [
+        48,
+        203
+      ],
+      "nonzero_coefficients": 9744,
+      "coefficient_l2_norm": 83.38837432861328,
+      "scaler_features": 203,
+      "ridge_alpha": 1.0
+    },
+    "pv_production_kw": {
+      "coefficient_shape": [
+        48,
+        203
+      ],
+      "nonzero_coefficients": 3810,
+      "coefficient_l2_norm": 4.022866725921631,
+      "scaler_features": 203,
+      "ridge_alpha": 100.0
+    }
+  },
+  "household_source_completion_by_split": {
+    "train": {
+      "source_missing_minutes": 78291,
+      "affected_30min_slots": 29755,
+      "fully_missing_30min_slots": 1495,
+      "target_windows_affected": 11786,
+      "context_windows_affected": 13300
+    },
+    "validation": {
+      "source_missing_minutes": 7716,
+      "affected_30min_slots": 3575,
+      "fully_missing_30min_slots": 129,
+      "target_windows_affected": 1389,
+      "context_windows_affected": 1550
+    },
+    "test": {
+      "source_missing_minutes": 17976,
+      "affected_30min_slots": 6858,
+      "fully_missing_30min_slots": 344,
+      "target_windows_affected": 2701,
+      "context_windows_affected": 3050
+    }
+  },
+  "selected_cases": [
+    {
+      "scope": "household",
+      "case": "good",
+      "client_id": "C039",
+      "forecast_date": "2025-11-06",
+      "model_rmse_kw": 0.0706238735453904,
+      "baseline_rmse_kw": 0.1435304645835469,
+      "completed_target_slots": 4,
+      "plot": "household_good.png"
+    },
+    {
+      "scope": "household",
+      "case": "median",
+      "client_id": "C050",
+      "forecast_date": "2025-12-06",
+      "model_rmse_kw": 0.3654923505596121,
+      "baseline_rmse_kw": 0.5698659403731418,
+      "completed_target_slots": 1,
+      "plot": "household_median.png"
+    },
+    {
+      "scope": "household",
+      "case": "poor",
+      "client_id": "C017",
+      "forecast_date": "2025-12-18",
+      "model_rmse_kw": 1.4837738949128083,
+      "baseline_rmse_kw": 1.5364181254243383,
+      "completed_target_slots": 39,
+      "plot": "household_poor.png"
+    },
+    {
+      "scope": "community",
+      "case": "good",
+      "forecast_date": "2025-08-07",
+      "model_rmse_kw": 4.890046627419686,
+      "baseline_rmse_kw": 7.445736346153176,
+      "plot": "community_good.png"
+    },
+    {
+      "scope": "community",
+      "case": "median",
+      "forecast_date": "2025-07-18",
+      "model_rmse_kw": 14.079585188179252,
+      "baseline_rmse_kw": 3.3000550379491083,
+      "plot": "community_median.png"
+    },
+    {
+      "scope": "community",
+      "case": "poor",
+      "forecast_date": "2025-07-08",
+      "model_rmse_kw": 35.98990189666283,
+      "baseline_rmse_kw": 6.8698505528171285,
+      "plot": "community_poor.png"
+    }
+  ]
+}

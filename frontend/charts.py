@@ -58,3 +58,21 @@ def forecast_chart(frame: pd.DataFrame) -> go.Figure:
         hovertemplate="%{x|%d %b %H:%M}<br>Forecast: %{y:.3f} kW<extra></extra>",
     ))
     return style(fig, "Household power (kW)", "Forecast time", 430)
+
+
+def dr_replay_chart(frame: pd.DataFrame, risk_windows: pd.DataFrame) -> go.Figure:
+    fig = go.Figure()
+    traces = [
+        ("actual_demand_kw","Actual observed demand","#0F172A","solid"),
+        ("actual_supply_kw","Actual modeled supply","#64748B","solid"),
+        ("predicted_demand_kw","Predicted community demand","#2563EB","dash"),
+        ("predicted_supply_kw","Predicted total available supply","#059669","dash"),
+    ]
+    for column,label,color,dash in traces:
+        if column in frame:
+            fig.add_trace(go.Scatter(x=frame.timestamp,y=frame[column],name=label,connectgaps=False,
+                line=dict(color=color,width=2,dash=dash),hovertemplate=f"%{{x|%d %b %H:%M}}<br>{label}: %{{y:.2f}} kW<extra></extra>"))
+    for number,row in enumerate(risk_windows.itertuples(),1):
+        fig.add_vrect(x0=row.start_ts,x1=row.end_ts,fillcolor="#F97316",opacity=.14,line_width=0,
+                      annotation_text="Forecast risk" if number==1 else None,annotation_position="top left")
+    return style(fig,"Power (kW)","Target-day time",500)

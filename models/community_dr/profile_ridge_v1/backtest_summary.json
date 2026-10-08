@@ -1,0 +1,204 @@
+{
+  "model_version": "community-profile-ridge-v1",
+  "test_period": "2025-07-01/2025-08-31",
+  "replay_days": 62,
+  "forecast_metrics": [
+    {
+      "target": "demand",
+      "method": "baseline",
+      "mae_kw": 10.975791738063927,
+      "rmse_kw": 13.901559980025551,
+      "wape_pct": 36.966170086229084,
+      "daily_energy_error_kwh": 29.369735939693857,
+      "daily_energy_absolute_error_kwh": 231.336631636191,
+      "daily_energy_error_pct": 11.1741535290892,
+      "daily_energy_absolute_error_pct": 32.3542243179454,
+      "peak_magnitude_error_kw": 14.129612968362787,
+      "peak_magnitude_bias_kw": 1.8840971825712474,
+      "peak_timing_error_minutes": 106.93548387096774,
+      "peak_timing_bias_minutes": -0.4838709677419355
+    },
+    {
+      "target": "demand",
+      "method": "model",
+      "mae_kw": 12.628283469723234,
+      "rmse_kw": 16.158696157309063,
+      "wape_pct": 38.4997392565555,
+      "daily_energy_error_kwh": -170.84823511219906,
+      "daily_energy_absolute_error_kwh": 192.31525604143025,
+      "daily_energy_error_pct": -18.029605011748444,
+      "daily_energy_absolute_error_pct": 22.60587133852839,
+      "peak_magnitude_error_kw": 10.036153671428723,
+      "peak_magnitude_bias_kw": -0.47112096642935103,
+      "peak_timing_error_minutes": 169.83870967741936,
+      "peak_timing_bias_minutes": -51.774193548387096
+    },
+    {
+      "target": "pv",
+      "method": "baseline",
+      "mae_kw": 1.2886854132108772,
+      "rmse_kw": 1.9689575825241854,
+      "wape_pct": 20.67465533532664,
+      "daily_energy_error_kwh": 5.322546423024395,
+      "daily_energy_absolute_error_kwh": 29.823828273815643,
+      "daily_energy_error_pct": 10.103740446973472,
+      "daily_energy_absolute_error_pct": 20.234276783357252,
+      "peak_magnitude_error_kw": 2.9829931900312956,
+      "peak_magnitude_bias_kw": 0.3409732161123397,
+      "peak_timing_error_minutes": 26.612903225806452,
+      "peak_timing_bias_minutes": -1.4516129032258065
+    },
+    {
+      "target": "pv",
+      "method": "model",
+      "mae_kw": 1.6082067257225676,
+      "rmse_kw": 2.482275168269802,
+      "wape_pct": 20.665497194257924,
+      "daily_energy_error_kwh": -21.083682726244536,
+      "daily_energy_absolute_error_kwh": 37.31375604845199,
+      "daily_energy_error_pct": -3.123393826882079,
+      "daily_energy_absolute_error_pct": 20.10350484622289,
+      "peak_magnitude_error_kw": 3.707703996838664,
+      "peak_magnitude_bias_kw": -2.343017446985411,
+      "peak_timing_error_minutes": 30.967741935483872,
+      "peak_timing_bias_minutes": 11.612903225806452
+    },
+    {
+      "target": "steg",
+      "method": "baseline",
+      "mae_kw": 6.300670197627023,
+      "rmse_kw": 6.885171867680793,
+      "wape_pct": 6.543222481218653,
+      "daily_energy_error_kwh": -10.496869900939249,
+      "daily_energy_absolute_error_kwh": 144.23395583843933,
+      "daily_energy_error_pct": -0.1044654740959077,
+      "daily_energy_absolute_error_pct": 6.23787865080912,
+      "peak_magnitude_error_kw": 3.4800427977859325,
+      "peak_magnitude_bias_kw": -0.1471931864420574,
+      "peak_timing_error_minutes": 133.5483870967742,
+      "peak_timing_bias_minutes": -2.903225806451613
+    },
+    {
+      "target": "steg",
+      "method": "model",
+      "mae_kw": 4.259086178543748,
+      "rmse_kw": 4.87616941535199,
+      "wape_pct": 4.403120316628055,
+      "daily_energy_error_kwh": -28.504653544600256,
+      "daily_energy_absolute_error_kwh": 88.18605655973703,
+      "daily_energy_error_pct": -1.031405950644935,
+      "daily_energy_absolute_error_pct": 3.7895271944948328,
+      "peak_magnitude_error_kw": 2.852874022124916,
+      "peak_magnitude_bias_kw": -1.5967622733167424,
+      "peak_timing_error_minutes": 89.03225806451613,
+      "peak_timing_bias_minutes": -52.25806451612903
+    },
+    {
+      "target": "supply",
+      "method": "baseline",
+      "mae_kw": 6.946357091373513,
+      "rmse_kw": 7.822427650435328,
+      "wape_pct": 6.505817539247022,
+      "daily_energy_error_kwh": -5.174323954264325,
+      "daily_energy_absolute_error_kwh": 155.6969229965125,
+      "daily_energy_error_pct": 0.09149776340261741,
+      "daily_energy_absolute_error_pct": 6.070978950897574,
+      "peak_magnitude_error_kw": 7.77319375971312,
+      "peak_magnitude_bias_kw": -0.26719317233177836,
+      "peak_timing_error_minutes": 73.06451612903226,
+      "peak_timing_bias_minutes": -6.290322580645161
+    },
+    {
+      "target": "supply",
+      "method": "model",
+      "mae_kw": 4.91571534479099,
+      "rmse_kw": 5.7593254678206005,
+      "wape_pct": 4.5813677559465225,
+      "daily_energy_error_kwh": -49.588336555563,
+      "daily_energy_absolute_error_kwh": 96.65204614503922,
+      "daily_energy_error_pct": -1.7695457269774433,
+      "daily_energy_absolute_error_pct": 3.73804920671788,
+      "peak_magnitude_error_kw": 5.735569534465831,
+      "peak_magnitude_bias_kw": -3.6806360916629908,
+      "peak_timing_error_minutes": 87.09677419354838,
+      "peak_timing_bias_minutes": 70.64516129032258
+    }
+  ],
+  "interval_detection": {
+    "forecast_negative_margin_vs_post_dr_peak": {
+      "precision": 0.47058823529411764,
+      "recall": 0.12903225806451613,
+      "f1": 0.20253164556962025,
+      "true_positive": 8,
+      "true_negative": 2869,
+      "false_positive": 9,
+      "false_negative": 54
+    },
+    "recommended_events_vs_post_dr_peak": {
+      "precision": 0.4375,
+      "recall": 0.11290322580645161,
+      "f1": 0.1794871794871795,
+      "true_positive": 7,
+      "true_negative": 2869,
+      "false_positive": 9,
+      "false_negative": 55
+    },
+    "seasonal_margin_rule_vs_post_dr_peak": {
+      "precision": 0.2727272727272727,
+      "recall": 0.24193548387096775,
+      "f1": 0.2564102564102564,
+      "true_positive": 15,
+      "true_negative": 2838,
+      "false_positive": 40,
+      "false_negative": 47
+    },
+    "recommended_events_vs_historical_activation": {
+      "precision": 0.375,
+      "recall": 0.13636363636363635,
+      "f1": 0.19999999999999998,
+      "true_positive": 6,
+      "true_negative": 2922,
+      "false_positive": 10,
+      "false_negative": 38
+    }
+  },
+  "event_detection": {
+    "recommended_vs_post_dr_peak": {
+      "predicted_events": 7,
+      "actual_events": 13,
+      "event_precision": 0.42857142857142855,
+      "event_recall": 0.23076923076923078,
+      "false_alerts_per_day": 0.06451612903225806,
+      "mean_best_overlap_minutes": 16.153846153846153,
+      "mean_predicted_lead_hours": 30.357142857142858
+    },
+    "recommended_vs_historical_activation": {
+      "predicted_events": 7,
+      "actual_events": 11,
+      "event_precision": 0.42857142857142855,
+      "event_recall": 0.2727272727272727,
+      "false_alerts_per_day": 0.06451612903225806,
+      "mean_best_overlap_minutes": 16.363636363636363,
+      "mean_predicted_lead_hours": 30.357142857142858
+    }
+  },
+  "decision_policy": {
+    "min_deficit_kw": 1.0,
+    "min_duration_minutes": 60,
+    "min_shortage_energy_kwh": 1.0,
+    "safety_margin_kw": 0.0,
+    "max_event_duration_minutes": 120,
+    "min_gap_minutes": 60,
+    "max_events_per_day": 2,
+    "version": "research-policy-v1"
+  },
+  "counterfactual_evaluation_only": {
+    "historical_event_household_rows": 550,
+    "historical_event_natural_energy_kwh": 1786.388,
+    "historical_event_observed_energy_kwh": 1585.2,
+    "historical_event_savings_kwh": 201.188,
+    "usage": "offline context only; never a forecast feature or operational label"
+  },
+  "excluded_peak_label_slots_due_source_gaps": 36,
+  "label_warning": "is_dr_peak and observed demand are post-intervention; historical events are operator actions, not shortage truth."
+}

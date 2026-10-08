@@ -33,6 +33,14 @@ The grid is loaded once. Household queries touch one parquet half and push clien
 - The orchestrator reports forecast availability from the artifact registry; DR decision and activation capabilities remain disabled.
 - Historical event labels cannot trigger decisions; the model registry starts empty.
 
+## Community historical replay
+
+`community_forecasting.py` reads the original pre-completion grid and creates 30-minute values directly from available source minutes. It retains coverage metadata and never uses the canonical two-sided completion as a causal model input. Target-day weather is omitted because no archived forecast exists.
+
+At D-1 14:00, separate saved Ridge models forecast the 48 target-day profiles for community demand, allocated STEG supply, and PV. Inputs are the prior 24 hours ending at issuance, D-2 and D-7 profiles, the mean of D-8 through D-2, and known calendar features. Each scaler is fitted on training data only.
+
+`peak_detection.py` groups consecutive negative forecast margins. `decision_engine.py` applies a separate versioned research policy. `historical_replay.py` joins forecasts, actual post-intervention observations, peak labels, and historical operator events only after predictions exist. `backtesting.py` evaluates interval and event matching. Ground-truth savings remain accessible only through the research evaluation accessor.
+
 ## State and integrity
 
-Canonical synthetic files are the sole runtime source. Pre-completion backups are not loaded by the app. Preferences, onboarding inputs, and mock responses live only in Streamlit session state. The perspective selector is not authentication.
+Canonical synthetic files are the sole runtime source. Pre-completion backups are not loaded by the app. Optional onboarding inputs and mock responses live only in Streamlit session state. The perspective selector is not authentication.
