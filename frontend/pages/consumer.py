@@ -5,7 +5,7 @@ import streamlit as st
 
 from backend.data import load_events, load_household_info, load_participation
 from backend.services import household_service
-from backend.services.forecast_service import forecast_next_day, model_status
+from backend.services.forecast_service import consumer_forecast_dates, forecast_next_day, model_status
 from backend.services.participation_service import for_household, response_counts
 from frontend.charts import bars, donut, forecast_chart, heatmap, lines, style
 from frontend.components import page_header, render_chart
@@ -31,27 +31,24 @@ def energy(frame: pd.DataFrame, client_id: str, community_grid: pd.DataFrame) ->
 
 
 def _forecast_section(client_id: str) -> None:
-    st.subheader("Tomorrow's Energy Forecast")
-    st.caption("Saved Energy-TTM model: seven prior days (336 half-hours) predict the next 48 half-hours. Synthetic historical data, not a live smart-meter forecast.")
+    st.subheader("Daily Energy Forecast")
+    st.caption("Select an eligible 2025 date. The saved Energy-TTM model uses its seven prior days (336 half-hours) to predict that day's 48 half-hours.")
     available, status = model_status()
     if not available:
         st.warning(status)
         return
-    left, right = st.columns(2)
-    with left:
-        mode = st.radio("Forecast mode", ["Historical held-out evaluation", "Next day after dataset"],
-                        horizontal=True, key=f"forecast_mode_{client_id}")
-    with right:
-        if mode.startswith("Historical"):
-            forecast_date = st.date_input(
-                "Held-out forecast date", value=pd.Timestamp("2025-12-31").date(),
-                min_value=pd.Timestamp("2025-11-01").date(), max_value=pd.Timestamp("2025-12-31").date(),
-                key=f"forecast_date_{client_id}")
-        else:
-            forecast_date = pd.Timestamp("2026-01-01").date()
-            st.text_input("Forecast date", value=str(forecast_date), disabled=True, key=f"next_date_{client_id}")
+    dates = consumer_forecast_dates(client_id)
+    if dates.empty:
+        st.warning("No forecast date has the complete seven-day context required by this artifact.")
+        return
+    forecast_date = st.date_input(
+        "Historical forecast date", value=dates.max().date(),
+        min_value=dates.min().date(), max_value=dates.max().date(),
+        key=f"forecast_date_{client_id}",
+        help=f"Available from {dates.min().date()} after seven complete historical days.",
+    )
     if not st.button("Generate forecast", type="primary", key=f"generate_forecast_{client_id}"):
-        st.info(f"Model ready: {status}. Choose a mode and generate a forecast.")
+        st.info(f"Model ready: {status}. Choose a target date and generate a forecast.")
         return
     try:
         result = forecast_next_day(client_id, forecast_date)
@@ -69,6 +66,7 @@ def _forecast_section(client_id: str) -> None:
     ]
     for col, (label, value) in zip(cols, metrics): col.metric(label, value)
     render_chart(forecast_chart(series))
+    st.caption(result["forecast_status_label"])
     st.caption(
         f"Model version: {result['model_version']}. Forecasts are estimates; individual appliance "
         "events and their exact timing may not be predictable from aggregate consumption alone."
@@ -91,7 +89,9 @@ def _forecast_section(client_id: str) -> None:
     elif result["actual_comparison"] == "unavailable":
         st.info("No actual measurements exist for this future date; only the forecast is shown.")
     else:
-        st.warning("This date is in the model-development period and is not reported as held-out validation.")
+        actual_energy = float(series.actual_energy_kwh.sum())
+        st.metric("Actual daily energy", f"{actual_energy:.2f} kWh")
+        st.caption("Independent forecast-error metrics are hidden for retrospective model-development dates.")
 
 
 def household(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> None:

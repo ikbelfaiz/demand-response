@@ -26,6 +26,14 @@ python scripts/complete_v3.py
 - Historical event/participation joins and appliance channels for the 10 panel homes.
 - Explicit offline forecast training/evaluation; Streamlit only loads versioned artifacts and never retrains.
 
+## Historical forecast availability
+
+Consumer **My Energy** provides a historical-only date selector accepting every target day from **2025-01-08 through 2025-12-31** for each of the 50 households. January 8 is the first date with the required 336 half-hour observations from January 1–7. The selector defaults to December 31 and does not expose a post-dataset January 2026 mode. The application derives these bounds from the installed household data and keeps the 48-slot Energy-TTM contract unchanged.
+
+Operator **DR Detection & Forecasting** derives replay availability from the saved model's actual D-1 14:00 features. The overall range is **2025-01-09 through 2025-12-31**. Original-source gaps make these internal ranges unavailable: February 5–12, March 4–10, September 17–23, and October 18–25. Unsupported dates display an explanation rather than fabricating lag profiles. The page keeps model-registry details out of the operational interface while continuing to load the same saved artifact.
+
+Dates explicitly declared by artifact metadata as test data are labeled **Historical replay — out-of-sample evaluation**. Training, validation, or otherwise unproven dates are labeled **Retrospective prediction — this date may have been used during model development**. Consumer held-out dates are November–December; operator held-out dates are July–August. Forecast availability is therefore broader than evaluation validity.
+
 ## Scientific conventions
 
 - Power is averaged during resampling. Half-hour energy is `mean kW × 0.5 h`.

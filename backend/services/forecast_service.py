@@ -3,13 +3,14 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Protocol
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
 
 from backend.data.aggregation import operational_household
 from backend.data.v3_loader import load_household
-from backend.intelligence.forecast_features import build_window
+from backend.intelligence.forecast_features import build_window, eligible_forecast_dates
 from backend.intelligence.forecast_metrics import forecast_kpis, forecast_metrics
 from backend.intelligence.forecasting import load_forecaster
 from backend.intelligence.model_registry import DEFAULT_FORECAST_ARTIFACT, ModelRegistry
@@ -18,6 +19,30 @@ from backend.intelligence.model_registry import DEFAULT_FORECAST_ARTIFACT, Model
 class Predictor(Protocol):
     metadata: dict
     def predict(self, context_kw: np.ndarray) -> np.ndarray: ...
+
+
+def _date_range(value: str) -> tuple[pd.Timestamp, pd.Timestamp]:
+    start, end = value.split("/", maxsplit=1)
+    return pd.Timestamp(start).normalize(), pd.Timestamp(end).normalize()
+
+
+def forecast_classification(metadata: dict, forecast_date: object) -> tuple[str, str]:
+    """Classify provenance conservatively; only an explicit test range is held out."""
+    day = pd.Timestamp(forecast_date).normalize()
+    split = metadata.get("split")
+    if isinstance(split, dict) and split.get("test"):
+        start, end = _date_range(split["test"])
+        if start <= day <= end:
+            return "held_out", "Historical replay — out-of-sample evaluation."
+    return "retrospective", "Retrospective prediction — this date may have been used during model development."
+
+
+@lru_cache(maxsize=50)
+def consumer_forecast_dates(client_id: str) -> pd.DatetimeIndex:
+    """Dataset-derived 2025 target days with complete 336-slot context and target."""
+    raw = load_household(client_id, columns=["timestamp", "client_id", "aggregate_power_w"])
+    operational = operational_household(raw)
+    return eligible_forecast_dates(operational)
 
 
 def forecast_next_day(client_id: str, forecast_date: object, *, predictor: Predictor | None = None,
@@ -39,9 +64,8 @@ def forecast_next_day(client_id: str, forecast_date: object, *, predictor: Predi
         frame["actual_power_kw"] = window.target_kw
         frame["actual_energy_kwh"] = window.target_kw * 0.5
     metadata = model.metadata
-    test_start = pd.Timestamp(metadata["test_start"]).normalize()
-    comparison = "held_out" if window.target_kw is not None and day >= test_start else (
-        "in_sample" if window.target_kw is not None else "unavailable")
+    classification, classification_label = forecast_classification(metadata, day)
+    comparison = classification if window.target_kw is not None else "unavailable"
     metrics = forecast_metrics(window.target_kw, prediction_kw) if comparison == "held_out" else None
     return {
         "client_id": client_id,
@@ -56,6 +80,8 @@ def forecast_next_day(client_id: str, forecast_date: object, *, predictor: Predi
             "slots": len(window.context_kw),
         },
         "actual_comparison": comparison,
+        "forecast_status": classification,
+        "forecast_status_label": classification_label,
         "uncertainty": None,
         "series": frame,
         "kpis": forecast_kpis(prediction_kw),

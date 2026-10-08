@@ -49,7 +49,9 @@ Energy-TTM improved mean MAE by 11.28% and RMSE by 23.50% relative to the baseli
 
 `backend.services.forecast_service.forecast_next_day(client_id, forecast_date)` returns household ID, date and issue time, 48 timestamps, kW and derived kWh values, model identity/version, the exact historical window, actual-comparison status, metrics when legitimate, and `uncertainty=None`.
 
-Consumer **My Energy** offers held-out historical dates and January 1, 2026. Historical actuals are shown only as held-out validation for November–December. January 1 has forecast values only. The Streamlit process loads a cached artifact and never retrains.
+Consumer **My Energy** derives its selectable range from each household's installed data. All 50 households support January 8–December 31, 2025: January 8 uses January 1–7 as its exact 336-slot context, while December 31 uses December 24–30. The model always returns 48 target half-hours and the Streamlit process loads the saved artifact without retraining.
+
+The artifact metadata explicitly identifies November 1–December 31 as test data; those dates are labeled **Historical replay — out-of-sample evaluation** and may show error metrics. January 8–October 31 is available for demonstration but labeled **Retrospective prediction — this date may have been used during model development**. Actual observations may be displayed there, but independent test metrics are hidden. The canonical household series was completed before model training using two-sided interpolation, so retrospective availability is not described as leakage-free.
 
 ## Limitations
 

@@ -29,6 +29,12 @@ Three independently scaled multi-output Ridge models predict:
 
 Training is January 9–May 31, validation is June, and final testing is July–August. This differs from a November–December test because all 36 recorded interventions occur by August; July–August provides 11 held-out operator events and 64 post-DR peak intervals. Ridge regularization is selected using June only. The saved alpha values are 100 for demand, 1 for STEG, and 100 for PV.
 
+## Replay availability and status
+
+The operational selector validates the saved feature contract against the original-source grid. January 9, 2025 is the earliest possible target because the mean-profile feature reaches back to D-8; December 31 is the latest target in the dataset. There are 327 supported days. Required lag profiles cross source intervals below 80% coverage on February 5–12, March 4–10, September 17–23, and October 18–25, so those dates remain unavailable rather than being imputed for inference.
+
+Only July 1–August 31 is explicitly proven by artifact metadata to be excluded from training and model selection, and is labeled **Historical replay — out-of-sample evaluation**. January–June and September–December predictions are labeled **Retrospective prediction — this date may have been used during model development**. The latter status is conservative: availability does not imply evaluation validity.
+
 Historical DR changes the observed process. The generator first constructs natural demand, schedules events using a noisy day-ahead margin forecast, then reruns households with compliant AC setpoint changes and deferred water-heater load. Feeder demand and `is_dr_peak` are post-intervention. Demand target days intersecting recorded interventions are excluded from training and validation. Prior observed intervention effects can remain in causal context, which is an unavoidable operational-history limitation.
 
 ## Supply forecasts

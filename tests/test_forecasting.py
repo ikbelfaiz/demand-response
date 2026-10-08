@@ -119,7 +119,10 @@ def test_registry_rejects_missing_and_incompatible_artifacts(tmp_path):
 
 
 class MockPredictor:
-    metadata = {"model_name":"Energy-TTM","model_version":"test","test_start":"2025-11-01"}
+    metadata = {"model_name":"Energy-TTM","model_version":"test","test_start":"2025-11-01",
+                "split":{"train":"2025-01-08/2025-09-30",
+                         "validation":"2025-10-01/2025-10-31",
+                         "test":"2025-11-01/2025-12-31"}}
     def predict(self, context_kw):
         assert len(context_kw) == 336
         return np.full(48, 2.0, dtype=np.float32)
@@ -137,10 +140,42 @@ def test_forecast_service_household_units_and_historical_comparison(monkeypatch)
     result = forecast_service.forecast_next_day("C007", "2025-12-31", predictor=MockPredictor())
     assert result["client_id"] == "C007"
     assert result["actual_comparison"] == "held_out"
+    assert result["forecast_status_label"] == "Historical replay — out-of-sample evaluation."
     assert len(result["series"]) == 48
     assert result["series"].predicted_energy_kwh.eq(1.0).all()
     assert result["kpis"]["daily_energy_kwh"] == 48
     assert not any("persistence" in column for column in result["series"].columns)
+
+
+def test_consumer_january_1_is_rejected_for_missing_context():
+    with pytest.raises(ValueError, match="incomplete"):
+        forecast_service.forecast_next_day("C001", "2025-01-01", predictor=MockPredictor())
+
+
+@pytest.mark.parametrize("day,expected_status", [
+    ("2025-01-08", "retrospective"),
+    ("2025-06-15", "retrospective"),
+    ("2025-12-31", "held_out"),
+])
+def test_consumer_full_year_boundaries_return_48_slots(day, expected_status):
+    result = forecast_service.forecast_next_day("C001", day, predictor=MockPredictor())
+    assert len(result["series"]) == 48
+    assert result["forecast_status"] == expected_status
+    assert result["historical_input_window"]["slots"] == 336
+    assert result["historical_input_window"]["end"] < result["forecast_date"]
+
+
+def test_consumer_date_bounds_cover_all_50_households():
+    for number in range(1, 51):
+        dates = forecast_service.consumer_forecast_dates(f"C{number:03d}")
+        assert dates.min() == pd.Timestamp("2025-01-08")
+        assert dates.max() == pd.Timestamp("2025-12-31")
+
+
+def test_missing_split_provenance_defaults_to_retrospective():
+    status, label = forecast_service.forecast_classification({}, "2025-12-31")
+    assert status == "retrospective"
+    assert label.startswith("Retrospective prediction")
 
 
 def test_forecast_service_next_day_has_no_manufactured_actual(monkeypatch):

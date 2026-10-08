@@ -5,7 +5,10 @@ import json
 
 import pandas as pd
 
-from backend.intelligence.community_forecasting import COMMUNITY_ARTIFACT, artifact_status
+from backend.intelligence.community_forecasting import (
+    COMMUNITY_ARTIFACT, CommunityForecastBundle, artifact_status,
+    community_forecast_classification, eligible_community_forecast_dates,
+)
 from backend.intelligence.decision_engine import DecisionPolicy
 from backend.intelligence.historical_replay import replay_day
 
@@ -30,4 +33,17 @@ def load_backtest_summary() -> dict | None:
 
 
 def held_out_dates() -> pd.DatetimeIndex:
-    return pd.date_range("2025-07-01", "2025-08-31", freq="1D")
+    metadata = CommunityForecastBundle().metadata
+    test = metadata.get("split", {}).get("test")
+    if not test:
+        return pd.DatetimeIndex([])
+    start, end = test.split("/", maxsplit=1)
+    return pd.date_range(start, end, freq="1D")
+
+
+def eligible_replay_dates() -> pd.DatetimeIndex:
+    return eligible_community_forecast_dates()
+
+
+def replay_classification(target_date: object) -> tuple[str, str]:
+    return community_forecast_classification(CommunityForecastBundle().metadata, target_date)

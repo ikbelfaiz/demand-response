@@ -5,7 +5,8 @@ import pandas as pd
 
 from backend.data import load_events, load_grid, operational_grid
 from backend.intelligence.community_forecasting import (
-    COMMUNITY_ARTIFACT, CommunityForecastBundle, forecast_index, issue_timestamp,
+    COMMUNITY_ARTIFACT, CommunityForecastBundle, community_forecast_classification,
+    eligible_community_forecast_dates, forecast_index, issue_timestamp,
     load_causal_operational_grid, load_community_bundle,
 )
 from backend.intelligence.decision_engine import DecisionPolicy, recommend_events
@@ -25,9 +26,19 @@ def _actual_day(target_date: object) -> pd.DataFrame:
 def replay_day(target_date: object, *, bundle: CommunityForecastBundle | None = None,
                policy: DecisionPolicy = DecisionPolicy()) -> dict:
     day, issue = pd.Timestamp(target_date).normalize(), issue_timestamp(target_date)
-    if not pd.Timestamp("2025-01-09") <= day <= pd.Timestamp("2025-12-31"):
-        raise ValueError("Replay date must be between 2025-01-09 and 2025-12-31.")
+    eligible = eligible_community_forecast_dates()
+    if day not in eligible:
+        if day < eligible.min() or day > eligible.max():
+            raise ValueError(
+                f"Replay date must be between {eligible.min().date()} and {eligible.max().date()} "
+                "and have sufficient causal history."
+            )
+        raise ValueError(
+            f"Replay is unavailable for {day.date()} because one or more required lag profiles "
+            "contain source intervals below the model's 80% coverage threshold."
+        )
     model = bundle or load_community_bundle(str(COMMUNITY_ARTIFACT))
+    classification, classification_label = community_forecast_classification(model.metadata, day)
     causal = load_causal_operational_grid()
     forecast = model.predict_day(causal, day)
     risks = detect_risk_windows(forecast, safety_margin_kw=policy.safety_margin_kw)
@@ -45,6 +56,7 @@ def replay_day(target_date: object, *, bundle: CommunityForecastBundle | None = 
     return {
         "prediction_issue_timestamp":issue,"target_day":day,"forecast_horizon":forecast_index(day),
         "model_name":model.metadata["model_name"],"model_version":model.metadata["model_version"],
+        "forecast_status":classification,"forecast_status_label":classification_label,
         "forecast":forecast,"actual_observations":actual,"comparison":combined,
         "candidate_peak_windows":risks,"recommended_dr_events":recommendations,
         "historical_operator_events":historical_events,"actual_peak_windows":actual_peak_windows,

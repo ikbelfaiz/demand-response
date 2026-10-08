@@ -12,7 +12,7 @@ from backend.intelligence.community_forecasting import (
 )
 from backend.intelligence.decision_engine import DecisionPolicy, recommend_events
 from backend.intelligence.peak_detection import boolean_windows, detect_risk_windows
-from backend.services.dr_replay_service import load_backtest_summary, run_replay
+from backend.services.dr_replay_service import eligible_replay_dates, load_backtest_summary, run_replay
 from frontend.charts import dr_replay_chart
 from frontend.pages.operator import PAGES
 
@@ -36,6 +36,36 @@ def test_issuance_and_48_target_timestamps_are_aligned():
     index=forecast_index("2025-07-15")
     assert len(index)==48 and index[0]==pd.Timestamp("2025-07-15")
     assert index[-1]==pd.Timestamp("2025-07-15 23:30")
+
+
+def test_operator_eligible_range_is_data_derived_and_excludes_source_gap_days():
+    dates = eligible_replay_dates()
+    assert dates.min() == pd.Timestamp("2025-01-09")
+    assert dates.max() == pd.Timestamp("2025-12-31")
+    assert pd.Timestamp("2025-02-05") not in dates
+
+
+@pytest.mark.skipif(importlib.util.find_spec("sklearn") is None,reason="optional community ML runtime")
+@pytest.mark.parametrize("day,status", [
+    ("2025-01-09", "retrospective"),
+    ("2025-06-15", "retrospective"),
+    ("2025-07-15", "held_out"),
+    ("2025-12-31", "retrospective"),
+])
+def test_operator_full_year_replay_boundaries(day, status):
+    result = run_replay(day)
+    assert len(result["forecast"]) == 48
+    assert result["forecast_status"] == status
+    assert result["prediction_issue_timestamp"] == pd.Timestamp(day) - pd.DateOffset(days=1) + pd.DateOffset(hours=14)
+    assert np.allclose(result["forecast"].predicted_supply_kw,
+                       result["forecast"].predicted_steg_kw + result["forecast"].predicted_pv_kw)
+
+
+def test_operator_replay_rejects_insufficient_and_internal_gap_dates():
+    with pytest.raises(ValueError, match="sufficient causal history"):
+        run_replay("2025-01-08")
+    with pytest.raises(ValueError, match="coverage threshold"):
+        run_replay("2025-02-05")
 
 
 def test_future_injection_cannot_change_causal_features_or_prediction():

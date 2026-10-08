@@ -57,6 +57,22 @@ def forecast_index(target_date: object) -> pd.DatetimeIndex:
     return pd.date_range(pd.Timestamp(target_date).normalize(), periods=HORIZON_SLOTS, freq=FREQUENCY)
 
 
+def _metadata_range(value: str) -> tuple[pd.Timestamp, pd.Timestamp]:
+    start, end = value.split("/", maxsplit=1)
+    return pd.Timestamp(start).normalize(), pd.Timestamp(end).normalize()
+
+
+def community_forecast_classification(metadata: dict, target_date: object) -> tuple[str, str]:
+    """Only the artifact's explicitly declared test interval is out of sample."""
+    day = pd.Timestamp(target_date).normalize()
+    split = metadata.get("split")
+    if isinstance(split, dict) and split.get("test"):
+        start, end = _metadata_range(split["test"])
+        if start <= day <= end:
+            return "held_out", "Historical replay — out-of-sample evaluation."
+    return "retrospective", "Retrospective prediction — this date may have been used during model development."
+
+
 def _profile(series: pd.Series, day: pd.Timestamp) -> np.ndarray:
     index = pd.date_range(day.normalize(), periods=HORIZON_SLOTS, freq=FREQUENCY)
     return series.reindex(index).to_numpy(dtype=np.float64)
@@ -86,6 +102,22 @@ def build_causal_features(frame: pd.DataFrame, target_date: object, column: str)
     if not np.isfinite(features).all():
         raise ValueError(f"Incomplete causal feature history for {column} on {day.date()}.")
     return features.astype(np.float32)
+
+
+@lru_cache(maxsize=1)
+def eligible_community_forecast_dates() -> pd.DatetimeIndex:
+    """Return every dataset day satisfying all saved model feature dependencies."""
+    frame = load_causal_operational_grid()
+    first, last = frame.timestamp.min().normalize(), frame.timestamp.max().normalize()
+    eligible = []
+    for day in pd.date_range(first, last, freq="1D"):
+        try:
+            for column in MODEL_COLUMNS:
+                build_causal_features(frame, day, column)
+        except ValueError:
+            continue
+        eligible.append(day)
+    return pd.DatetimeIndex(eligible)
 
 
 def build_target(frame: pd.DataFrame, target_date: object, column: str) -> np.ndarray:

@@ -5,7 +5,7 @@ import streamlit as st
 
 from backend.data import load_events, load_household, load_household_info, load_participation, operational_household
 from backend.services import community_service, event_service, grid_service, household_service
-from backend.services.dr_replay_service import held_out_dates, replay_model_status, run_replay
+from backend.services.dr_replay_service import eligible_replay_dates, replay_model_status, run_replay
 from backend.services.segmentation_service import consumption_quantiles
 from frontend.charts import bars, donut, dr_replay_chart, heatmap, lines, style
 from frontend.components import page_header, render_chart
@@ -85,24 +85,25 @@ def households(grid: pd.DataFrame, start, end) -> None:
 def dr_detection(_grid: pd.DataFrame) -> None:
     page_header("Operator / AI research", "DR Detection & Forecasting",
         "Leakage-safe D-1 14:00 historical replay. Recommendations are simulated research outputs, never operational activations.")
-    available,status=replay_model_status()
+    available,unavailable_reason=replay_model_status()
     if not available:
-        st.warning(status); return
-    dates=held_out_dates()
-    left,right=st.columns([2,1])
-    with left:
-        chosen=st.date_input("Historical replay target day",value=dates[-1].date(),
-            min_value=dates[0].date(),max_value=dates[-1].date(),key="dr_replay_date")
-    with right:
-        st.metric("Saved model",status)
-    st.caption("The selector is restricted to the July–August historical replay period. Forecast inputs stop at 14:00 on the prior day.")
-    if not st.button("Run Forecast / Replay",type="primary",key="run_dr_replay"):
+        st.warning(unavailable_reason); return
+    dates=eligible_replay_dates()
+    chosen=st.date_input("Historical replay target day",value=dates[-1].date(),
+        min_value=dates[0].date(),max_value=dates[-1].date(),key="dr_replay_date")
+    st.caption(f"{len(dates)} supported target days between {dates.min().date()} and {dates.max().date()}. Forecast inputs stop at 14:00 on the prior day.")
+    chosen_day=pd.Timestamp(chosen).normalize()
+    if chosen_day not in dates:
+        st.warning("This date is unavailable because a required D-8…D-2 or pre-issuance source interval is below the model's coverage threshold.")
+        return
+    if not st.button("Run DR Detection",type="primary",key="run_dr_replay"):
         st.info("Select a historical date and run the saved-model replay. No model is trained on page load."); return
     try: result=run_replay(chosen)
     except Exception as exc: st.error(f"Historical replay failed: {exc}"); return
     comparison=result["comparison"]; risks=result["candidate_peak_windows"]; recommendations=result["recommended_dr_events"]
     st.success(result["status"])
-    st.caption(f"Issued {result['prediction_issue_timestamp']:%d %b %Y %H:%M} • target {result['target_day']:%d %b %Y} • {result['model_version']}")
+    st.caption(result["forecast_status_label"])
+    st.caption(f"Issued {result['prediction_issue_timestamp']:%d %b %Y %H:%M} • target {result['target_day']:%d %b %Y}")
     deficit=(-comparison.predicted_margin_kw).clip(lower=0)
     peak_slot=int(comparison.predicted_demand_kw.to_numpy().argmax())
     kpis=[("Predicted peak demand",f"{comparison.predicted_demand_kw.max():.1f} kW"),
