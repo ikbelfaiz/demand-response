@@ -1,0 +1,31 @@
+task,method,metric,value
+forecast,Energy-TTM,MAE,33.04997219895684
+forecast,Energy-TTM,RMSE,47.685183883321116
+forecast,Energy-TTM,MAPE,4.8844279691524575
+forecast,Energy-TTM,R2,0.8677207287701286
+forecast,Persistence 24h,MAE,31.05640759685194
+forecast,Persistence 24h,RMSE,44.94470679551167
+forecast,Persistence 24h,MAPE,4.606487042347667
+forecast,Persistence 24h,R2,0.8824880661526414
+forecast,Persistence 168h,MAE,43.36797366675554
+forecast,Persistence 168h,RMSE,69.77559682777833
+forecast,Persistence 168h,MAPE,6.26340519911454
+forecast,Persistence 168h,R2,0.7167747361599093
+peak_detection,Historical percentile,Accuracy,0.9546089385474861
+peak_detection,Historical percentile,Precision,0.234375
+peak_detection,Historical percentile,Recall,0.6907894736842105
+peak_detection,Historical percentile,F1,0.35
+peak_detection,Dynamic mean + Kσ,Accuracy,0.9823091247672253
+peak_detection,Dynamic mean + Kσ,Precision,0.0
+peak_detection,Dynamic mean + Kσ,Recall,0.0
+peak_detection,Dynamic mean + Kσ,F1,0.0
+dr_detection,Interpretable rule,Accuracy,0.9600791433891993
+dr_detection,Interpretable rule,Precision,0.11977715877437325
+dr_detection,Interpretable rule,Recall,0.6142857142857143
+dr_detection,Interpretable rule,F1,0.20046620046620048
+dr_detection,Random Forest,Accuracy,0.9972067039106145
+dr_detection,Random Forest,Precision,0.0
+dr_detection,Random Forest,Recall,0.0
+dr_detection,Random Forest,F1,0.0
+dr_detection,Random Forest,ROC_AUC,0.9678649237472767
+dr_detection,Random Forest,PR_AUC,0.09706488848786446
