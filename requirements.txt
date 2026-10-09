@@ -1,6 +1,7 @@
 streamlit>=1.33,<2.0
 pandas>=2.3.3,<4.0
 pyarrow>=24.0,<26.0
+duckdb>=1.4,<2.0
 numpy>=1.24,<3.0
 plotly>=5.18,<7.0
 matplotlib>=3.8,<4.0

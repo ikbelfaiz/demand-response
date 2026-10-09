@@ -1,0 +1,40 @@
+{
+  "run": {"name": "executed_cpu", "output_dir": "outputs/executed_cpu"},
+  "data": {
+    "household_paths": ["data/households_1min_C001_C025.parquet", "data/households_1min_C026_C050.parquet"],
+    "cleaned_household_paths": ["data/cleaned_v3/households_1min_C001_C025_cleaned.parquet", "data/cleaned_v3/households_1min_C026_C050_cleaned.parquet"],
+    "household_info_path": "data/dr_dataset_v3_grid_et_code/households_info.csv",
+    "grid_path": "data/dr_dataset_v3_grid_et_code/grid_1min.csv",
+    "cleaning_manifest_path": "data/cleaned_v3/cleaning_manifest.json",
+    "context_length": 256
+  },
+  "splits": {
+    "train": ["2025-01-01 00:00:00", "2025-07-01 00:00:00"],
+    "validation": ["2025-07-01 00:00:00", "2025-08-01 00:00:00"],
+    "test": ["2025-08-01 00:00:00", "2026-01-01 00:00:00"]
+  },
+  "quality": {
+    "aggregate_spike_quantile": 0.9999,
+    "difference_abs_quantile": 0.999,
+    "target_spike_quantile": 0.9999,
+    "target_semantic_caps_w": [2000.0, 2500.0, 2500.0],
+    "power_scale_quantile": 0.995,
+    "activity_thresholds_w": [100.0, 100.0, 10.0],
+    "frozen_run_minutes": 20,
+    "max_positive_class_weight": 25.0,
+    "consistency_tolerance_quantile": 0.95
+  },
+  "model": {"channels": 64, "dilations": [1, 2, 4, 8, 16, 32], "dropout": 0.1, "baseline_channels": 32},
+  "loss": {"huber_delta_scaled": 1.0, "power_weight": 1.0, "activity_weight": 0.25, "consistency_weight": 0.02},
+  "sampling": {"active_weight": 3.0, "transition_weight": 6.0},
+  "training": {
+    "seed": 1729, "device": "cuda", "batch_size": 32, "epochs": 20,
+    "samples_per_epoch": 32768, "validation_windows": 16384, "workers": 0,
+    "learning_rate": 0.0005, "weight_decay": 0.0001,
+    "early_stopping_patience": 2, "mixed_precision": false
+  },
+  "evaluation": {
+    "device": "cuda", "held_out_households": ["C023", "C044"],
+    "activity_probability_threshold": 0.5, "sequence_chunk_size": 8192
+  }
+}

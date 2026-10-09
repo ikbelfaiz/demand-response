@@ -26,3 +26,14 @@ def test_my_energy_forecast_section_renders_with_generate_control():
     assert any(item.value == "Tomorrow's Energy Forecast" for item in app.subheader)
     assert any(button.label == "Generate forecast" for button in app.button)
     assert not app.exception
+
+
+def test_nilm_analysis_renders_charts_quality_and_exports():
+    app=AppTest.from_file(APP,default_timeout=120).run()
+    next(widget for widget in app.radio if widget.label=="Perspective").set_value("Consumer Dashboard"); app.run(timeout=120)
+    next(widget for widget in app.radio if widget.label=="Page").set_value("My Appliances"); app.run(timeout=120)
+    next(button for button in app.button if button.label=="Analyze consumption").click(); app.run(timeout=120)
+    assert not app.exception and not app.error
+    assert any(metric.label == "Prediction coverage" for metric in app.metric)
+    assert len(app.get("plotly_chart")) == 3
+    assert len(app.get("download_button")) == 2

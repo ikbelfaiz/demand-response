@@ -23,6 +23,7 @@ python scripts/complete_v3.py
 - Complete one-minute canonical data and 30-minute operational resampling.
 - Parquet predicate/column pushdown and cached portfolio scanning.
 - Historical event/participation joins and appliance channels for the 10 panel homes.
+- Saved causal multi-task TCN NILM inference in My Appliances for all 50 homes, with quality-aware one-minute estimates, hourly energy, optional panel references, and CSV export.
 - Explicit offline forecast training/evaluation; Streamlit only loads versioned artifacts and never retrains.
 
 ## Scientific conventions
@@ -37,6 +38,20 @@ python scripts/complete_v3.py
 - Synthetic counterfactual truth remains isolated in the research evaluation module.
 
 See [FORECASTING_MODEL.md](FORECASTING_MODEL.md), [V3_DATA_DICTIONARY.md](V3_DATA_DICTIONARY.md), [ARCHITECTURE.md](ARCHITECTURE.md), [MIGRATION_REPORT.md](MIGRATION_REPORT.md), and [DATA_COMPLETION_REPORT.md](DATA_COMPLETION_REPORT.md).
+
+## NILM application integration
+
+The application loads the TCN artifact at `nilm_research/outputs/executed_cpu/tcn/best.pt` by default. Override it
+with `NILM_TCN_CHECKPOINT` using a repository-relative path (or an absolute path inside this repository). Select
+`NILM_DEVICE=cpu`, `cuda`, or `auto`; `auto` is the default. `NILM_MAX_REQUEST_MINUTES` defaults to 10080 (seven
+days). The UI never accepts checkpoint paths and never trains.
+
+Open Consumer Dashboard → My Appliances, select the demo household and `[start, end)` local interval, then choose
+Analyze consumption. Source timestamps are interpreted as naive `Africa/Tunis` civil time. Predictions and energy
+are shown only for valid contexts; unavailable minutes are null and partial periods are not extrapolated.
+
+See [NILM_INTEGRATION.md](NILM_INTEGRATION.md) for the result contract, quality rules, deployment, limitations, and
+checkpoint replacement procedure.
 
 ## Forecast training and evaluation
 

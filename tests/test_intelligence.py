@@ -19,4 +19,9 @@ def test_future_observations_excluded():
 
 def test_untrained_outputs_are_not_fabricated():
     with pytest.raises(NotImplementedError): estimate_baseline()
-    with pytest.raises(NotImplementedError): estimate_appliances()
+
+
+def test_nilm_compatibility_entrypoint_is_real_service():
+    result = estimate_appliances("C005", "2025-07-15 12:00", "2025-07-15 12:02", device="cpu")
+    assert len(result.minute) == 2
+    assert result.model["model_kind"] == "TCN"
