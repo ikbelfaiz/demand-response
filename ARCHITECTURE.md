@@ -26,6 +26,11 @@ The grid is loaded once. Household queries touch one parquet half and push clien
 - `forecast_service.py` derives each household's eligible dates from installed data and returns power, derived interval energy, model metadata, input provenance, KPIs, and error metrics only when artifact provenance identifies a held-out target.
 - Consumer availability is January 8–December 31, 2025. November–December are explicitly held out; earlier predictions are retrospective and never presented as independent evaluation.
 
+## Customer profiling boundary
+
+- `customer_profiling.py` receives the forecast peak window and deficit; it produces segments and acceptance rates, typical curves, the priority list, the chatbot context, and the event economics (costs, segment savings, rewards). It never reads synthetic truth.
+- `scripts/train_customer_profiling.py` trains offline and writes `models/customer_profiling/kmeans_v1/`; `segmentation_service.py` only loads those artifacts and falls back to quartiles when absent.
+
 ## Remaining intelligence boundary
 
 - NILM defines panel targets, household-wise splitting, and a model-loading boundary.

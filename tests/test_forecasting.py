@@ -214,7 +214,8 @@ def test_consumer_evaluation_reports_each_household_separately():
 
 def test_data_explorer_is_completely_removed_from_navigation():
     assert list(OPERATOR_PAGES) == ["Community Overview", "Community Grid", "DR Events",
-                                    "Household Analytics", "DR Detection & Forecasting"]
+                                    "Household Analytics", "DR Detection & Forecasting",
+                                    "Customer Profiling"]
     assert "Dataset Explorer" not in OPERATOR_PAGES
 
 

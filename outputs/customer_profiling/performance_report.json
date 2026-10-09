@@ -1,0 +1,49 @@
+{
+  "train_window": [
+    "2025-01-01",
+    "2025-06-15"
+  ],
+  "hot_days_in_train_window": 17,
+  "test_events": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "cluster_quality_silhouette": 0.252,
+  "stability_ari_train_vs_jun_dec": 0.491,
+  "economics_test_events": {
+    "n_events": 14,
+    "true_savings_kwh": 244.5,
+    "estimated_savings_kwh": 315.2,
+    "total_error_pct": 28.9,
+    "mean_abs_error_per_event_pct_of_no_dr": 9.5,
+    "true_reduction_pct": 25.4,
+    "estimated_reduction_pct": 30.5
+  },
+  "economics_full_year": {
+    "n_events": 36,
+    "true_savings_kwh": 671.5,
+    "estimated_savings_kwh": 762.7,
+    "total_error_pct": 13.6,
+    "mean_abs_error_per_event_pct_of_no_dr": 11.9,
+    "true_reduction_pct": 19.9,
+    "estimated_reduction_pct": 22.0
+  },
+  "priority_list_top_50pct": {
+    "top_share_of_list": 0.5,
+    "n_events": 14,
+    "share_of_true_savings_pct": 75.1,
+    "random_list_expectation_pct": 50.0
+  }
+}

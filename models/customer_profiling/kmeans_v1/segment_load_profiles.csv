@@ -1,0 +1,1537 @@
+segment,season,day_type,slot,mean_kw_per_household
+"Daytime-occupied, high base load",autumn,weekday,0,0.2100453689167975
+"Daytime-occupied, high base load",autumn,weekday,1,0.16770893772893775
+"Daytime-occupied, high base load",autumn,weekday,2,0.15732532705389848
+"Daytime-occupied, high base load",autumn,weekday,3,0.1521080586080586
+"Daytime-occupied, high base load",autumn,weekday,4,0.1486670695970696
+"Daytime-occupied, high base load",autumn,weekday,5,0.15585120879120878
+"Daytime-occupied, high base load",autumn,weekday,6,0.17769699633699634
+"Daytime-occupied, high base load",autumn,weekday,7,0.19374417582417583
+"Daytime-occupied, high base load",autumn,weekday,8,0.2394856043956044
+"Daytime-occupied, high base load",autumn,weekday,9,0.2571579853479854
+"Daytime-occupied, high base load",autumn,weekday,10,0.2686423443223443
+"Daytime-occupied, high base load",autumn,weekday,11,0.3578098534798535
+"Daytime-occupied, high base load",autumn,weekday,12,0.6697563795894029
+"Daytime-occupied, high base load",autumn,weekday,13,1.1207948916785617
+"Daytime-occupied, high base load",autumn,weekday,14,1.14717924225897
+"Daytime-occupied, high base load",autumn,weekday,15,0.6672618077951543
+"Daytime-occupied, high base load",autumn,weekday,16,0.28820954084675016
+"Daytime-occupied, high base load",autumn,weekday,17,0.18150029900332226
+"Daytime-occupied, high base load",autumn,weekday,18,0.15200651503535223
+"Daytime-occupied, high base load",autumn,weekday,19,0.16136749297214414
+"Daytime-occupied, high base load",autumn,weekday,20,0.16667818031064544
+"Daytime-occupied, high base load",autumn,weekday,21,0.2059977372240163
+"Daytime-occupied, high base load",autumn,weekday,22,0.2223454117975048
+"Daytime-occupied, high base load",autumn,weekday,23,0.2318913281292351
+"Daytime-occupied, high base load",autumn,weekday,24,0.2503187829225038
+"Daytime-occupied, high base load",autumn,weekday,25,0.29658936547690035
+"Daytime-occupied, high base load",autumn,weekday,26,0.4748064630718119
+"Daytime-occupied, high base load",autumn,weekday,27,0.4359891259902888
+"Daytime-occupied, high base load",autumn,weekday,28,0.3123687486157254
+"Daytime-occupied, high base load",autumn,weekday,29,0.27110214413493483
+"Daytime-occupied, high base load",autumn,weekday,30,0.2721727191413238
+"Daytime-occupied, high base load",autumn,weekday,31,0.27100377033818895
+"Daytime-occupied, high base load",autumn,weekday,32,0.2628493636595962
+"Daytime-occupied, high base load",autumn,weekday,33,0.27348634892239543
+"Daytime-occupied, high base load",autumn,weekday,34,0.33076882869068913
+"Daytime-occupied, high base load",autumn,weekday,35,0.42649086037993017
+"Daytime-occupied, high base load",autumn,weekday,36,0.49027637362637366
+"Daytime-occupied, high base load",autumn,weekday,37,0.6508223076923076
+"Daytime-occupied, high base load",autumn,weekday,38,0.7153249816849817
+"Daytime-occupied, high base load",autumn,weekday,39,0.8625586813186813
+"Daytime-occupied, high base load",autumn,weekday,40,1.023754945054945
+"Daytime-occupied, high base load",autumn,weekday,41,1.2507895604395605
+"Daytime-occupied, high base load",autumn,weekday,42,1.4018300732600733
+"Daytime-occupied, high base load",autumn,weekday,43,1.1485368864468863
+"Daytime-occupied, high base load",autumn,weekday,44,0.8064365201465201
+"Daytime-occupied, high base load",autumn,weekday,45,0.5357368131868132
+"Daytime-occupied, high base load",autumn,weekday,46,0.37416354788069073
+"Daytime-occupied, high base load",autumn,weekday,47,0.23963996860282574
+"Daytime-occupied, high base load",autumn,weekend,0,0.2677434065934066
+"Daytime-occupied, high base load",autumn,weekend,1,0.1779401098901099
+"Daytime-occupied, high base load",autumn,weekend,2,0.16340732600732602
+"Daytime-occupied, high base load",autumn,weekend,3,0.15279789377289377
+"Daytime-occupied, high base load",autumn,weekend,4,0.14425421245421244
+"Daytime-occupied, high base load",autumn,weekend,5,0.15704615384615384
+"Daytime-occupied, high base load",autumn,weekend,6,0.15011611721611723
+"Daytime-occupied, high base load",autumn,weekend,7,0.21731749084249083
+"Daytime-occupied, high base load",autumn,weekend,8,0.23301108058608058
+"Daytime-occupied, high base load",autumn,weekend,9,0.2419164835164835
+"Daytime-occupied, high base load",autumn,weekend,10,0.24698864468864468
+"Daytime-occupied, high base load",autumn,weekend,11,0.188571336996337
+"Daytime-occupied, high base load",autumn,weekend,12,0.17101712454212456
+"Daytime-occupied, high base load",autumn,weekend,13,0.15267216117216117
+"Daytime-occupied, high base load",autumn,weekend,14,0.18756848882410107
+"Daytime-occupied, high base load",autumn,weekend,15,0.2742467219854975
+"Daytime-occupied, high base load",autumn,weekend,16,0.29767788554982433
+"Daytime-occupied, high base load",autumn,weekend,17,0.34598391829259173
+"Daytime-occupied, high base load",autumn,weekend,18,0.3044467948717949
+"Daytime-occupied, high base load",autumn,weekend,19,0.3340057692307692
+"Daytime-occupied, high base load",autumn,weekend,20,0.3680376373626374
+"Daytime-occupied, high base load",autumn,weekend,21,0.3615588827838828
+"Daytime-occupied, high base load",autumn,weekend,22,0.4921089743589743
+"Daytime-occupied, high base load",autumn,weekend,23,0.5269171245421245
+"Daytime-occupied, high base load",autumn,weekend,24,0.6258971611721612
+"Daytime-occupied, high base load",autumn,weekend,25,0.5984259157509157
+"Daytime-occupied, high base load",autumn,weekend,26,0.7244986263736263
+"Daytime-occupied, high base load",autumn,weekend,27,0.5936890109890111
+"Daytime-occupied, high base load",autumn,weekend,28,0.42011959706959706
+"Daytime-occupied, high base load",autumn,weekend,29,0.38103434065934066
+"Daytime-occupied, high base load",autumn,weekend,30,0.39698214285714284
+"Daytime-occupied, high base load",autumn,weekend,31,0.41368763736263736
+"Daytime-occupied, high base load",autumn,weekend,32,0.4481520146520147
+"Daytime-occupied, high base load",autumn,weekend,33,0.48620018315018315
+"Daytime-occupied, high base load",autumn,weekend,34,0.6545908424908424
+"Daytime-occupied, high base load",autumn,weekend,35,0.7785038461538462
+"Daytime-occupied, high base load",autumn,weekend,36,0.8284532967032967
+"Daytime-occupied, high base load",autumn,weekend,37,0.8858338964027426
+"Daytime-occupied, high base load",autumn,weekend,38,0.9355181036911806
+"Daytime-occupied, high base load",autumn,weekend,39,0.927946301775148
+"Daytime-occupied, high base load",autumn,weekend,40,0.9309418991265145
+"Daytime-occupied, high base load",autumn,weekend,41,0.9856938151591998
+"Daytime-occupied, high base load",autumn,weekend,42,0.9277606579318118
+"Daytime-occupied, high base load",autumn,weekend,43,0.8237744787264017
+"Daytime-occupied, high base load",autumn,weekend,44,0.676363814219968
+"Daytime-occupied, high base load",autumn,weekend,45,0.6247096153846154
+"Daytime-occupied, high base load",autumn,weekend,46,0.5914119047619047
+"Daytime-occupied, high base load",autumn,weekend,47,0.5082451465201465
+"Daytime-occupied, high base load",spring,weekday,0,0.2993056728711043
+"Daytime-occupied, high base load",spring,weekday,1,0.2556588049990037
+"Daytime-occupied, high base load",spring,weekday,2,0.17785779973424107
+"Daytime-occupied, high base load",spring,weekday,3,0.1506968162684857
+"Daytime-occupied, high base load",spring,weekday,4,0.14567364892515827
+"Daytime-occupied, high base load",spring,weekday,5,0.1479253560166032
+"Daytime-occupied, high base load",spring,weekday,6,0.16635785936097555
+"Daytime-occupied, high base load",spring,weekday,7,0.2344244376467999
+"Daytime-occupied, high base load",spring,weekday,8,0.37802512990608245
+"Daytime-occupied, high base load",spring,weekday,9,0.24738573629495128
+"Daytime-occupied, high base load",spring,weekday,10,0.2507005581404946
+"Daytime-occupied, high base load",spring,weekday,11,0.3099354034052416
+"Daytime-occupied, high base load",spring,weekday,12,0.43126938996585124
+"Daytime-occupied, high base load",spring,weekday,13,0.6609643445202159
+"Daytime-occupied, high base load",spring,weekday,14,0.7905957159364071
+"Daytime-occupied, high base load",spring,weekday,15,0.6477663925828872
+"Daytime-occupied, high base load",spring,weekday,16,0.31938304893272396
+"Daytime-occupied, high base load",spring,weekday,17,0.21010571621152252
+"Daytime-occupied, high base load",spring,weekday,18,0.15545687685488002
+"Daytime-occupied, high base load",spring,weekday,19,0.1750069208585574
+"Daytime-occupied, high base load",spring,weekday,20,0.18201988005506678
+"Daytime-occupied, high base load",spring,weekday,21,0.19708996311391477
+"Daytime-occupied, high base load",spring,weekday,22,0.21885266912358245
+"Daytime-occupied, high base load",spring,weekday,23,0.2415421173878901
+"Daytime-occupied, high base load",spring,weekday,24,0.2556175581484235
+"Daytime-occupied, high base load",spring,weekday,25,0.30991124938095194
+"Daytime-occupied, high base load",spring,weekday,26,0.4474320133505697
+"Daytime-occupied, high base load",spring,weekday,27,0.3961318778301827
+"Daytime-occupied, high base load",spring,weekday,28,0.25457674621299636
+"Daytime-occupied, high base load",spring,weekday,29,0.22255826564967418
+"Daytime-occupied, high base load",spring,weekday,30,0.2291967974121268
+"Daytime-occupied, high base load",spring,weekday,31,0.21744763607038828
+"Daytime-occupied, high base load",spring,weekday,32,0.23543552583162247
+"Daytime-occupied, high base load",spring,weekday,33,0.2820955077083913
+"Daytime-occupied, high base load",spring,weekday,34,0.36213296811755685
+"Daytime-occupied, high base load",spring,weekday,35,0.401276907839759
+"Daytime-occupied, high base load",spring,weekday,36,0.4657503167266762
+"Daytime-occupied, high base load",spring,weekday,37,0.6301021799461461
+"Daytime-occupied, high base load",spring,weekday,38,0.6946578683022281
+"Daytime-occupied, high base load",spring,weekday,39,0.798389674454213
+"Daytime-occupied, high base load",spring,weekday,40,1.0492997236275445
+"Daytime-occupied, high base load",spring,weekday,41,1.3959065883275388
+"Daytime-occupied, high base load",spring,weekday,42,1.4575355007273365
+"Daytime-occupied, high base load",spring,weekday,43,1.2459674966556278
+"Daytime-occupied, high base load",spring,weekday,44,0.9441622899267966
+"Daytime-occupied, high base load",spring,weekday,45,0.7030467058394749
+"Daytime-occupied, high base load",spring,weekday,46,0.4633775897238146
+"Daytime-occupied, high base load",spring,weekday,47,0.32100839554414173
+"Daytime-occupied, high base load",spring,weekend,0,0.38775802469135806
+"Daytime-occupied, high base load",spring,weekend,1,0.27705202821869485
+"Daytime-occupied, high base load",spring,weekend,2,0.18489223985890654
+"Daytime-occupied, high base load",spring,weekend,3,0.14999594356261023
+"Daytime-occupied, high base load",spring,weekend,4,0.13812398589065256
+"Daytime-occupied, high base load",spring,weekend,5,0.15211613756613757
+"Daytime-occupied, high base load",spring,weekend,6,0.15305141093474428
+"Daytime-occupied, high base load",spring,weekend,7,0.23745573192239858
+"Daytime-occupied, high base load",spring,weekend,8,0.4234329805996473
+"Daytime-occupied, high base load",spring,weekend,9,0.21394118165784834
+"Daytime-occupied, high base load",spring,weekend,10,0.2261827160493827
+"Daytime-occupied, high base load",spring,weekend,11,0.23879700176366844
+"Daytime-occupied, high base load",spring,weekend,12,0.18322141944900566
+"Daytime-occupied, high base load",spring,weekend,13,0.17249580238225556
+"Daytime-occupied, high base load",spring,weekend,14,0.17663173995013076
+"Daytime-occupied, high base load",spring,weekend,15,0.19850762460795301
+"Daytime-occupied, high base load",spring,weekend,16,0.23225440873667474
+"Daytime-occupied, high base load",spring,weekend,17,0.2668692704668074
+"Daytime-occupied, high base load",spring,weekend,18,0.29053915865196656
+"Daytime-occupied, high base load",spring,weekend,19,0.3383380713460352
+"Daytime-occupied, high base load",spring,weekend,20,0.3976389770723104
+"Daytime-occupied, high base load",spring,weekend,21,0.3787731922398589
+"Daytime-occupied, high base load",spring,weekend,22,0.44222354497354494
+"Daytime-occupied, high base load",spring,weekend,23,0.4708677248677249
+"Daytime-occupied, high base load",spring,weekend,24,0.4807241622574956
+"Daytime-occupied, high base load",spring,weekend,25,0.5562324514991182
+"Daytime-occupied, high base load",spring,weekend,26,0.7399746913580246
+"Daytime-occupied, high base load",spring,weekend,27,0.663134479717813
+"Daytime-occupied, high base load",spring,weekend,28,0.4704571428571429
+"Daytime-occupied, high base load",spring,weekend,29,0.39265440056781525
+"Daytime-occupied, high base load",spring,weekend,30,0.3906502860584161
+"Daytime-occupied, high base load",spring,weekend,31,0.43932794123972985
+"Daytime-occupied, high base load",spring,weekend,32,0.5258196649029983
+"Daytime-occupied, high base load",spring,weekend,33,0.5418376543209876
+"Daytime-occupied, high base load",spring,weekend,34,0.6037765432098765
+"Daytime-occupied, high base load",spring,weekend,35,0.6170276895943562
+"Daytime-occupied, high base load",spring,weekend,36,0.6825729276895943
+"Daytime-occupied, high base load",spring,weekend,37,0.7654281305114639
+"Daytime-occupied, high base load",spring,weekend,38,0.8882464726631393
+"Daytime-occupied, high base load",spring,weekend,39,0.8637281305114639
+"Daytime-occupied, high base load",spring,weekend,40,0.9745885361552028
+"Daytime-occupied, high base load",spring,weekend,41,1.1802492063492063
+"Daytime-occupied, high base load",spring,weekend,42,1.2547285714285712
+"Daytime-occupied, high base load",spring,weekend,43,1.0805754850088183
+"Daytime-occupied, high base load",spring,weekend,44,0.9332513227513227
+"Daytime-occupied, high base load",spring,weekend,45,0.8629825396825397
+"Daytime-occupied, high base load",spring,weekend,46,0.7355729276895944
+"Daytime-occupied, high base load",spring,weekend,47,0.5695276895943563
+"Daytime-occupied, high base load",summer,weekday,0,0.326022567333208
+"Daytime-occupied, high base load",summer,weekday,1,0.21171853883282143
+"Daytime-occupied, high base load",summer,weekday,2,0.19577403414195868
+"Daytime-occupied, high base load",summer,weekday,3,0.1870884995507637
+"Daytime-occupied, high base load",summer,weekday,4,0.1843402964959569
+"Daytime-occupied, high base load",summer,weekday,5,0.18267839173405212
+"Daytime-occupied, high base load",summer,weekday,6,0.19421082659478886
+"Daytime-occupied, high base load",summer,weekday,7,0.22762367475292003
+"Daytime-occupied, high base load",summer,weekday,8,0.2747387690925427
+"Daytime-occupied, high base load",summer,weekday,9,0.2888007637017071
+"Daytime-occupied, high base load",summer,weekday,10,0.29393674752920035
+"Daytime-occupied, high base load",summer,weekday,11,0.3190470799640611
+"Daytime-occupied, high base load",summer,weekday,12,0.5307983378256963
+"Daytime-occupied, high base load",summer,weekday,13,0.886904447439353
+"Daytime-occupied, high base load",summer,weekday,14,0.9428213387241688
+"Daytime-occupied, high base load",summer,weekday,15,0.5365498203054807
+"Daytime-occupied, high base load",summer,weekday,16,0.24257556154537288
+"Daytime-occupied, high base load",summer,weekday,17,0.22395927223719675
+"Daytime-occupied, high base load",summer,weekday,18,0.2470466037735849
+"Daytime-occupied, high base load",summer,weekday,19,0.29120351302785263
+"Daytime-occupied, high base load",summer,weekday,20,0.325590521114106
+"Daytime-occupied, high base load",summer,weekday,21,0.3817399371069182
+"Daytime-occupied, high base load",summer,weekday,22,0.43562803234501346
+"Daytime-occupied, high base load",summer,weekday,23,0.4773461814914645
+"Daytime-occupied, high base load",summer,weekday,24,0.5201371518418688
+"Daytime-occupied, high base load",summer,weekday,25,0.631779469901168
+"Daytime-occupied, high base load",summer,weekday,26,0.8939385444743936
+"Daytime-occupied, high base load",summer,weekday,27,0.9135265498652291
+"Daytime-occupied, high base load",summer,weekday,28,0.8415836927223719
+"Daytime-occupied, high base load",summer,weekday,29,0.8384344115004492
+"Daytime-occupied, high base load",summer,weekday,30,0.8522046271338725
+"Daytime-occupied, high base load",summer,weekday,31,0.8698295597484277
+"Daytime-occupied, high base load",summer,weekday,32,0.8410538634321654
+"Daytime-occupied, high base load",summer,weekday,33,0.8387330637915543
+"Daytime-occupied, high base load",summer,weekday,34,0.8209495956873316
+"Daytime-occupied, high base load",summer,weekday,35,0.8498396675651393
+"Daytime-occupied, high base load",summer,weekday,36,0.8543746572131724
+"Daytime-occupied, high base load",summer,weekday,37,0.9502850462908707
+"Daytime-occupied, high base load",summer,weekday,38,1.0291190925426774
+"Daytime-occupied, high base load",summer,weekday,39,1.073370215633423
+"Daytime-occupied, high base load",summer,weekday,40,1.2803462713387241
+"Daytime-occupied, high base load",summer,weekday,41,1.5097940251572328
+"Daytime-occupied, high base load",summer,weekday,42,1.581216082659479
+"Daytime-occupied, high base load",summer,weekday,43,1.280178436657682
+"Daytime-occupied, high base load",summer,weekday,44,0.8489287511230907
+"Daytime-occupied, high base load",summer,weekday,45,0.6347489667565139
+"Daytime-occupied, high base load",summer,weekday,46,0.5278102488560146
+"Daytime-occupied, high base load",summer,weekday,47,0.4064521490210828
+"Daytime-occupied, high base load",summer,weekend,0,0.4705742857142857
+"Daytime-occupied, high base load",summer,weekend,1,0.30364914285714284
+"Daytime-occupied, high base load",summer,weekend,2,0.21917019047619046
+"Daytime-occupied, high base load",summer,weekend,3,0.22330038095238094
+"Daytime-occupied, high base load",summer,weekend,4,0.20856780952380952
+"Daytime-occupied, high base load",summer,weekend,5,0.2019054285714286
+"Daytime-occupied, high base load",summer,weekend,6,0.19397809523809526
+"Daytime-occupied, high base load",summer,weekend,7,0.21783580952380951
+"Daytime-occupied, high base load",summer,weekend,8,0.25615257142857145
+"Daytime-occupied, high base load",summer,weekend,9,0.3069222857142857
+"Daytime-occupied, high base load",summer,weekend,10,0.2676332380952381
+"Daytime-occupied, high base load",summer,weekend,11,0.22141857142857144
+"Daytime-occupied, high base load",summer,weekend,12,0.2390521904761905
+"Daytime-occupied, high base load",summer,weekend,13,0.18014733333333333
+"Daytime-occupied, high base load",summer,weekend,14,0.2093842857142857
+"Daytime-occupied, high base load",summer,weekend,15,0.22496123809523808
+"Daytime-occupied, high base load",summer,weekend,16,0.28349161904761905
+"Daytime-occupied, high base load",summer,weekend,17,0.3407175238095238
+"Daytime-occupied, high base load",summer,weekend,18,0.43181019047619046
+"Daytime-occupied, high base load",summer,weekend,19,0.5181852380952381
+"Daytime-occupied, high base load",summer,weekend,20,0.6310579047619048
+"Daytime-occupied, high base load",summer,weekend,21,0.6410962857142857
+"Daytime-occupied, high base load",summer,weekend,22,0.7113744761904762
+"Daytime-occupied, high base load",summer,weekend,23,0.8754863809523808
+"Daytime-occupied, high base load",summer,weekend,24,1.002507619047619
+"Daytime-occupied, high base load",summer,weekend,25,1.155164
+"Daytime-occupied, high base load",summer,weekend,26,1.3689131428571428
+"Daytime-occupied, high base load",summer,weekend,27,1.3012790476190477
+"Daytime-occupied, high base load",summer,weekend,28,1.146145142857143
+"Daytime-occupied, high base load",summer,weekend,29,1.1160637142857144
+"Daytime-occupied, high base load",summer,weekend,30,1.1058473333333334
+"Daytime-occupied, high base load",summer,weekend,31,1.1121020000000001
+"Daytime-occupied, high base load",summer,weekend,32,1.128487142857143
+"Daytime-occupied, high base load",summer,weekend,33,1.203133619047619
+"Daytime-occupied, high base load",summer,weekend,34,1.2537005714285714
+"Daytime-occupied, high base load",summer,weekend,35,1.2494182857142857
+"Daytime-occupied, high base load",summer,weekend,36,1.3105549523809523
+"Daytime-occupied, high base load",summer,weekend,37,1.4106546666666668
+"Daytime-occupied, high base load",summer,weekend,38,1.4387848571428572
+"Daytime-occupied, high base load",summer,weekend,39,1.34947
+"Daytime-occupied, high base load",summer,weekend,40,1.332903523809524
+"Daytime-occupied, high base load",summer,weekend,41,1.3619947619047619
+"Daytime-occupied, high base load",summer,weekend,42,1.3443518095238096
+"Daytime-occupied, high base load",summer,weekend,43,1.130513146141215
+"Daytime-occupied, high base load",summer,weekend,44,0.9546641871921183
+"Daytime-occupied, high base load",summer,weekend,45,0.8347635238095238
+"Daytime-occupied, high base load",summer,weekend,46,0.722576
+"Daytime-occupied, high base load",summer,weekend,47,0.654545619047619
+"Daytime-occupied, high base load",winter,weekday,0,0.2523820503330866
+"Daytime-occupied, high base load",winter,weekday,1,0.18299900222057736
+"Daytime-occupied, high base load",winter,weekday,2,0.14012350999259807
+"Daytime-occupied, high base load",winter,weekday,3,0.13438123809523808
+"Daytime-occupied, high base load",winter,weekday,4,0.1399717619047619
+"Daytime-occupied, high base load",winter,weekday,5,0.14473585714285714
+"Daytime-occupied, high base load",winter,weekday,6,0.15889052380952381
+"Daytime-occupied, high base load",winter,weekday,7,0.18313133333333334
+"Daytime-occupied, high base load",winter,weekday,8,0.2352518811459543
+"Daytime-occupied, high base load",winter,weekday,9,0.2472882113821138
+"Daytime-occupied, high base load",winter,weekday,10,0.26976173286875726
+"Daytime-occupied, high base load",winter,weekday,11,0.45283492102206735
+"Daytime-occupied, high base load",winter,weekday,12,0.9965415869144405
+"Daytime-occupied, high base load",winter,weekday,13,1.7606194761904763
+"Daytime-occupied, high base load",winter,weekday,14,1.7769118571428573
+"Daytime-occupied, high base load",winter,weekday,15,1.102528142857143
+"Daytime-occupied, high base load",winter,weekday,16,0.6254631904761905
+"Daytime-occupied, high base load",winter,weekday,17,0.4698684285714285
+"Daytime-occupied, high base load",winter,weekday,18,0.156234
+"Daytime-occupied, high base load",winter,weekday,19,0.17014333333333334
+"Daytime-occupied, high base load",winter,weekday,20,0.18104366666666669
+"Daytime-occupied, high base load",winter,weekday,21,0.1973802380952381
+"Daytime-occupied, high base load",winter,weekday,22,0.21071323809523812
+"Daytime-occupied, high base load",winter,weekday,23,0.21471823809523813
+"Daytime-occupied, high base load",winter,weekday,24,0.22768173827980803
+"Daytime-occupied, high base load",winter,weekday,25,0.2893322059800665
+"Daytime-occupied, high base load",winter,weekday,26,0.4622873853820598
+"Daytime-occupied, high base load",winter,weekday,27,0.3976278504983389
+"Daytime-occupied, high base load",winter,weekday,28,0.24137802990033222
+"Daytime-occupied, high base load",winter,weekday,29,0.2107818375784422
+"Daytime-occupied, high base load",winter,weekday,30,0.18833200000000003
+"Daytime-occupied, high base load",winter,weekday,31,0.180608
+"Daytime-occupied, high base load",winter,weekday,32,0.17839285714285716
+"Daytime-occupied, high base load",winter,weekday,33,0.2202959033474776
+"Daytime-occupied, high base load",winter,weekday,34,0.2682524842055634
+"Daytime-occupied, high base load",winter,weekday,35,0.329233401440144
+"Daytime-occupied, high base load",winter,weekday,36,0.4840932239938279
+"Daytime-occupied, high base load",winter,weekday,37,0.7315361904761905
+"Daytime-occupied, high base load",winter,weekday,38,0.8223807835497836
+"Daytime-occupied, high base load",winter,weekday,39,0.9651432510822511
+"Daytime-occupied, high base load",winter,weekday,40,1.1885147142857142
+"Daytime-occupied, high base load",winter,weekday,41,1.517888761904762
+"Daytime-occupied, high base load",winter,weekday,42,1.6378440952380953
+"Daytime-occupied, high base load",winter,weekday,43,1.4689801904761906
+"Daytime-occupied, high base load",winter,weekday,44,1.1465298095238097
+"Daytime-occupied, high base load",winter,weekday,45,0.9337121238095238
+"Daytime-occupied, high base load",winter,weekday,46,0.6927242857142858
+"Daytime-occupied, high base load",winter,weekday,47,0.3842891142857143
+"Daytime-occupied, high base load",winter,weekend,0,0.34602891774891775
+"Daytime-occupied, high base load",winter,weekend,1,0.25326506493506495
+"Daytime-occupied, high base load",winter,weekend,2,0.1802298917748918
+"Daytime-occupied, high base load",winter,weekend,3,0.1518425714285714
+"Daytime-occupied, high base load",winter,weekend,4,0.15297316017316018
+"Daytime-occupied, high base load",winter,weekend,5,0.1505746753246753
+"Daytime-occupied, high base load",winter,weekend,6,0.16400649350649352
+"Daytime-occupied, high base load",winter,weekend,7,0.19740541125541125
+"Daytime-occupied, high base load",winter,weekend,8,0.20033344155844154
+"Daytime-occupied, high base load",winter,weekend,9,0.29121655844155847
+"Daytime-occupied, high base load",winter,weekend,10,0.2234909090909091
+"Daytime-occupied, high base load",winter,weekend,11,0.17941861471861473
+"Daytime-occupied, high base load",winter,weekend,12,0.1720628787878788
+"Daytime-occupied, high base load",winter,weekend,13,0.17433906926406928
+"Daytime-occupied, high base load",winter,weekend,14,0.2886339108910891
+"Daytime-occupied, high base load",winter,weekend,15,0.3834255657708628
+"Daytime-occupied, high base load",winter,weekend,16,0.541039019973426
+"Daytime-occupied, high base load",winter,weekend,17,0.7134179503664652
+"Daytime-occupied, high base load",winter,weekend,18,0.3804949327075564
+"Daytime-occupied, high base load",winter,weekend,19,0.39443490206163473
+"Daytime-occupied, high base load",winter,weekend,20,0.3913080965239381
+"Daytime-occupied, high base load",winter,weekend,21,0.34969146414641467
+"Daytime-occupied, high base load",winter,weekend,22,0.47894528631434574
+"Daytime-occupied, high base load",winter,weekend,23,0.5275702123783806
+"Daytime-occupied, high base load",winter,weekend,24,0.5518613722086495
+"Daytime-occupied, high base load",winter,weekend,25,0.5908997181861043
+"Daytime-occupied, high base load",winter,weekend,26,0.7946962892717843
+"Daytime-occupied, high base load",winter,weekend,27,0.6533445919591959
+"Daytime-occupied, high base load",winter,weekend,28,0.3909182193219322
+"Daytime-occupied, high base load",winter,weekend,29,0.3445433618361836
+"Daytime-occupied, high base load",winter,weekend,30,0.3306266212335519
+"Daytime-occupied, high base load",winter,weekend,31,0.3527893178603575
+"Daytime-occupied, high base load",winter,weekend,32,0.383102988513137
+"Daytime-occupied, high base load",winter,weekend,33,0.49967120462046205
+"Daytime-occupied, high base load",winter,weekend,34,0.6107107314302859
+"Daytime-occupied, high base load",winter,weekend,35,0.664983116883117
+"Daytime-occupied, high base load",winter,weekend,36,1.114340909090909
+"Daytime-occupied, high base load",winter,weekend,37,1.3691989177489177
+"Daytime-occupied, high base load",winter,weekend,38,1.3861444805194805
+"Daytime-occupied, high base load",winter,weekend,39,1.447464826839827
+"Daytime-occupied, high base load",winter,weekend,40,1.5219775974025973
+"Daytime-occupied, high base load",winter,weekend,41,1.608853354978355
+"Daytime-occupied, high base load",winter,weekend,42,1.654754761904762
+"Daytime-occupied, high base load",winter,weekend,43,1.5642916666666666
+"Daytime-occupied, high base load",winter,weekend,44,1.324238739541978
+"Daytime-occupied, high base load",winter,weekend,45,1.2180127411345132
+"Daytime-occupied, high base load",winter,weekend,46,1.221575246506516
+"Daytime-occupied, high base load",winter,weekend,47,1.023398189107956
+Large evening-peak households,autumn,weekday,0,0.16576305966244131
+Large evening-peak households,autumn,weekday,1,0.1177231147984133
+Large evening-peak households,autumn,weekday,2,0.1021974568024568
+Large evening-peak households,autumn,weekday,3,0.09546181152181152
+Large evening-peak households,autumn,weekday,4,0.0985823840973841
+Large evening-peak households,autumn,weekday,5,0.0993346153846154
+Large evening-peak households,autumn,weekday,6,0.10847944444444443
+Large evening-peak households,autumn,weekday,7,0.13840888799156517
+Large evening-peak households,autumn,weekday,8,0.16861921360791438
+Large evening-peak households,autumn,weekday,9,0.20851067043227167
+Large evening-peak households,autumn,weekday,10,0.211891525961223
+Large evening-peak households,autumn,weekday,11,0.26005801041158416
+Large evening-peak households,autumn,weekday,12,0.4829032550970442
+Large evening-peak households,autumn,weekday,13,0.9501078210692664
+Large evening-peak households,autumn,weekday,14,1.1216869596910612
+Large evening-peak households,autumn,weekday,15,0.7388149587117165
+Large evening-peak households,autumn,weekday,16,0.3564460773904915
+Large evening-peak households,autumn,weekday,17,0.1863496462117165
+Large evening-peak households,autumn,weekday,18,0.118524526130698
+Large evening-peak households,autumn,weekday,19,0.11915581196581196
+Large evening-peak households,autumn,weekday,20,0.1317805413105413
+Large evening-peak households,autumn,weekday,21,0.14719428774928775
+Large evening-peak households,autumn,weekday,22,0.16345626780626782
+Large evening-peak households,autumn,weekday,23,0.18106058404558406
+Large evening-peak households,autumn,weekday,24,0.19862270032051282
+Large evening-peak households,autumn,weekday,25,0.24995116729101302
+Large evening-peak households,autumn,weekday,26,0.4126116760716028
+Large evening-peak households,autumn,weekday,27,0.36200476785893926
+Large evening-peak households,autumn,weekday,28,0.2687646708390988
+Large evening-peak households,autumn,weekday,29,0.2373856813240366
+Large evening-peak households,autumn,weekday,30,0.2398298453666217
+Large evening-peak households,autumn,weekday,31,0.23647674445194183
+Large evening-peak households,autumn,weekday,32,0.24446962644324488
+Large evening-peak households,autumn,weekday,33,0.26421749418953366
+Large evening-peak households,autumn,weekday,34,0.314801558517019
+Large evening-peak households,autumn,weekday,35,0.37092815875383595
+Large evening-peak households,autumn,weekday,36,0.4605107625429431
+Large evening-peak households,autumn,weekday,37,0.6354994663536808
+Large evening-peak households,autumn,weekday,38,0.7132961473723956
+Large evening-peak households,autumn,weekday,39,0.84491049790678
+Large evening-peak households,autumn,weekday,40,1.085622879780196
+Large evening-peak households,autumn,weekday,41,1.380622398818104
+Large evening-peak households,autumn,weekday,42,1.4250680148345696
+Large evening-peak households,autumn,weekday,43,1.213154577394745
+Large evening-peak households,autumn,weekday,44,0.8803699135886939
+Large evening-peak households,autumn,weekday,45,0.5470715348467851
+Large evening-peak households,autumn,weekday,46,0.3351454223113856
+Large evening-peak households,autumn,weekday,47,0.19368471380306254
+Large evening-peak households,autumn,weekend,0,0.20575413105413104
+Large evening-peak households,autumn,weekend,1,0.1322698361823362
+Large evening-peak households,autumn,weekend,2,0.11344205840455841
+Large evening-peak households,autumn,weekend,3,0.09752759971509972
+Large evening-peak households,autumn,weekend,4,0.09658386752136752
+Large evening-peak households,autumn,weekend,5,0.1028883547008547
+Large evening-peak households,autumn,weekend,6,0.10640985473398265
+Large evening-peak households,autumn,weekend,7,0.1469233193781886
+Large evening-peak households,autumn,weekend,8,0.16579556810276289
+Large evening-peak households,autumn,weekend,9,0.18701283107235142
+Large evening-peak households,autumn,weekend,10,0.18308632623567217
+Large evening-peak households,autumn,weekend,11,0.17122089689756842
+Large evening-peak households,autumn,weekend,12,0.13394129377029088
+Large evening-peak households,autumn,weekend,13,0.12070111371993639
+Large evening-peak households,autumn,weekend,14,0.1342824436410919
+Large evening-peak households,autumn,weekend,15,0.18170330347677732
+Large evening-peak households,autumn,weekend,16,0.24970147812727755
+Large evening-peak households,autumn,weekend,17,0.2709258636039886
+Large evening-peak households,autumn,weekend,18,0.2715615548184589
+Large evening-peak households,autumn,weekend,19,0.29356071937321937
+Large evening-peak households,autumn,weekend,20,0.3142176638176638
+Large evening-peak households,autumn,weekend,21,0.3222459045584045
+Large evening-peak households,autumn,weekend,22,0.3625526353276353
+Large evening-peak households,autumn,weekend,23,0.46225772792022796
+Large evening-peak households,autumn,weekend,24,0.5588815170940171
+Large evening-peak households,autumn,weekend,25,0.6357960113960114
+Large evening-peak households,autumn,weekend,26,0.7793804355567941
+Large evening-peak households,autumn,weekend,27,0.5741042495045213
+Large evening-peak households,autumn,weekend,28,0.38618274417812465
+Large evening-peak households,autumn,weekend,29,0.33903492118791034
+Large evening-peak households,autumn,weekend,30,0.336664947200545
+Large evening-peak households,autumn,weekend,31,0.35072342762913417
+Large evening-peak households,autumn,weekend,32,0.39833404480986
+Large evening-peak households,autumn,weekend,33,0.48067251099343494
+Large evening-peak households,autumn,weekend,34,0.5601940612225939
+Large evening-peak households,autumn,weekend,35,0.6852431508435779
+Large evening-peak households,autumn,weekend,36,0.7958075811635372
+Large evening-peak households,autumn,weekend,37,0.8473705755318
+Large evening-peak households,autumn,weekend,38,0.8648802486440241
+Large evening-peak households,autumn,weekend,39,0.9295616810155075
+Large evening-peak households,autumn,weekend,40,0.9605303640992416
+Large evening-peak households,autumn,weekend,41,0.9743382209721495
+Large evening-peak households,autumn,weekend,42,0.985135643372123
+Large evening-peak households,autumn,weekend,43,0.8439268335783642
+Large evening-peak households,autumn,weekend,44,0.7451958015623832
+Large evening-peak households,autumn,weekend,45,0.684944755301388
+Large evening-peak households,autumn,weekend,46,0.6072493358210195
+Large evening-peak households,autumn,weekend,47,0.49313974358974366
+Large evening-peak households,spring,weekday,0,0.24689210686095933
+Large evening-peak households,spring,weekday,1,0.2031928202792957
+Large evening-peak households,spring,weekday,2,0.1407688635386613
+Large evening-peak households,spring,weekday,3,0.10770076485589228
+Large evening-peak households,spring,weekday,4,0.09839920812438463
+Large evening-peak households,spring,weekday,5,0.09865362545827724
+Large evening-peak households,spring,weekday,6,0.1052828355334099
+Large evening-peak households,spring,weekday,7,0.16045748680584745
+Large evening-peak households,spring,weekday,8,0.27963850007005747
+Large evening-peak households,spring,weekday,9,0.18826712787819347
+Large evening-peak households,spring,weekday,10,0.20799364367460563
+Large evening-peak households,spring,weekday,11,0.22173691227986192
+Large evening-peak households,spring,weekday,12,0.31109181161492677
+Large evening-peak households,spring,weekday,13,0.5849274746762471
+Large evening-peak households,spring,weekday,14,0.762495829840791
+Large evening-peak households,spring,weekday,15,0.6872822686607084
+Large evening-peak households,spring,weekday,16,0.3601796871836995
+Large evening-peak households,spring,weekday,17,0.19771803245183922
+Large evening-peak households,spring,weekday,18,0.12738698565284604
+Large evening-peak households,spring,weekday,19,0.1303095928037955
+Large evening-peak households,spring,weekday,20,0.13805778479706077
+Large evening-peak households,spring,weekday,21,0.14730957711244735
+Large evening-peak households,spring,weekday,22,0.16653657189680368
+Large evening-peak households,spring,weekday,23,0.1928163686158336
+Large evening-peak households,spring,weekday,24,0.20743865959127858
+Large evening-peak households,spring,weekday,25,0.2734376060689307
+Large evening-peak households,spring,weekday,26,0.3992708257437766
+Large evening-peak households,spring,weekday,27,0.3505157862780814
+Large evening-peak households,spring,weekday,28,0.225741226472374
+Large evening-peak households,spring,weekday,29,0.18197612325440196
+Large evening-peak households,spring,weekday,30,0.17519682587870203
+Large evening-peak households,spring,weekday,31,0.18259458442960266
+Large evening-peak households,spring,weekday,32,0.22255648991432234
+Large evening-peak households,spring,weekday,33,0.28855058799317174
+Large evening-peak households,spring,weekday,34,0.34510315486453225
+Large evening-peak households,spring,weekday,35,0.37528202502610974
+Large evening-peak households,spring,weekday,36,0.41904549434380545
+Large evening-peak households,spring,weekday,37,0.6072621497890798
+Large evening-peak households,spring,weekday,38,0.6954802032612275
+Large evening-peak households,spring,weekday,39,0.8008165368505223
+Large evening-peak households,spring,weekday,40,1.0660481818795118
+Large evening-peak households,spring,weekday,41,1.4170126070970788
+Large evening-peak households,spring,weekday,42,1.5055096218714161
+Large evening-peak households,spring,weekday,43,1.3193297578088106
+Large evening-peak households,spring,weekday,44,1.0322844232210353
+Large evening-peak households,spring,weekday,45,0.724396072848805
+Large evening-peak households,spring,weekday,46,0.43093102911654824
+Large evening-peak households,spring,weekday,47,0.2530752142853236
+Large evening-peak households,spring,weekend,0,0.3016533506888476
+Large evening-peak households,spring,weekend,1,0.25115110786038275
+Large evening-peak households,spring,weekend,2,0.15239135772590015
+Large evening-peak households,spring,weekend,3,0.10650493217740983
+Large evening-peak households,spring,weekend,4,0.10118136621421606
+Large evening-peak households,spring,weekend,5,0.09910214181480825
+Large evening-peak households,spring,weekend,6,0.10130362233069366
+Large evening-peak households,spring,weekend,7,0.18700138005692218
+Large evening-peak households,spring,weekend,8,0.39928207838810365
+Large evening-peak households,spring,weekend,9,0.16787293344068707
+Large evening-peak households,spring,weekend,10,0.18864098079561042
+Large evening-peak households,spring,weekend,11,0.17698535665294926
+Large evening-peak households,spring,weekend,12,0.15423566529492458
+Large evening-peak households,spring,weekend,13,0.13532451989026062
+Large evening-peak households,spring,weekend,14,0.11765617283950618
+Large evening-peak households,spring,weekend,15,0.12745785322359396
+Large evening-peak households,spring,weekend,16,0.15915668724279838
+Large evening-peak households,spring,weekend,17,0.20511978737997258
+Large evening-peak households,spring,weekend,18,0.22430435528120715
+Large evening-peak households,spring,weekend,19,0.31411008230452675
+Large evening-peak households,spring,weekend,20,0.36113405349794236
+Large evening-peak households,spring,weekend,21,0.35523333333333335
+Large evening-peak households,spring,weekend,22,0.33488185871056236
+Large evening-peak households,spring,weekend,23,0.41851997203756464
+Large evening-peak households,spring,weekend,24,0.5192343738908554
+Large evening-peak households,spring,weekend,25,0.613424144339885
+Large evening-peak households,spring,weekend,26,0.7803612741853483
+Large evening-peak households,spring,weekend,27,0.645728582357286
+Large evening-peak households,spring,weekend,28,0.42704119763964243
+Large evening-peak households,spring,weekend,29,0.36407327201611633
+Large evening-peak households,spring,weekend,30,0.35652514475981756
+Large evening-peak households,spring,weekend,31,0.37192119396329276
+Large evening-peak households,spring,weekend,32,0.4335554759439183
+Large evening-peak households,spring,weekend,33,0.5080305597637325
+Large evening-peak households,spring,weekend,34,0.589573908081059
+Large evening-peak households,spring,weekend,35,0.6795106952601649
+Large evening-peak households,spring,weekend,36,0.7375268518518519
+Large evening-peak households,spring,weekend,37,0.7806501371742113
+Large evening-peak households,spring,weekend,38,0.854483024691358
+Large evening-peak households,spring,weekend,39,0.8839848422496571
+Large evening-peak households,spring,weekend,40,0.9276628600823045
+Large evening-peak households,spring,weekend,41,1.0612205871143188
+Large evening-peak households,spring,weekend,42,1.1892678250791728
+Large evening-peak households,spring,weekend,43,1.0985473963840653
+Large evening-peak households,spring,weekend,44,0.9671533737246231
+Large evening-peak households,spring,weekend,45,0.8314783153998858
+Large evening-peak households,spring,weekend,46,0.656125822232899
+Large evening-peak households,spring,weekend,47,0.5061091658286009
+Large evening-peak households,summer,weekday,0,0.24741965408805033
+Large evening-peak households,summer,weekday,1,0.15096584556254367
+Large evening-peak households,summer,weekday,2,0.12914829580808515
+Large evening-peak households,summer,weekday,3,0.11945955529709085
+Large evening-peak households,summer,weekday,4,0.12024020131638113
+Large evening-peak households,summer,weekday,5,0.11912411819724913
+Large evening-peak households,summer,weekday,6,0.12534100223364555
+Large evening-peak households,summer,weekday,7,0.14825474826623541
+Large evening-peak households,summer,weekday,8,0.18126166627879975
+Large evening-peak households,summer,weekday,9,0.2217793598912839
+Large evening-peak households,summer,weekday,10,0.22481405044230593
+Large evening-peak households,summer,weekday,11,0.24312297278778308
+Large evening-peak households,summer,weekday,12,0.3652947999241297
+Large evening-peak households,summer,weekday,13,0.6846187215821493
+Large evening-peak households,summer,weekday,14,0.8370750553016154
+Large evening-peak households,summer,weekday,15,0.5755100669954327
+Large evening-peak households,summer,weekday,16,0.3049762335462312
+Large evening-peak households,summer,weekday,17,0.19558374542716123
+Large evening-peak households,summer,weekday,18,0.18806692439159373
+Large evening-peak households,summer,weekday,19,0.23080108647196318
+Large evening-peak households,summer,weekday,20,0.2578295419769151
+Large evening-peak households,summer,weekday,21,0.3006518302126016
+Large evening-peak households,summer,weekday,22,0.35558364072818494
+Large evening-peak households,summer,weekday,23,0.415639872367689
+Large evening-peak households,summer,weekday,24,0.456845120369171
+Large evening-peak households,summer,weekday,25,0.5438788786293728
+Large evening-peak households,summer,weekday,26,0.7517436587428585
+Large evening-peak households,summer,weekday,27,0.7678309506880634
+Large evening-peak households,summer,weekday,28,0.7357558945422148
+Large evening-peak households,summer,weekday,29,0.7814794070046437
+Large evening-peak households,summer,weekday,30,0.8317326985137459
+Large evening-peak households,summer,weekday,31,0.833539965694336
+Large evening-peak households,summer,weekday,32,0.8258300596582981
+Large evening-peak households,summer,weekday,33,0.8221460139317931
+Large evening-peak households,summer,weekday,34,0.8279554343129049
+Large evening-peak households,summer,weekday,35,0.8351483103194534
+Large evening-peak households,summer,weekday,36,0.8463574686460579
+Large evening-peak households,summer,weekday,37,0.9298528808093379
+Large evening-peak households,summer,weekday,38,1.042270929419986
+Large evening-peak households,summer,weekday,39,1.1106054944095038
+Large evening-peak households,summer,weekday,40,1.3024796418588398
+Large evening-peak households,summer,weekday,41,1.571949610412299
+Large evening-peak households,summer,weekday,42,1.602556745283019
+Large evening-peak households,summer,weekday,43,1.356052183787561
+Large evening-peak households,summer,weekday,44,0.9130893780573025
+Large evening-peak households,summer,weekday,45,0.5874669811320755
+Large evening-peak households,summer,weekday,46,0.45077442348008384
+Large evening-peak households,summer,weekday,47,0.33256781970649896
+Large evening-peak households,summer,weekend,0,0.373539925925926
+Large evening-peak households,summer,weekend,1,0.21947059259259258
+Large evening-peak households,summer,weekend,2,0.15415885185185185
+Large evening-peak households,summer,weekend,3,0.14851460398860397
+Large evening-peak households,summer,weekend,4,0.14281761538461538
+Large evening-peak households,summer,weekend,5,0.1364834643874644
+Large evening-peak households,summer,weekend,6,0.14569546153846155
+Large evening-peak households,summer,weekend,7,0.16300442165242168
+Large evening-peak households,summer,weekend,8,0.20534012250712252
+Large evening-peak households,summer,weekend,9,0.21711052706552705
+Large evening-peak households,summer,weekend,10,0.18962463532763532
+Large evening-peak households,summer,weekend,11,0.19758355840455838
+Large evening-peak households,summer,weekend,12,0.16890962962962963
+Large evening-peak households,summer,weekend,13,0.1489273304843305
+Large evening-peak households,summer,weekend,14,0.14939492022792022
+Large evening-peak households,summer,weekend,15,0.17932569515669516
+Large evening-peak households,summer,weekend,16,0.21854032193732195
+Large evening-peak households,summer,weekend,17,0.28101050427350427
+Large evening-peak households,summer,weekend,18,0.35553450142450144
+Large evening-peak households,summer,weekend,19,0.4399024985754986
+Large evening-peak households,summer,weekend,20,0.5112202621082621
+Large evening-peak households,summer,weekend,21,0.573601925925926
+Large evening-peak households,summer,weekend,22,0.7332072962962964
+Large evening-peak households,summer,weekend,23,0.8810762962962962
+Large evening-peak households,summer,weekend,24,1.013905786516854
+Large evening-peak households,summer,weekend,25,1.1697983000416148
+Large evening-peak households,summer,weekend,26,1.331266881398252
+Large evening-peak households,summer,weekend,27,1.215061536828964
+Large evening-peak households,summer,weekend,28,1.0543642992555602
+Large evening-peak households,summer,weekend,29,1.012967629583391
+Large evening-peak households,summer,weekend,30,1.063284270079068
+Large evening-peak households,summer,weekend,31,1.0948572222222221
+Large evening-peak households,summer,weekend,32,1.1162831851851853
+Large evening-peak households,summer,weekend,33,1.2034978518518518
+Large evening-peak households,summer,weekend,34,1.2294857407407407
+Large evening-peak households,summer,weekend,35,1.311857037037037
+Large evening-peak households,summer,weekend,36,1.4174507777777776
+Large evening-peak households,summer,weekend,37,1.5085711060025542
+Large evening-peak households,summer,weekend,38,1.591020101076446
+Large evening-peak households,summer,weekend,39,1.4668408834154352
+Large evening-peak households,summer,weekend,40,1.3428873271300859
+Large evening-peak households,summer,weekend,41,1.3387973441384824
+Large evening-peak households,summer,weekend,42,1.2190935756274945
+Large evening-peak households,summer,weekend,43,1.0420914773921006
+Large evening-peak households,summer,weekend,44,0.8902613257108557
+Large evening-peak households,summer,weekend,45,0.7617505490882138
+Large evening-peak households,summer,weekend,46,0.6759654585664802
+Large evening-peak households,summer,weekend,47,0.6268073703703704
+Large evening-peak households,winter,weekday,0,0.2037926016654238
+Large evening-peak households,winter,weekday,1,0.13035024683072335
+Large evening-peak households,winter,weekday,2,0.10048418829231917
+Large evening-peak households,winter,weekday,3,0.09210931493910017
+Large evening-peak households,winter,weekday,4,0.09113763721103654
+Large evening-peak households,winter,weekday,5,0.09117229629629628
+Large evening-peak households,winter,weekday,6,0.10588738888888889
+Large evening-peak households,winter,weekday,7,0.13323348148148148
+Large evening-peak households,winter,weekday,8,0.1417804109916368
+Large evening-peak households,winter,weekday,9,0.20026123715651134
+Large evening-peak households,winter,weekday,10,0.22530233333333333
+Large evening-peak households,winter,weekday,11,0.31340097191646693
+Large evening-peak households,winter,weekday,12,0.6889862434740894
+Large evening-peak households,winter,weekday,13,1.403961753682002
+Large evening-peak households,winter,weekday,14,1.7162363408342234
+Large evening-peak households,winter,weekday,15,1.161616145785215
+Large evening-peak households,winter,weekday,16,0.6638463512246071
+Large evening-peak households,winter,weekday,17,0.40253512968774957
+Large evening-peak households,winter,weekday,18,0.11830206167538435
+Large evening-peak households,winter,weekday,19,0.12395195594280023
+Large evening-peak households,winter,weekday,20,0.12666173429042893
+Large evening-peak households,winter,weekday,21,0.14422683532262068
+Large evening-peak households,winter,weekday,22,0.152299835711616
+Large evening-peak households,winter,weekday,23,0.16235489714283197
+Large evening-peak households,winter,weekday,24,0.16337671316112903
+Large evening-peak households,winter,weekday,25,0.22318581085874903
+Large evening-peak households,winter,weekday,26,0.3585129494007282
+Large evening-peak households,winter,weekday,27,0.34513275031225915
+Large evening-peak households,winter,weekday,28,0.19160142159416055
+Large evening-peak households,winter,weekday,29,0.15627252030348932
+Large evening-peak households,winter,weekday,30,0.1500131910848902
+Large evening-peak households,winter,weekday,31,0.14436004605047525
+Large evening-peak households,winter,weekday,32,0.13526691953457884
+Large evening-peak households,winter,weekday,33,0.17751292264831203
+Large evening-peak households,winter,weekday,34,0.24249860947230417
+Large evening-peak households,winter,weekday,35,0.2945337777777778
+Large evening-peak households,winter,weekday,36,0.4453471851851852
+Large evening-peak households,winter,weekday,37,0.667188425925926
+Large evening-peak households,winter,weekday,38,0.7754144444444444
+Large evening-peak households,winter,weekday,39,0.9532341851851852
+Large evening-peak households,winter,weekday,40,1.2305323518518518
+Large evening-peak households,winter,weekday,41,1.5509329629629631
+Large evening-peak households,winter,weekday,42,1.7232188703703704
+Large evening-peak households,winter,weekday,43,1.5394307407407408
+Large evening-peak households,winter,weekday,44,1.2086063703703704
+Large evening-peak households,winter,weekday,45,0.8948205
+Large evening-peak households,winter,weekday,46,0.6172647962962963
+Large evening-peak households,winter,weekday,47,0.3434292332836192
+Large evening-peak households,winter,weekend,0,0.32157735690235695
+Large evening-peak households,winter,weekend,1,0.1793476851851852
+Large evening-peak households,winter,weekend,2,0.10422680976430976
+Large evening-peak households,winter,weekend,3,0.094831734006734
+Large evening-peak households,winter,weekend,4,0.09985467171717172
+Large evening-peak households,winter,weekend,5,0.09851586700336701
+Large evening-peak households,winter,weekend,6,0.10950231481481482
+Large evening-peak households,winter,weekend,7,0.13120989057239058
+Large evening-peak households,winter,weekend,8,0.17295660155476333
+Large evening-peak households,winter,weekend,9,0.20575237885632564
+Large evening-peak households,winter,weekend,10,0.16391846314208988
+Large evening-peak households,winter,weekend,11,0.1510026992459194
+Large evening-peak households,winter,weekend,12,0.12971648080429438
+Large evening-peak households,winter,weekend,13,0.1397006661770108
+Large evening-peak households,winter,weekend,14,0.20105032932644115
+Large evening-peak households,winter,weekend,15,0.3251950522095963
+Large evening-peak households,winter,weekend,16,0.452026096641573
+Large evening-peak households,winter,weekend,17,0.6242827742434843
+Large evening-peak households,winter,weekend,18,0.3257534094360077
+Large evening-peak households,winter,weekend,19,0.36310318515431955
+Large evening-peak households,winter,weekend,20,0.32256171449885906
+Large evening-peak households,winter,weekend,21,0.3834945076754911
+Large evening-peak households,winter,weekend,22,0.41186214933697163
+Large evening-peak households,winter,weekend,23,0.48130201322067445
+Large evening-peak households,winter,weekend,24,0.5766224747474747
+Large evening-peak households,winter,weekend,25,0.6263526584964973
+Large evening-peak households,winter,weekend,26,0.7589702580704358
+Large evening-peak households,winter,weekend,27,0.6428661825601991
+Large evening-peak households,winter,weekend,28,0.4207374437502992
+Large evening-peak households,winter,weekend,29,0.32881788002457435
+Large evening-peak households,winter,weekend,30,0.3154611109116441
+Large evening-peak households,winter,weekend,31,0.313580393987266
+Large evening-peak households,winter,weekend,32,0.3598015289147398
+Large evening-peak households,winter,weekend,33,0.48333688943143915
+Large evening-peak households,winter,weekend,34,0.6532278055036941
+Large evening-peak households,winter,weekend,35,0.7291258083068708
+Large evening-peak households,winter,weekend,36,1.017010058922559
+Large evening-peak households,winter,weekend,37,1.1943818181818182
+Large evening-peak households,winter,weekend,38,1.2223398148148148
+Large evening-peak households,winter,weekend,39,1.2591472222222222
+Large evening-peak households,winter,weekend,40,1.290915404040404
+Large evening-peak households,winter,weekend,41,1.3808844276094276
+Large evening-peak households,winter,weekend,42,1.4240816919191919
+Large evening-peak households,winter,weekend,43,1.2518265151515153
+Large evening-peak households,winter,weekend,44,1.1873868686868687
+Large evening-peak households,winter,weekend,45,1.13119335016835
+Large evening-peak households,winter,weekend,46,1.0849889730639732
+Large evening-peak households,winter,weekend,47,0.9191777356902356
+Low consumers without AC,autumn,weekday,0,0.16207478804491177
+Low consumers without AC,autumn,weekday,1,0.1199193077352692
+Low consumers without AC,autumn,weekday,2,0.10555193639998561
+Low consumers without AC,autumn,weekday,3,0.10044940480829176
+Low consumers without AC,autumn,weekday,4,0.10164337962685434
+Low consumers without AC,autumn,weekday,5,0.10080116854798102
+Low consumers without AC,autumn,weekday,6,0.11370293182808203
+Low consumers without AC,autumn,weekday,7,0.14144876562100359
+Low consumers without AC,autumn,weekday,8,0.1747187628754636
+Low consumers without AC,autumn,weekday,9,0.18006809546646205
+Low consumers without AC,autumn,weekday,10,0.18510137316963998
+Low consumers without AC,autumn,weekday,11,0.3244878880523051
+Low consumers without AC,autumn,weekday,12,0.6861321272939446
+Low consumers without AC,autumn,weekday,13,0.8438755973048149
+Low consumers without AC,autumn,weekday,14,0.6920648365464543
+Low consumers without AC,autumn,weekday,15,0.35472426809578617
+Low consumers without AC,autumn,weekday,16,0.1621529625455592
+Low consumers without AC,autumn,weekday,17,0.1063138141025641
+Low consumers without AC,autumn,weekday,18,0.10619608974358974
+Low consumers without AC,autumn,weekday,19,0.11044060897435898
+Low consumers without AC,autumn,weekday,20,0.12356336538461538
+Low consumers without AC,autumn,weekday,21,0.1271809935897436
+Low consumers without AC,autumn,weekday,22,0.14341163461538461
+Low consumers without AC,autumn,weekday,23,0.1597931730769231
+Low consumers without AC,autumn,weekday,24,0.1672361217948718
+Low consumers without AC,autumn,weekday,25,0.1904503846153846
+Low consumers without AC,autumn,weekday,26,0.31538358974358977
+Low consumers without AC,autumn,weekday,27,0.2945371632420091
+Low consumers without AC,autumn,weekday,28,0.2266026778187566
+Low consumers without AC,autumn,weekday,29,0.1856606739550404
+Low consumers without AC,autumn,weekday,30,0.18236290086055496
+Low consumers without AC,autumn,weekday,31,0.17550605725324903
+Low consumers without AC,autumn,weekday,32,0.17543466962078585
+Low consumers without AC,autumn,weekday,33,0.19480075477497
+Low consumers without AC,autumn,weekday,34,0.23305031779562732
+Low consumers without AC,autumn,weekday,35,0.3024256820983359
+Low consumers without AC,autumn,weekday,36,0.3789321694053986
+Low consumers without AC,autumn,weekday,37,0.5510488738145416
+Low consumers without AC,autumn,weekday,38,0.5959762609764665
+Low consumers without AC,autumn,weekday,39,0.6966863685158399
+Low consumers without AC,autumn,weekday,40,0.8153394312454005
+Low consumers without AC,autumn,weekday,41,0.9927222080069251
+Low consumers without AC,autumn,weekday,42,1.0090765426012713
+Low consumers without AC,autumn,weekday,43,0.8564271021462453
+Low consumers without AC,autumn,weekday,44,0.6300069854318991
+Low consumers without AC,autumn,weekday,45,0.4493532943014255
+Low consumers without AC,autumn,weekday,46,0.3301394806910317
+Low consumers without AC,autumn,weekday,47,0.1939361562110727
+Low consumers without AC,autumn,weekend,0,0.20254450705967006
+Low consumers without AC,autumn,weekend,1,0.1542188382645368
+Low consumers without AC,autumn,weekend,2,0.1293470957514548
+Low consumers without AC,autumn,weekend,3,0.11524666734093694
+Low consumers without AC,autumn,weekend,4,0.11858814598170112
+Low consumers without AC,autumn,weekend,5,0.11321407975067042
+Low consumers without AC,autumn,weekend,6,0.1307922571093833
+Low consumers without AC,autumn,weekend,7,0.1547838158783526
+Low consumers without AC,autumn,weekend,8,0.1720486118268091
+Low consumers without AC,autumn,weekend,9,0.19318856803167586
+Low consumers without AC,autumn,weekend,10,0.18558341205705542
+Low consumers without AC,autumn,weekend,11,0.15828242274910162
+Low consumers without AC,autumn,weekend,12,0.14341805203089145
+Low consumers without AC,autumn,weekend,13,0.16562411400498894
+Low consumers without AC,autumn,weekend,14,0.21601198687652237
+Low consumers without AC,autumn,weekend,15,0.2811934494916455
+Low consumers without AC,autumn,weekend,16,0.3046883736452302
+Low consumers without AC,autumn,weekend,17,0.3307654292090713
+Low consumers without AC,autumn,weekend,18,0.26974264502932266
+Low consumers without AC,autumn,weekend,19,0.2461959826444458
+Low consumers without AC,autumn,weekend,20,0.28442199654162026
+Low consumers without AC,autumn,weekend,21,0.27856339505417926
+Low consumers without AC,autumn,weekend,22,0.3220695371564819
+Low consumers without AC,autumn,weekend,23,0.43631179418552446
+Low consumers without AC,autumn,weekend,24,0.4701262925149333
+Low consumers without AC,autumn,weekend,25,0.4947476017417781
+Low consumers without AC,autumn,weekend,26,0.6275875808404178
+Low consumers without AC,autumn,weekend,27,0.5074003163493137
+Low consumers without AC,autumn,weekend,28,0.37833848683989485
+Low consumers without AC,autumn,weekend,29,0.3217185889878075
+Low consumers without AC,autumn,weekend,30,0.3069395694575367
+Low consumers without AC,autumn,weekend,31,0.3145057131579642
+Low consumers without AC,autumn,weekend,32,0.3689434336028868
+Low consumers without AC,autumn,weekend,33,0.4105626099714235
+Low consumers without AC,autumn,weekend,34,0.49605607222989256
+Low consumers without AC,autumn,weekend,35,0.5633947926548527
+Low consumers without AC,autumn,weekend,36,0.6237102319944599
+Low consumers without AC,autumn,weekend,37,0.6687228624545157
+Low consumers without AC,autumn,weekend,38,0.6827385841173991
+Low consumers without AC,autumn,weekend,39,0.7195307654728863
+Low consumers without AC,autumn,weekend,40,0.6862325525389928
+Low consumers without AC,autumn,weekend,41,0.7742837299359422
+Low consumers without AC,autumn,weekend,42,0.7455984083166285
+Low consumers without AC,autumn,weekend,43,0.6458574140498504
+Low consumers without AC,autumn,weekend,44,0.5473278781164057
+Low consumers without AC,autumn,weekend,45,0.497000906285525
+Low consumers without AC,autumn,weekend,46,0.5072023799674649
+Low consumers without AC,autumn,weekend,47,0.42294968698273816
+Low consumers without AC,spring,weekday,0,0.2269728135852108
+Low consumers without AC,spring,weekday,1,0.17754294495423648
+Low consumers without AC,spring,weekday,2,0.1280642033724425
+Low consumers without AC,spring,weekday,3,0.11114310799457831
+Low consumers without AC,spring,weekday,4,0.10814250047308334
+Low consumers without AC,spring,weekday,5,0.10642496348106868
+Low consumers without AC,spring,weekday,6,0.11343279292769158
+Low consumers without AC,spring,weekday,7,0.17936873029781175
+Low consumers without AC,spring,weekday,8,0.25787836985372425
+Low consumers without AC,spring,weekday,9,0.17355276350799745
+Low consumers without AC,spring,weekday,10,0.18471578421145096
+Low consumers without AC,spring,weekday,11,0.248058108193593
+Low consumers without AC,spring,weekday,12,0.4397406985691777
+Low consumers without AC,spring,weekday,13,0.5710293907817948
+Low consumers without AC,spring,weekday,14,0.5601171299782576
+Low consumers without AC,spring,weekday,15,0.4335944776887405
+Low consumers without AC,spring,weekday,16,0.2116890114813182
+Low consumers without AC,spring,weekday,17,0.13944924580125298
+Low consumers without AC,spring,weekday,18,0.11499537492993098
+Low consumers without AC,spring,weekday,19,0.11282845761052152
+Low consumers without AC,spring,weekday,20,0.11843705258619405
+Low consumers without AC,spring,weekday,21,0.13836439756186655
+Low consumers without AC,spring,weekday,22,0.141827398275244
+Low consumers without AC,spring,weekday,23,0.1561847707484645
+Low consumers without AC,spring,weekday,24,0.15224577920318982
+Low consumers without AC,spring,weekday,25,0.18107792661686153
+Low consumers without AC,spring,weekday,26,0.2793698759431015
+Low consumers without AC,spring,weekday,27,0.2639989837392868
+Low consumers without AC,spring,weekday,28,0.16028984016935197
+Low consumers without AC,spring,weekday,29,0.14019121572510015
+Low consumers without AC,spring,weekday,30,0.13747257761964612
+Low consumers without AC,spring,weekday,31,0.1412466307710227
+Low consumers without AC,spring,weekday,32,0.16657341616283647
+Low consumers without AC,spring,weekday,33,0.2168940540136666
+Low consumers without AC,spring,weekday,34,0.27470926153662795
+Low consumers without AC,spring,weekday,35,0.3313817778027586
+Low consumers without AC,spring,weekday,36,0.3599604074568674
+Low consumers without AC,spring,weekday,37,0.5404686477667139
+Low consumers without AC,spring,weekday,38,0.6335534591148119
+Low consumers without AC,spring,weekday,39,0.7370757363099043
+Low consumers without AC,spring,weekday,40,0.8309715004024105
+Low consumers without AC,spring,weekday,41,0.9751759497286505
+Low consumers without AC,spring,weekday,42,1.0123077802245548
+Low consumers without AC,spring,weekday,43,0.8709569369034612
+Low consumers without AC,spring,weekday,44,0.7259468256193401
+Low consumers without AC,spring,weekday,45,0.5502587848793417
+Low consumers without AC,spring,weekday,46,0.3732311949590153
+Low consumers without AC,spring,weekday,47,0.2557560982080879
+Low consumers without AC,spring,weekend,0,0.29822755474214063
+Low consumers without AC,spring,weekend,1,0.24284093785924926
+Low consumers without AC,spring,weekend,2,0.14270802469135802
+Low consumers without AC,spring,weekend,3,0.10805316358024691
+Low consumers without AC,spring,weekend,4,0.10473981481481481
+Low consumers without AC,spring,weekend,5,0.10472122422761171
+Low consumers without AC,spring,weekend,6,0.10282781459547534
+Low consumers without AC,spring,weekend,7,0.16984510481293477
+Low consumers without AC,spring,weekend,8,0.29218168515385096
+Low consumers without AC,spring,weekend,9,0.16381472017312979
+Low consumers without AC,spring,weekend,10,0.1638601049324995
+Low consumers without AC,spring,weekend,11,0.16201903338907525
+Low consumers without AC,spring,weekend,12,0.13283001269035533
+Low consumers without AC,spring,weekend,13,0.11813140784608635
+Low consumers without AC,spring,weekend,14,0.13249777213761985
+Low consumers without AC,spring,weekend,15,0.1495969296390299
+Low consumers without AC,spring,weekend,16,0.15609492973303252
+Low consumers without AC,spring,weekend,17,0.21372865513567713
+Low consumers without AC,spring,weekend,18,0.23769512713855986
+Low consumers without AC,spring,weekend,19,0.2976699074074074
+Low consumers without AC,spring,weekend,20,0.321685262345679
+Low consumers without AC,spring,weekend,21,0.3382152777777778
+Low consumers without AC,spring,weekend,22,0.3563619598765432
+Low consumers without AC,spring,weekend,23,0.40935555555555553
+Low consumers without AC,spring,weekend,24,0.4358414520338605
+Low consumers without AC,spring,weekend,25,0.4930961898384244
+Low consumers without AC,spring,weekend,26,0.6983672458532942
+Low consumers without AC,spring,weekend,27,0.5658014191521146
+Low consumers without AC,spring,weekend,28,0.4023159936855028
+Low consumers without AC,spring,weekend,29,0.3499140558732121
+Low consumers without AC,spring,weekend,30,0.34155532793746457
+Low consumers without AC,spring,weekend,31,0.37076218642147013
+Low consumers without AC,spring,weekend,32,0.38932089675732756
+Low consumers without AC,spring,weekend,33,0.4135145607968887
+Low consumers without AC,spring,weekend,34,0.4998128544660794
+Low consumers without AC,spring,weekend,35,0.5520215648019369
+Low consumers without AC,spring,weekend,36,0.5279075899526091
+Low consumers without AC,spring,weekend,37,0.5658070410292072
+Low consumers without AC,spring,weekend,38,0.6303036371675338
+Low consumers without AC,spring,weekend,39,0.6318861900959838
+Low consumers without AC,spring,weekend,40,0.7243659652466561
+Low consumers without AC,spring,weekend,41,0.8736125613849827
+Low consumers without AC,spring,weekend,42,0.9040094661652844
+Low consumers without AC,spring,weekend,43,0.8181579141554628
+Low consumers without AC,spring,weekend,44,0.7588346800468758
+Low consumers without AC,spring,weekend,45,0.6673471712469308
+Low consumers without AC,spring,weekend,46,0.5402280266445165
+Low consumers without AC,spring,weekend,47,0.4490010888322258
+Low consumers without AC,summer,weekday,0,0.22419957631590054
+Low consumers without AC,summer,weekday,1,0.1485076154974463
+Low consumers without AC,summer,weekday,2,0.12433923958465239
+Low consumers without AC,summer,weekday,3,0.11527381178506607
+Low consumers without AC,summer,weekday,4,0.11369303902325777
+Low consumers without AC,summer,weekday,5,0.1105813679245283
+Low consumers without AC,summer,weekday,6,0.12223475145137881
+Low consumers without AC,summer,weekday,7,0.15437637276245766
+Low consumers without AC,summer,weekday,8,0.1678873034591195
+Low consumers without AC,summer,weekday,9,0.19044017295597485
+Low consumers without AC,summer,weekday,10,0.16623844339622643
+Low consumers without AC,summer,weekday,11,0.2747347091194968
+Low consumers without AC,summer,weekday,12,0.5250451650943396
+Low consumers without AC,summer,weekday,13,0.6436755149371068
+Low consumers without AC,summer,weekday,14,0.5302410966981133
+Low consumers without AC,summer,weekday,15,0.30108920990566035
+Low consumers without AC,summer,weekday,16,0.17905626965408805
+Low consumers without AC,summer,weekday,17,0.15625748820754717
+Low consumers without AC,summer,weekday,18,0.16957910770440254
+Low consumers without AC,summer,weekday,19,0.18731731132075471
+Low consumers without AC,summer,weekday,20,0.20314720911949685
+Low consumers without AC,summer,weekday,21,0.23880283018867923
+Low consumers without AC,summer,weekday,22,0.27135326257861636
+Low consumers without AC,summer,weekday,23,0.30532641509433966
+Low consumers without AC,summer,weekday,24,0.3340293632075471
+Low consumers without AC,summer,weekday,25,0.39168191823899373
+Low consumers without AC,summer,weekday,26,0.538448860062893
+Low consumers without AC,summer,weekday,27,0.5257356525157233
+Low consumers without AC,summer,weekday,28,0.46156217153441886
+Low consumers without AC,summer,weekday,29,0.4839417420522099
+Low consumers without AC,summer,weekday,30,0.517492573985526
+Low consumers without AC,summer,weekday,31,0.5309878241578359
+Low consumers without AC,summer,weekday,32,0.5375837818773155
+Low consumers without AC,summer,weekday,33,0.5273958559489963
+Low consumers without AC,summer,weekday,34,0.5349077727879727
+Low consumers without AC,summer,weekday,35,0.5309008217024209
+Low consumers without AC,summer,weekday,36,0.5359838631860084
+Low consumers without AC,summer,weekday,37,0.6252709119496855
+Low consumers without AC,summer,weekday,38,0.7629224842767295
+Low consumers without AC,summer,weekday,39,0.8651593160377359
+Low consumers without AC,summer,weekday,40,0.9799876179245283
+Low consumers without AC,summer,weekday,41,1.125909709119497
+Low consumers without AC,summer,weekday,42,1.0679190039912916
+Low consumers without AC,summer,weekday,43,0.8556285649492017
+Low consumers without AC,summer,weekday,44,0.6488493680454765
+Low consumers without AC,summer,weekday,45,0.5053539761731979
+Low consumers without AC,summer,weekday,46,0.3983091104257378
+Low consumers without AC,summer,weekday,47,0.2938270479823562
+Low consumers without AC,summer,weekend,0,0.2989689166666667
+Low consumers without AC,summer,weekend,1,0.18390641666666668
+Low consumers without AC,summer,weekend,2,0.13221791666666666
+Low consumers without AC,summer,weekend,3,0.11413966666666667
+Low consumers without AC,summer,weekend,4,0.11335200000000001
+Low consumers without AC,summer,weekend,5,0.12654116666666668
+Low consumers without AC,summer,weekend,6,0.11736176640759931
+Low consumers without AC,summer,weekend,7,0.1579394805699482
+Low consumers without AC,summer,weekend,8,0.172942493955095
+Low consumers without AC,summer,weekend,9,0.16290259067357515
+Low consumers without AC,summer,weekend,10,0.16841810405872196
+Low consumers without AC,summer,weekend,11,0.16386828411053542
+Low consumers without AC,summer,weekend,12,0.1365454641623489
+Low consumers without AC,summer,weekend,13,0.12611981088082902
+Low consumers without AC,summer,weekend,14,0.14949165759930916
+Low consumers without AC,summer,weekend,15,0.1789330043177893
+Low consumers without AC,summer,weekend,16,0.23131593436960277
+Low consumers without AC,summer,weekend,17,0.26751411442141626
+Low consumers without AC,summer,weekend,18,0.32880887780656304
+Low consumers without AC,summer,weekend,19,0.3483501666666667
+Low consumers without AC,summer,weekend,20,0.3968264166666667
+Low consumers without AC,summer,weekend,21,0.44953316666666665
+Low consumers without AC,summer,weekend,22,0.5433056666666667
+Low consumers without AC,summer,weekend,23,0.65496125
+Low consumers without AC,summer,weekend,24,0.7372626666666666
+Low consumers without AC,summer,weekend,25,0.7710731666666666
+Low consumers without AC,summer,weekend,26,0.8638809166666667
+Low consumers without AC,summer,weekend,27,0.83624825
+Low consumers without AC,summer,weekend,28,0.755267
+Low consumers without AC,summer,weekend,29,0.6835920833333334
+Low consumers without AC,summer,weekend,30,0.6641864166666668
+Low consumers without AC,summer,weekend,31,0.6864205833333333
+Low consumers without AC,summer,weekend,32,0.7241760833333334
+Low consumers without AC,summer,weekend,33,0.7408509166666667
+Low consumers without AC,summer,weekend,34,0.7979450833333334
+Low consumers without AC,summer,weekend,35,0.82637125
+Low consumers without AC,summer,weekend,36,0.8855873333333334
+Low consumers without AC,summer,weekend,37,0.9505410000000001
+Low consumers without AC,summer,weekend,38,1.0081195
+Low consumers without AC,summer,weekend,39,0.9999697500000001
+Low consumers without AC,summer,weekend,40,0.9619250000000001
+Low consumers without AC,summer,weekend,41,0.948365
+Low consumers without AC,summer,weekend,42,0.8661530833333333
+Low consumers without AC,summer,weekend,43,0.74542125
+Low consumers without AC,summer,weekend,44,0.7073163333333333
+Low consumers without AC,summer,weekend,45,0.6661603333333334
+Low consumers without AC,summer,weekend,46,0.5975943333333333
+Low consumers without AC,summer,weekend,47,0.5060093333333334
+Low consumers without AC,winter,weekday,0,0.16620916666666666
+Low consumers without AC,winter,weekday,1,0.12280350000000001
+Low consumers without AC,winter,weekday,2,0.10497291666666668
+Low consumers without AC,winter,weekday,3,0.09841285416666666
+Low consumers without AC,winter,weekday,4,0.09639943969298245
+Low consumers without AC,winter,weekday,5,0.10142053618421051
+Low consumers without AC,winter,weekday,6,0.1104463826754386
+Low consumers without AC,winter,weekday,7,0.13881360416666666
+Low consumers without AC,winter,weekday,8,0.15716195065789473
+Low consumers without AC,winter,weekday,9,0.19405508881578945
+Low consumers without AC,winter,weekday,10,0.18192518530701754
+Low consumers without AC,winter,weekday,11,0.4220500416666667
+Low consumers without AC,winter,weekday,12,0.9751357916666668
+Low consumers without AC,winter,weekday,13,1.2689114166666666
+Low consumers without AC,winter,weekday,14,1.1162673333333333
+Low consumers without AC,winter,weekday,15,0.5728375416666667
+Low consumers without AC,winter,weekday,16,0.3166492459386282
+Low consumers without AC,winter,weekday,17,0.21695907325511432
+Low consumers without AC,winter,weekday,18,0.10306928038507822
+Low consumers without AC,winter,weekday,19,0.10986119584837546
+Low consumers without AC,winter,weekday,20,0.10658877797833935
+Low consumers without AC,winter,weekday,21,0.11888390177496992
+Low consumers without AC,winter,weekday,22,0.13996885890493382
+Low consumers without AC,winter,weekday,23,0.13275656603489772
+Low consumers without AC,winter,weekday,24,0.13743431483152826
+Low consumers without AC,winter,weekday,25,0.1663141469614922
+Low consumers without AC,winter,weekday,26,0.2760969374247894
+Low consumers without AC,winter,weekday,27,0.2651971445547533
+Low consumers without AC,winter,weekday,28,0.16631060508607776
+Low consumers without AC,winter,weekday,29,0.14839708857658584
+Low consumers without AC,winter,weekday,30,0.13439082801947494
+Low consumers without AC,winter,weekday,31,0.12824077579569734
+Low consumers without AC,winter,weekday,32,0.12866034857191974
+Low consumers without AC,winter,weekday,33,0.1756956954883538
+Low consumers without AC,winter,weekday,34,0.22998751549491636
+Low consumers without AC,winter,weekday,35,0.2856612980442177
+Low consumers without AC,winter,weekday,36,0.3884726483843537
+Low consumers without AC,winter,weekday,37,0.5910198363095238
+Low consumers without AC,winter,weekday,38,0.6858770922619047
+Low consumers without AC,winter,weekday,39,0.763451931547619
+Low consumers without AC,winter,weekday,40,0.8783445208333334
+Low consumers without AC,winter,weekday,41,1.0846632466931216
+Low consumers without AC,winter,weekday,42,1.1689862083333333
+Low consumers without AC,winter,weekday,43,1.0301554772727273
+Low consumers without AC,winter,weekday,44,0.8611758787878788
+Low consumers without AC,winter,weekday,45,0.6844011742424243
+Low consumers without AC,winter,weekday,46,0.48578476136363635
+Low consumers without AC,winter,weekday,47,0.27255429166666667
+Low consumers without AC,winter,weekend,0,0.24547787387285203
+Low consumers without AC,winter,weekend,1,0.1382173558337587
+Low consumers without AC,winter,weekend,2,0.12024935673405925
+Low consumers without AC,winter,weekend,3,0.11840702051314769
+Low consumers without AC,winter,weekend,4,0.1059255340946077
+Low consumers without AC,winter,weekend,5,0.1074049814705341
+Low consumers without AC,winter,weekend,6,0.12091164063829184
+Low consumers without AC,winter,weekend,7,0.1369613869272617
+Low consumers without AC,winter,weekend,8,0.15186943278803658
+Low consumers without AC,winter,weekend,9,0.169952813793739
+Low consumers without AC,winter,weekend,10,0.19688263666373657
+Low consumers without AC,winter,weekend,11,0.15353632317009772
+Low consumers without AC,winter,weekend,12,0.13337305891888315
+Low consumers without AC,winter,weekend,13,0.1392654764858504
+Low consumers without AC,winter,weekend,14,0.22513175768918126
+Low consumers without AC,winter,weekend,15,0.33225987601372425
+Low consumers without AC,winter,weekend,16,0.4616753996412976
+Low consumers without AC,winter,weekend,17,0.566615544480992
+Low consumers without AC,winter,weekend,18,0.29996714765401994
+Low consumers without AC,winter,weekend,19,0.30045852355432046
+Low consumers without AC,winter,weekend,20,0.3104340471818938
+Low consumers without AC,winter,weekend,21,0.3358729420215883
+Low consumers without AC,winter,weekend,22,0.36269107928552524
+Low consumers without AC,winter,weekend,23,0.4617898415494622
+Low consumers without AC,winter,weekend,24,0.52952269472249
+Low consumers without AC,winter,weekend,25,0.5434484456227906
+Low consumers without AC,winter,weekend,26,0.6433059200079397
+Low consumers without AC,winter,weekend,27,0.556577977726422
+Low consumers without AC,winter,weekend,28,0.3593915127176317
+Low consumers without AC,winter,weekend,29,0.2897489871027808
+Low consumers without AC,winter,weekend,30,0.27707009785156617
+Low consumers without AC,winter,weekend,31,0.2798456958071041
+Low consumers without AC,winter,weekend,32,0.28432600078687686
+Low consumers without AC,winter,weekend,33,0.35845458592081136
+Low consumers without AC,winter,weekend,34,0.4602737013577762
+Low consumers without AC,winter,weekend,35,0.5610347675523166
+Low consumers without AC,winter,weekend,36,0.7084392548772188
+Low consumers without AC,winter,weekend,37,0.7457379851816669
+Low consumers without AC,winter,weekend,38,0.7946200807789373
+Low consumers without AC,winter,weekend,39,0.79202016880045
+Low consumers without AC,winter,weekend,40,0.8238272643977201
+Low consumers without AC,winter,weekend,41,0.9592765001465057
+Low consumers without AC,winter,weekend,42,1.0075013987740788
+Low consumers without AC,winter,weekend,43,0.9148097254319553
+Low consumers without AC,winter,weekend,44,0.7981707983019528
+Low consumers without AC,winter,weekend,45,0.8006109431416473
+Low consumers without AC,winter,weekend,46,0.746311315254069
+Low consumers without AC,winter,weekend,47,0.6161952100937635
+Medium AC users,autumn,weekday,0,0.15895813884155063
+Medium AC users,autumn,weekday,1,0.11822652692405634
+Medium AC users,autumn,weekday,2,0.10913693612270083
+Medium AC users,autumn,weekday,3,0.10558177367730308
+Medium AC users,autumn,weekday,4,0.10452250377073906
+Medium AC users,autumn,weekday,5,0.10410363499245852
+Medium AC users,autumn,weekday,6,0.10726651583710407
+Medium AC users,autumn,weekday,7,0.1122096229260935
+Medium AC users,autumn,weekday,8,0.12533912518853696
+Medium AC users,autumn,weekday,9,0.1211158371040724
+Medium AC users,autumn,weekday,10,0.10905505279034691
+Medium AC users,autumn,weekday,11,0.14417877828054299
+Medium AC users,autumn,weekday,12,0.3625474541164524
+Medium AC users,autumn,weekday,13,0.5645503124113316
+Medium AC users,autumn,weekday,14,0.4640287121246061
+Medium AC users,autumn,weekday,15,0.2456035857260817
+Medium AC users,autumn,weekday,16,0.1540679306919766
+Medium AC users,autumn,weekday,17,0.14077700253835115
+Medium AC users,autumn,weekday,18,0.1226136600080933
+Medium AC users,autumn,weekday,19,0.13155161387631975
+Medium AC users,autumn,weekday,20,0.13552659125188538
+Medium AC users,autumn,weekday,21,0.15126523378582202
+Medium AC users,autumn,weekday,22,0.17121831070889895
+Medium AC users,autumn,weekday,23,0.17007069762735996
+Medium AC users,autumn,weekday,24,0.17701509127440765
+Medium AC users,autumn,weekday,25,0.18286201420737394
+Medium AC users,autumn,weekday,26,0.23890082250987266
+Medium AC users,autumn,weekday,27,0.22141592040513153
+Medium AC users,autumn,weekday,28,0.20388570919506926
+Medium AC users,autumn,weekday,29,0.19607542665975433
+Medium AC users,autumn,weekday,30,0.2022962184585676
+Medium AC users,autumn,weekday,31,0.20227510533869567
+Medium AC users,autumn,weekday,32,0.2042425657209864
+Medium AC users,autumn,weekday,33,0.2186235404320856
+Medium AC users,autumn,weekday,34,0.2507321923679208
+Medium AC users,autumn,weekday,35,0.3039337402313579
+Medium AC users,autumn,weekday,36,0.37541450378106944
+Medium AC users,autumn,weekday,37,0.5422200637108715
+Medium AC users,autumn,weekday,38,0.60953838005093
+Medium AC users,autumn,weekday,39,0.6433424920169311
+Medium AC users,autumn,weekday,40,0.6440736175575928
+Medium AC users,autumn,weekday,41,0.6010664925338147
+Medium AC users,autumn,weekday,42,0.5392872000611174
+Medium AC users,autumn,weekday,43,0.47527748671773057
+Medium AC users,autumn,weekday,44,0.4405786032369753
+Medium AC users,autumn,weekday,45,0.4119717160804735
+Medium AC users,autumn,weekday,46,0.3206685264910051
+Medium AC users,autumn,weekday,47,0.20311488355096574
+Medium AC users,autumn,weekend,0,0.1707079381329949
+Medium AC users,autumn,weekend,1,0.11650273364469038
+Medium AC users,autumn,weekend,2,0.10871711512002943
+Medium AC users,autumn,weekend,3,0.10111534715189772
+Medium AC users,autumn,weekend,4,0.10012401234584672
+Medium AC users,autumn,weekend,5,0.10332108822140805
+Medium AC users,autumn,weekend,6,0.10282862540776369
+Medium AC users,autumn,weekend,7,0.10783831164787722
+Medium AC users,autumn,weekend,8,0.1253787894240879
+Medium AC users,autumn,weekend,9,0.1114577744906916
+Medium AC users,autumn,weekend,10,0.10510311577370025
+Medium AC users,autumn,weekend,11,0.10481657955654497
+Medium AC users,autumn,weekend,12,0.10140945346464378
+Medium AC users,autumn,weekend,13,0.10571477081165662
+Medium AC users,autumn,weekend,14,0.11487332882405571
+Medium AC users,autumn,weekend,15,0.15978142322544317
+Medium AC users,autumn,weekend,16,0.2152575954722466
+Medium AC users,autumn,weekend,17,0.2733549527517675
+Medium AC users,autumn,weekend,18,0.26130716946494054
+Medium AC users,autumn,weekend,19,0.2561094139625066
+Medium AC users,autumn,weekend,20,0.2820740641915961
+Medium AC users,autumn,weekend,21,0.29561265861374736
+Medium AC users,autumn,weekend,22,0.3011224822968338
+Medium AC users,autumn,weekend,23,0.382418737287363
+Medium AC users,autumn,weekend,24,0.4320762081920387
+Medium AC users,autumn,weekend,25,0.486746775768698
+Medium AC users,autumn,weekend,26,0.5388594902851049
+Medium AC users,autumn,weekend,27,0.4255055032625967
+Medium AC users,autumn,weekend,28,0.3345728115598358
+Medium AC users,autumn,weekend,29,0.3077331062824143
+Medium AC users,autumn,weekend,30,0.2819722094514482
+Medium AC users,autumn,weekend,31,0.2687808827562288
+Medium AC users,autumn,weekend,32,0.25932922423597166
+Medium AC users,autumn,weekend,33,0.2728427144078528
+Medium AC users,autumn,weekend,34,0.32619796229260933
+Medium AC users,autumn,weekend,35,0.35747507511312215
+Medium AC users,autumn,weekend,36,0.3955621369532428
+Medium AC users,autumn,weekend,37,0.41194112941176475
+Medium AC users,autumn,weekend,38,0.4170632214177979
+Medium AC users,autumn,weekend,39,0.4234075230769231
+Medium AC users,autumn,weekend,40,0.4367560479638009
+Medium AC users,autumn,weekend,41,0.44143858491704374
+Medium AC users,autumn,weekend,42,0.45689819577677226
+Medium AC users,autumn,weekend,43,0.4410187417797889
+Medium AC users,autumn,weekend,44,0.4378290690799397
+Medium AC users,autumn,weekend,45,0.4504523677224736
+Medium AC users,autumn,weekend,46,0.44285541749622925
+Medium AC users,autumn,weekend,47,0.38524594841628956
+Medium AC users,spring,weekday,0,0.2357300591620366
+Medium AC users,spring,weekday,1,0.18958732871937986
+Medium AC users,spring,weekday,2,0.13083458276988982
+Medium AC users,spring,weekday,3,0.10499660781732316
+Medium AC users,spring,weekday,4,0.10380040703722498
+Medium AC users,spring,weekday,5,0.10483258691768099
+Medium AC users,spring,weekday,6,0.106215378737285
+Medium AC users,spring,weekday,7,0.15303089733198058
+Medium AC users,spring,weekday,8,0.2282672130980037
+Medium AC users,spring,weekday,9,0.12009025213080578
+Medium AC users,spring,weekday,10,0.11003799003070339
+Medium AC users,spring,weekday,11,0.128001487431156
+Medium AC users,spring,weekday,12,0.2076954929506047
+Medium AC users,spring,weekday,13,0.29244462095979096
+Medium AC users,spring,weekday,14,0.31441467471632545
+Medium AC users,spring,weekday,15,0.33358583744103726
+Medium AC users,spring,weekday,16,0.20594061592898277
+Medium AC users,spring,weekday,17,0.15164844283155032
+Medium AC users,spring,weekday,18,0.1292308984703477
+Medium AC users,spring,weekday,19,0.13891449928464283
+Medium AC users,spring,weekday,20,0.1506545125128612
+Medium AC users,spring,weekday,21,0.1514418573986445
+Medium AC users,spring,weekday,22,0.16007770891605838
+Medium AC users,spring,weekday,23,0.17061144145995144
+Medium AC users,spring,weekday,24,0.17428056870440944
+Medium AC users,spring,weekday,25,0.19295977849847287
+Medium AC users,spring,weekday,26,0.22193877813869983
+Medium AC users,spring,weekday,27,0.19994124067025318
+Medium AC users,spring,weekday,28,0.17541174623567504
+Medium AC users,spring,weekday,29,0.16229831703195527
+Medium AC users,spring,weekday,30,0.1591181467555908
+Medium AC users,spring,weekday,31,0.16891909590971899
+Medium AC users,spring,weekday,32,0.19033271644165836
+Medium AC users,spring,weekday,33,0.23269102521366322
+Medium AC users,spring,weekday,34,0.2731043015933125
+Medium AC users,spring,weekday,35,0.30742089368851966
+Medium AC users,spring,weekday,36,0.33810417328514686
+Medium AC users,spring,weekday,37,0.5036341006082037
+Medium AC users,spring,weekday,38,0.6024304830535695
+Medium AC users,spring,weekday,39,0.642078429903228
+Medium AC users,spring,weekday,40,0.6236934840257361
+Medium AC users,spring,weekday,41,0.5807841301519873
+Medium AC users,spring,weekday,42,0.5455887266138627
+Medium AC users,spring,weekday,43,0.4893597473766062
+Medium AC users,spring,weekday,44,0.4508258661785653
+Medium AC users,spring,weekday,45,0.41468034885066263
+Medium AC users,spring,weekday,46,0.337203282181712
+Medium AC users,spring,weekday,47,0.24939211329482516
+Medium AC users,spring,weekend,0,0.27574050836537434
+Medium AC users,spring,weekend,1,0.21828721081520916
+Medium AC users,spring,weekend,2,0.1350720759375204
+Medium AC users,spring,weekend,3,0.10275418143746416
+Medium AC users,spring,weekend,4,0.10271562608047256
+Medium AC users,spring,weekend,5,0.10229036048382954
+Medium AC users,spring,weekend,6,0.10599781093656924
+Medium AC users,spring,weekend,7,0.18037364942504114
+Medium AC users,spring,weekend,8,0.29367706258686327
+Medium AC users,spring,weekend,9,0.12100781927266528
+Medium AC users,spring,weekend,10,0.1138567330697645
+Medium AC users,spring,weekend,11,0.11209447622128091
+Medium AC users,spring,weekend,12,0.10872535515164967
+Medium AC users,spring,weekend,13,0.1073700537441802
+Medium AC users,spring,weekend,14,0.11627363372726755
+Medium AC users,spring,weekend,15,0.13479547805312905
+Medium AC users,spring,weekend,16,0.1526586804036819
+Medium AC users,spring,weekend,17,0.21924769974769884
+Medium AC users,spring,weekend,18,0.26690342206920303
+Medium AC users,spring,weekend,19,0.31407838912563824
+Medium AC users,spring,weekend,20,0.3682610177652252
+Medium AC users,spring,weekend,21,0.3200956760949381
+Medium AC users,spring,weekend,22,0.30842955749043166
+Medium AC users,spring,weekend,23,0.34762189787295106
+Medium AC users,spring,weekend,24,0.42707073789236233
+Medium AC users,spring,weekend,25,0.49022945445498334
+Medium AC users,spring,weekend,26,0.5087782944743946
+Medium AC users,spring,weekend,27,0.4087900611459481
+Medium AC users,spring,weekend,28,0.34046203115809714
+Medium AC users,spring,weekend,29,0.32044877967424035
+Medium AC users,spring,weekend,30,0.2992553581461255
+Medium AC users,spring,weekend,31,0.297012400163317
+Medium AC users,spring,weekend,32,0.3203660284152819
+Medium AC users,spring,weekend,33,0.35625419960479215
+Medium AC users,spring,weekend,34,0.3659153396577737
+Medium AC users,spring,weekend,35,0.3899027278952143
+Medium AC users,spring,weekend,36,0.40512016454325206
+Medium AC users,spring,weekend,37,0.422299016664066
+Medium AC users,spring,weekend,38,0.4511324827583408
+Medium AC users,spring,weekend,39,0.42663192458491866
+Medium AC users,spring,weekend,40,0.44737485012877304
+Medium AC users,spring,weekend,41,0.4472847940766019
+Medium AC users,spring,weekend,42,0.4596916750999145
+Medium AC users,spring,weekend,43,0.4544776987606742
+Medium AC users,spring,weekend,44,0.45210254082461215
+Medium AC users,spring,weekend,45,0.45011750207347906
+Medium AC users,spring,weekend,46,0.4563395909228415
+Medium AC users,spring,weekend,47,0.4202794435772102
+Medium AC users,summer,weekday,0,0.2539309635879876
+Medium AC users,summer,weekday,1,0.16078968336235308
+Medium AC users,summer,weekday,2,0.14074535701072882
+Medium AC users,summer,weekday,3,0.13211997780244172
+Medium AC users,summer,weekday,4,0.1318311320754717
+Medium AC users,summer,weekday,5,0.130525786163522
+Medium AC users,summer,weekday,6,0.13308435072142064
+Medium AC users,summer,weekday,7,0.1346394787232745
+Medium AC users,summer,weekday,8,0.13300280692916652
+Medium AC users,summer,weekday,9,0.13183526415624086
+Medium AC users,summer,weekday,10,0.11982146702107857
+Medium AC users,summer,weekday,11,0.13286930510604206
+Medium AC users,summer,weekday,12,0.23223366916102767
+Medium AC users,summer,weekday,13,0.34305354929322746
+Medium AC users,summer,weekday,14,0.29611796227573145
+Medium AC users,summer,weekday,15,0.18214848698594535
+Medium AC users,summer,weekday,16,0.13564871866156886
+Medium AC users,summer,weekday,17,0.1378689201418272
+Medium AC users,summer,weekday,18,0.17046289476774346
+Medium AC users,summer,weekday,19,0.19529774697607308
+Medium AC users,summer,weekday,20,0.21803260179160913
+Medium AC users,summer,weekday,21,0.2487402390941336
+Medium AC users,summer,weekday,22,0.2842634869161916
+Medium AC users,summer,weekday,23,0.3191224564772047
+Medium AC users,summer,weekday,24,0.35079202993968994
+Medium AC users,summer,weekday,25,0.40266705002526876
+Medium AC users,summer,weekday,26,0.5288180778243539
+Medium AC users,summer,weekday,27,0.5602597394470084
+Medium AC users,summer,weekday,28,0.5863949134334859
+Medium AC users,summer,weekday,29,0.6211569994708744
+Medium AC users,summer,weekday,30,0.6553330967085724
+Medium AC users,summer,weekday,31,0.6757973312066861
+Medium AC users,summer,weekday,32,0.6753530195619235
+Medium AC users,summer,weekday,33,0.6612656897552194
+Medium AC users,summer,weekday,34,0.6500983361160825
+Medium AC users,summer,weekday,35,0.6540736941116119
+Medium AC users,summer,weekday,36,0.6516317780057032
+Medium AC users,summer,weekday,37,0.7080818278495776
+Medium AC users,summer,weekday,38,0.7995860624218114
+Medium AC users,summer,weekday,39,0.8116109592212
+Medium AC users,summer,weekday,40,0.7552804328524314
+Medium AC users,summer,weekday,41,0.6987122225014497
+Medium AC users,summer,weekday,42,0.621599836107872
+Medium AC users,summer,weekday,43,0.5395310821096994
+Medium AC users,summer,weekday,44,0.47826122335254695
+Medium AC users,summer,weekday,45,0.45146335402246957
+Medium AC users,summer,weekday,46,0.4182918627908014
+Medium AC users,summer,weekday,47,0.34352549549550015
+Medium AC users,summer,weekend,0,0.35010161378490795
+Medium AC users,summer,weekend,1,0.2210204420677362
+Medium AC users,summer,weekend,2,0.158467871657754
+Medium AC users,summer,weekend,3,0.1468258110516934
+Medium AC users,summer,weekend,4,0.14727437789661318
+Medium AC users,summer,weekend,5,0.14231792513368982
+Medium AC users,summer,weekend,6,0.14480155080213905
+Medium AC users,summer,weekend,7,0.1468992156862745
+Medium AC users,summer,weekend,8,0.1490651550802139
+Medium AC users,summer,weekend,9,0.14686281996434938
+Medium AC users,summer,weekend,10,0.12485373975044563
+Medium AC users,summer,weekend,11,0.11945892810457517
+Medium AC users,summer,weekend,12,0.10975254901960785
+Medium AC users,summer,weekend,13,0.10537658823529412
+Medium AC users,summer,weekend,14,0.11588470588235295
+Medium AC users,summer,weekend,15,0.13339242930856554
+Medium AC users,summer,weekend,16,0.16727125180259475
+Medium AC users,summer,weekend,17,0.23274293736931614
+Medium AC users,summer,weekend,18,0.3026542088308526
+Medium AC users,summer,weekend,19,0.37438898767890527
+Medium AC users,summer,weekend,20,0.43830433859673756
+Medium AC users,summer,weekend,21,0.4790834495764893
+Medium AC users,summer,weekend,22,0.5347207855304412
+Medium AC users,summer,weekend,23,0.6473871018765501
+Medium AC users,summer,weekend,24,0.7352210260657962
+Medium AC users,summer,weekend,25,0.806668048294258
+Medium AC users,summer,weekend,26,0.9911212273854649
+Medium AC users,summer,weekend,27,0.946468131966868
+Medium AC users,summer,weekend,28,0.8868893894894474
+Medium AC users,summer,weekend,29,0.8891330783845759
+Medium AC users,summer,weekend,30,0.8842351198706286
+Medium AC users,summer,weekend,31,0.8835049039822114
+Medium AC users,summer,weekend,32,0.8802989569436022
+Medium AC users,summer,weekend,33,0.8654538819486558
+Medium AC users,summer,weekend,34,0.8477073333333334
+Medium AC users,summer,weekend,35,0.8368412549019608
+Medium AC users,summer,weekend,36,0.8210776470588235
+Medium AC users,summer,weekend,37,0.8273381960784313
+Medium AC users,summer,weekend,38,0.8574269019607843
+Medium AC users,summer,weekend,39,0.819695568627451
+Medium AC users,summer,weekend,40,0.7625392156862745
+Medium AC users,summer,weekend,41,0.6982855294117647
+Medium AC users,summer,weekend,42,0.6536432156862745
+Medium AC users,summer,weekend,43,0.6037430588235294
+Medium AC users,summer,weekend,44,0.5382449019607843
+Medium AC users,summer,weekend,45,0.5143729019607843
+Medium AC users,summer,weekend,46,0.4977373725490196
+Medium AC users,summer,weekend,47,0.49835894117647056
+Medium AC users,winter,weekday,0,0.15711546661169812
+Medium AC users,winter,weekday,1,0.11813897847452523
+Medium AC users,winter,weekday,2,0.10278135230984856
+Medium AC users,winter,weekday,3,0.09798983815533643
+Medium AC users,winter,weekday,4,0.09750207728121307
+Medium AC users,winter,weekday,5,0.09757226028809035
+Medium AC users,winter,weekday,6,0.09895691117867285
+Medium AC users,winter,weekday,7,0.10922959765658691
+Medium AC users,winter,weekday,8,0.1164299038199989
+Medium AC users,winter,weekday,9,0.11348334413211993
+Medium AC users,winter,weekday,10,0.10873744683989224
+Medium AC users,winter,weekday,11,0.15794459614055917
+Medium AC users,winter,weekday,12,0.4863437062255398
+Medium AC users,winter,weekday,13,0.9663336375102876
+Medium AC users,winter,weekday,14,0.9605685375389683
+Medium AC users,winter,weekday,15,0.5748199768188517
+Medium AC users,winter,weekday,16,0.38621782556277523
+Medium AC users,winter,weekday,17,0.3488286174344243
+Medium AC users,winter,weekday,18,0.1293248210707792
+Medium AC users,winter,weekday,19,0.13256975019733017
+Medium AC users,winter,weekday,20,0.1394858914450933
+Medium AC users,winter,weekday,21,0.14127062211650465
+Medium AC users,winter,weekday,22,0.15438705391685245
+Medium AC users,winter,weekday,23,0.15904433241951754
+Medium AC users,winter,weekday,24,0.16235184681047732
+Medium AC users,winter,weekday,25,0.170278873976244
+Medium AC users,winter,weekday,26,0.20495306149656348
+Medium AC users,winter,weekday,27,0.1816825936314411
+Medium AC users,winter,weekday,28,0.15002375993231387
+Medium AC users,winter,weekday,29,0.14286315642389305
+Medium AC users,winter,weekday,30,0.14269479411880293
+Medium AC users,winter,weekday,31,0.13856711540221667
+Medium AC users,winter,weekday,32,0.13712357394053235
+Medium AC users,winter,weekday,33,0.17468109654954678
+Medium AC users,winter,weekday,34,0.2225579861842447
+Medium AC users,winter,weekday,35,0.26837387199808505
+Medium AC users,winter,weekday,36,0.39368647890423863
+Medium AC users,winter,weekday,37,0.6051092344541322
+Medium AC users,winter,weekday,38,0.7223883507197192
+Medium AC users,winter,weekday,39,0.7732529222580922
+Medium AC users,winter,weekday,40,0.7681896855046719
+Medium AC users,winter,weekday,41,0.7684699193394868
+Medium AC users,winter,weekday,42,0.7184999767037135
+Medium AC users,winter,weekday,43,0.6833288473791802
+Medium AC users,winter,weekday,44,0.7036092924816009
+Medium AC users,winter,weekday,45,0.6822252344354465
+Medium AC users,winter,weekday,46,0.5440189473075604
+Medium AC users,winter,weekday,47,0.31056478190361136
+Medium AC users,winter,weekend,0,0.25195571246116694
+Medium AC users,winter,weekend,1,0.15686573868716555
+Medium AC users,winter,weekend,2,0.10701774352278982
+Medium AC users,winter,weekend,3,0.09295388383078489
+Medium AC users,winter,weekend,4,0.09541101344359276
+Medium AC users,winter,weekend,5,0.09317121792271083
+Medium AC users,winter,weekend,6,0.10364242953195363
+Medium AC users,winter,weekend,7,0.1150509991540098
+Medium AC users,winter,weekend,8,0.10681771826256271
+Medium AC users,winter,weekend,9,0.10988985824239306
+Medium AC users,winter,weekend,10,0.10315050089602015
+Medium AC users,winter,weekend,11,0.09895757848725867
+Medium AC users,winter,weekend,12,0.09548770347093205
+Medium AC users,winter,weekend,13,0.10018098157239969
+Medium AC users,winter,weekend,14,0.1315011611767537
+Medium AC users,winter,weekend,15,0.24999537599029956
+Medium AC users,winter,weekend,16,0.4055466490599943
+Medium AC users,winter,weekend,17,0.5358374244094978
+Medium AC users,winter,weekend,18,0.3578209805076646
+Medium AC users,winter,weekend,19,0.3534736096896102
+Medium AC users,winter,weekend,20,0.31851594475390876
+Medium AC users,winter,weekend,21,0.33280582883781523
+Medium AC users,winter,weekend,22,0.33859736176307637
+Medium AC users,winter,weekend,23,0.3774219160787119
+Medium AC users,winter,weekend,24,0.4317720497169855
+Medium AC users,winter,weekend,25,0.47248737943369057
+Medium AC users,winter,weekend,26,0.5564591708259748
+Medium AC users,winter,weekend,27,0.41005030268171727
+Medium AC users,winter,weekend,28,0.3149848391720409
+Medium AC users,winter,weekend,29,0.2776045806534518
+Medium AC users,winter,weekend,30,0.26485309515922395
+Medium AC users,winter,weekend,31,0.25015281287355223
+Medium AC users,winter,weekend,32,0.25057556980356677
+Medium AC users,winter,weekend,33,0.30572151449353385
+Medium AC users,winter,weekend,34,0.3640193308412549
+Medium AC users,winter,weekend,35,0.39099709371304014
+Medium AC users,winter,weekend,36,0.5432014608629002
+Medium AC users,winter,weekend,37,0.6407403199913699
+Medium AC users,winter,weekend,38,0.6651339024196784
+Medium AC users,winter,weekend,39,0.6990353033889124
+Medium AC users,winter,weekend,40,0.7193378126809755
+Medium AC users,winter,weekend,41,0.7596779796584905
+Medium AC users,winter,weekend,42,0.7661423222153281
+Medium AC users,winter,weekend,43,0.7771876259678326
+Medium AC users,winter,weekend,44,0.7944149707185548
+Medium AC users,winter,weekend,45,0.8254661568240007
+Medium AC users,winter,weekend,46,0.8184667636068084
+Medium AC users,winter,weekend,47,0.6620318980188495

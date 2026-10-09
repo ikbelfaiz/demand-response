@@ -171,5 +171,5 @@ def test_saved_backtest_has_real_model_baseline_and_label_separation():
 
 
 def test_operator_navigation_adds_dr_page_without_data_explorer():
-    assert list(PAGES)==["Community Overview","Community Grid","DR Events","Household Analytics","DR Detection & Forecasting"]
+    assert list(PAGES)==["Community Overview","Community Grid","DR Events","Household Analytics","DR Detection & Forecasting","Customer Profiling"]
     assert "Dataset Explorer" not in PAGES

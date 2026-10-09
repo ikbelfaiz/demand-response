@@ -5,6 +5,7 @@ import streamlit as st
 
 from backend.data import load_events, load_household_info, load_participation
 from backend.services import household_service
+from backend.services import segmentation_service as seg
 from backend.services.forecast_service import consumer_forecast_dates, forecast_next_day, model_status
 from backend.services.participation_service import for_household, response_counts
 from frontend.charts import bars, donut, forecast_chart, heatmap, lines, style
@@ -100,12 +101,33 @@ def household(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> None
     cols=st.columns(3)
     values=[("Occupants",info.n_occupants),("Air conditioning","Yes" if info.has_ac else "No"),("Second AC","Yes" if info.has_second_ac else "No"),("Electric water heater","Yes" if info.has_electric_water_heater else "No"),("Washing machine","Yes" if info.has_washing_machine else "No"),("Daytime occupancy","Yes" if info.occupied_daytime else "No"),("Measured submeters","Yes" if info.has_submeter else "No")]
     for i,(label,value) in enumerate(values): cols[i%3].metric(label,value)
+    _segment_card(client_id)
     st.info("The form below is demo-only session state and never changes the research dataset.")
     with st.form(f"onboarding_{client_id}"):
         appliances=st.multiselect("Appliances you are willing to shift",["Air conditioning","Electric water heater","Washing machine"],key=f"shift_{client_id}")
         willingness=st.slider("Participation willingness",0,100,60,key=f"willing_{client_id}")
         if st.form_submit_button("Save demo profile"): st.session_state.setdefault("demo_profiles",{})[client_id]={"appliances":appliances,"willingness":willingness}; st.success("Saved in this session only.")
 
+
+def _segment_card(client_id: str) -> None:
+    st.subheader("My consumption profile")
+    if not seg.profiling_available():
+        st.info(f"Consumption profile not available yet. Operator must run: {seg.TRAIN_COMMAND}"); return
+    hh = seg.household_segments(); me = hh.loc[hh.client_id.eq(client_id)].iloc[0]
+    a, b, c = st.columns(3)
+    a.metric("My segment", me.segment)
+    b.metric("My usual evening use (18–22h)", f"{me.usual_evening_kwh:.1f} kWh/day",
+             f"{me.vs_similar_households_pct:+.0f}% vs similar homes", delta_color="inverse")
+    c.metric("My DR acceptance rate", f"{me.acceptance_rate:.0%}")
+    st.success(me.comparison_message)
+    load = seg.segment_load_profiles()
+    left, right = st.columns(2)
+    season = left.radio("Season", ["summer", "autumn", "winter", "spring"], horizontal=True, key=f"my_season_{client_id}")
+    day_type = right.radio("Day type", ["weekday", "weekend"], horizontal=True, key=f"my_day_{client_id}")
+    d_ = load[(load.segment == me.segment) & (load.season == season) & (load.day_type == day_type)].sort_values("slot")
+    fig = go.Figure(go.Scatter(x=d_.slot / 2, y=d_.mean_kw_per_household, name=f"Typical curve: {me.segment}",
+                               line=dict(color=COLORS["household"], width=2.5)))
+    render_chart(style(fig, "Average power per household (kW)", "Hour of day"))
 
 def appliances(frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> None:
     page_header("Consumer / metering", "My appliances", "Measured submeter channels are shown only for panel households.")
@@ -127,7 +149,17 @@ def participation(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> 
     history=for_household(load_participation(),load_events(),client_id); counts=response_counts(history)
     a,b,c,d=st.columns(4); a.metric("Invitations",len(history)); b.metric("Accepted",counts["accept"]); c.metric("Declined",counts["decline"]); d.metric("No response",counts["no_response"])
     render_chart(donut(["Accept","Decline","No response"],[counts["accept"],counts["decline"],counts["no_response"]],"Recorded responses"))
-    st.dataframe(history[["event_id","start_ts","end_ts","response","reduction_target_pct"]],hide_index=True,width="stretch",height=350)
+    if seg.profiling_available():
+        costs=seg.event_costs(client_id=client_id)[["event_id","window_kwh","peak_price_millimes","event_cost_dt","surcharge_dt"]]
+        rew=seg.rewards(client_id=client_id)[["event_id","reward_dt"]]
+        history=history.merge(costs,on="event_id",how="left").merge(rew,on="event_id",how="left").fillna({"reward_dt":0.0})
+        x,y,z=st.columns(3); x.metric("Total cost of events",f"{history.event_cost_dt.sum():.2f} DT"); y.metric("Of which peak surcharge",f"{history.surcharge_dt.sum():.2f} DT"); z.metric("Rewards earned",f"{history.reward_dt.sum():.2f} DT")
+        cols=["event_id","start_ts","end_ts","response","window_kwh","peak_price_millimes","event_cost_dt","surcharge_dt","reward_dt"]
+        num=["window_kwh","event_cost_dt","surcharge_dt","reward_dt"]; view=history[cols].copy(); view[num]=view[num].round(3)
+        st.dataframe(view,hide_index=True,width="stretch",height=350)
+        st.caption("Cost of an event = kWh consumed in the window × peak price (band price +50%). Rewards are your share of your segment's measured savings.")
+    else:
+        st.dataframe(history[["event_id","start_ts","end_ts","response","reduction_target_pct"]],hide_index=True,width="stretch",height=350)
     st.subheader("Demo notification")
     st.caption("These controls only store a mock response in this browser session. Nothing is sent to STEG and the CSV is never modified.")
     choice=st.radio("Response",["Later","Accept","Decline"],horizontal=True,key=f"demo_response_{client_id}")

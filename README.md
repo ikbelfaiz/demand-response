@@ -24,6 +24,7 @@ python scripts/complete_v3.py
 - Complete one-minute canonical data and 30-minute operational resampling.
 - Parquet predicate/column pushdown and cached portfolio scanning.
 - Historical event/participation joins and appliance channels for the 10 panel homes.
+- Customer profiling (Operator ▸ Customer Profiling, Consumer ▸ My Household / My DR Participation): K-means segments trained January–mid-June, acceptance rates, typical curves by season and day type, priority list and chatbot context for each peak window, event costs (CPP +50 %), segment savings and rewards. Train with `python scripts/train_customer_profiling.py`; see [CUSTOMER_PROFILING.md](CUSTOMER_PROFILING.md).
 - Explicit offline forecast training/evaluation; Streamlit only loads versioned artifacts and never retrains.
 
 ## Historical forecast availability
