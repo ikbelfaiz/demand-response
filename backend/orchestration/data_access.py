@@ -33,7 +33,7 @@ def meter30() -> pd.DataFrame:
     m = pd.concat(frames, axis=1).sort_index()
     m.columns = m.columns.astype(str)
     m.index.name = "timestamp"
-    settings.OUT_DIR.mkdir(parents=True, exist_ok=True)
+    settings.METER_CACHE.parent.mkdir(parents=True, exist_ok=True)
     m.to_parquet(settings.METER_CACHE)
     return m
 
