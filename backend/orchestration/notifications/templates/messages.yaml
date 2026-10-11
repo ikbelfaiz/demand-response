@@ -1,0 +1,96 @@
+# Notification templates (Jinja2). Rendered by backend/orchestration/notifications/render.py.
+# Variables: start, end (formatted times), peak_price, band_price, pct, action_text, saving,
+#            expected_surcharge, projected, kwh, surcharge, missing_slots
+# Numbers are always computed by the pricing engine, never by the LLM.
+
+actions:
+  reduce_ac:
+    en: "reduce your air conditioner usage"
+    fr: "réduire l'utilisation de votre climatiseur"
+    ar: "تقليل استعمال المكيّف"
+  switch_off_ac:
+    en: "switch off your air conditioner"
+    fr: "éteindre votre climatiseur"
+    ar: "إطفاء المكيّف"
+  shift_water_heater:
+    en: "switch off your water heater until {{ end }}"
+    fr: "éteindre votre chauffe-eau jusqu'à {{ end }}"
+    ar: "إطفاء سخّان الماء حتى {{ end }}"
+  shift_washing_machine:
+    en: "run your washing machine after {{ end }}"
+    fr: "lancer votre machine à laver après {{ end }}"
+    ar: "تشغيل الغسّالة بعد {{ end }}"
+  general:
+    en: "shift energy-intensive appliances (oven, iron, water heater) outside this window"
+    fr: "décaler les appareils énergivores (four, fer à repasser, chauffe-eau) en dehors de ce créneau"
+    ar: "تأجيل الأجهزة كثيفة الاستهلاك (الفرن، المكواة، سخّان الماء) إلى خارج هذه الفترة"
+
+messages:
+  alert_personal:
+    en: |-
+      Tomorrow between {{ start }} and {{ end }}, critical peak pricing will be active.
+      Peak price: {{ peak_price }} millimes/kWh (+{{ pct }}% vs STEG price of {{ band_price }} millimes)
+      Recommended action: {{ action_text }}
+      Expected saving: ~{{ saving }} DT if you reduce
+    fr: |-
+      Demain entre {{ start }} et {{ end }}, la tarification de pointe sera active.
+      Prix de pointe : {{ peak_price }} millimes/kWh (+{{ pct }} % par rapport au prix STEG de {{ band_price }} millimes)
+      Action recommandée : {{ action_text }}
+      Économie estimée : ~{{ saving }} DT si vous réduisez
+    ar: |-
+      غدًا بين {{ start }} و{{ end }}، سيتم تطبيق تسعيرة الذروة.
+      سعر الذروة: {{ peak_price }} مليم/كيلوواط ساعة (+{{ pct }}٪ مقارنة بسعر الستاغ {{ band_price }} مليم)
+      الإجراء المقترح: {{ action_text }}
+      التوفير المتوقع: حوالي {{ saving }} دينار إذا خفّضت استهلاكك
+
+  alert_general:
+    en: |-
+      Tomorrow between {{ start }} and {{ end }}, critical peak pricing will be active.
+      Peak price: {{ peak_price }} millimes/kWh (+{{ pct }}% vs STEG price of {{ band_price }} millimes)
+      Recommended action: {{ action_text }}
+      Extra cost if you change nothing: ~{{ expected_surcharge }} DT
+    fr: |-
+      Demain entre {{ start }} et {{ end }}, la tarification de pointe sera active.
+      Prix de pointe : {{ peak_price }} millimes/kWh (+{{ pct }} % par rapport au prix STEG de {{ band_price }} millimes)
+      Action recommandée : {{ action_text }}
+      Surcoût si rien ne change : ~{{ expected_surcharge }} DT
+    ar: |-
+      غدًا بين {{ start }} و{{ end }}، سيتم تطبيق تسعيرة الذروة.
+      سعر الذروة: {{ peak_price }} مليم/كيلوواط ساعة (+{{ pct }}٪ مقارنة بسعر الستاغ {{ band_price }} مليم)
+      الإجراء المقترح: {{ action_text }}
+      الكلفة الإضافية إذا لم يتغيّر شيء: حوالي {{ expected_surcharge }} دينار
+
+  alert_exempt:
+    en: |-
+      Tomorrow between {{ start }} and {{ end }}, electricity demand will be very high.
+      Your price does not change (economic band), but you can help by choosing to {{ action_text }}.
+    fr: |-
+      Demain entre {{ start }} et {{ end }}, la demande d'électricité sera très élevée.
+      Votre prix ne change pas (tranche économique), mais vous pouvez aider en choisissant de {{ action_text }}.
+    ar: |-
+      غدًا بين {{ start }} و{{ end }}، سيكون الطلب على الكهرباء مرتفعًا جدًا.
+      لن يتغيّر سعرك (الشريحة الاقتصادية)، لكن يمكنك المساعدة عبر {{ action_text }}.
+
+  reminder:
+    en: |-
+      Critical peak pricing is active until {{ end }} and your consumption is still at its usual level.
+      At this pace, the extra cost will be about {{ projected }} DT. You can still {{ action_text }}.
+    fr: |-
+      La tarification de pointe est active jusqu'à {{ end }} et votre consommation reste à son niveau habituel.
+      À ce rythme, le surcoût sera d'environ {{ projected }} DT. Vous pouvez encore {{ action_text }}.
+    ar: |-
+      تسعيرة الذروة سارية حتى {{ end }} واستهلاكك لا يزال في مستواه المعتاد.
+      بهذا النسق ستكون الكلفة الإضافية حوالي {{ projected }} دينار. لا يزال بإمكانك {{ action_text }}.
+
+  summary:
+    en: |-
+      Yesterday's peak ({{ start }} – {{ end }}): you used {{ kwh }} kWh at {{ peak_price }} millimes/kWh. Extra cost: {{ surcharge }} DT.{% if missing_slots %} Readings were missing for {{ missing_slots }} half-hour(s); they were not billed.{% endif %}
+    fr: |-
+      Pointe d'hier ({{ start }} – {{ end }}) : vous avez consommé {{ kwh }} kWh à {{ peak_price }} millimes/kWh. Surcoût : {{ surcharge }} DT.{% if missing_slots %} {{ missing_slots }} demi-heure(s) sans relevé n'ont pas été facturées.{% endif %}
+    ar: |-
+      ذروة الأمس ({{ start }} – {{ end }}): استهلكت {{ kwh }} كيلوواط ساعة بسعر {{ peak_price }} مليم/كيلوواط ساعة. الكلفة الإضافية: {{ surcharge }} دينار.{% if missing_slots %} لم تُحتسب {{ missing_slots }} نصف ساعة بدون قراءة.{% endif %}
+
+  cancellation:
+    en: "The peak alert for tomorrow ({{ start }} – {{ end }}) is cancelled. Normal prices apply."
+    fr: "L'alerte de pointe de demain ({{ start }} – {{ end }}) est annulée. Les prix normaux s'appliquent."
+    ar: "تم إلغاء تنبيه الذروة ليوم الغد ({{ start }} – {{ end }}). تُطبّق الأسعار العادية."

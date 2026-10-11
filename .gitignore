@@ -1,3 +1,5 @@
 .venv-energy-ttm/
 __pycache__/
 .ipynb_checkpoints/
+outputs/orchestrator/
+*.db
