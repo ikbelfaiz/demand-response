@@ -47,17 +47,30 @@ def assumed_kva(row) -> int:
     return 2
 
 
+def _profiles() -> pd.DataFrame | None:
+    """Segments + acceptance rates: the team's profiling model, else data/customer_profiles.csv."""
+    try:
+        from backend.services import segmentation_service as ss
+        if ss.profiling_available():
+            return ss.household_segments()[["client_id", "segment", "acceptance_rate"]]
+    except ImportError:
+        pass
+    if settings.PROFILES_FILE.is_file():
+        p = pd.read_csv(settings.PROFILES_FILE)
+        p = p.rename(columns={p.columns[0]: "client_id"}) if "client_id" not in p else p
+        return p[[c for c in ["client_id", "segment", "acceptance_rate"] if c in p]]
+    return None
+
+
 @lru_cache(maxsize=1)
 def households() -> pd.DataFrame:
     """Household attributes + contracted kVA + segment and acceptance rate from customer profiling."""
     info = load_household_info().copy()
     if "contracted_kva" not in info:
         info["contracted_kva"] = info.apply(assumed_kva, axis=1)
-    if settings.PROFILES_FILE.is_file():
-        p = pd.read_csv(settings.PROFILES_FILE)
-        p = p.rename(columns={p.columns[0]: "client_id"}) if "client_id" not in p else p
-        keep = [c for c in ["client_id", "segment", "acceptance_rate"] if c in p]
-        info = info.merge(p[keep], on="client_id", how="left")
+    profiles = _profiles()
+    if profiles is not None:
+        info = info.merge(profiles, on="client_id", how="left")
     for col, default in [("segment", "Unknown"), ("acceptance_rate", 0.5)]:
         info[col] = info[col].fillna(default) if col in info else default
     return info.set_index("client_id")

@@ -16,12 +16,17 @@ class OrchestratorStatus:
     operational_activation: bool = False
     notification_engine: bool = False
     pricing_engine: bool = False
+    profiling_model: bool = False      # customer profiling outputs installed (else local priority list)
+    nilm_model: bool = False           # NILM checkpoint installed (else declared-device rules)
 
 
 def status() -> OrchestratorStatus:
+    from backend.orchestration.adapters.devices import nilm_installed
+    from backend.orchestration.adapters.profiling import profiling_installed
     return OrchestratorStatus(forecast_model=MODEL_REGISTRY.available(),
                               decision_model=MODEL_REGISTRY.community_available(),
-                              notification_engine=True, pricing_engine=True)
+                              notification_engine=True, pricing_engine=True,
+                              profiling_model=profiling_installed(), nilm_model=nilm_installed())
 
 
 def build_orchestrator(db_url: str | None = None, **kwargs):

@@ -3,7 +3,7 @@ forecast model and decision policy (every job runs exactly as in the app).
 
     python scripts/run_orchestrator_replay.py --start 2025-06-01 --end 2025-09-30
 
-Household responses are simulated from each household's acceptance rate (data/customer_profiles.csv).
+Household responses are simulated from each household's acceptance rate (customer profiling model).
 Outputs in outputs/orchestrator/: events.csv, targets.csv, notifications.csv, event_bills.csv,
 monthly_bills.csv, report.txt
 """
@@ -72,6 +72,8 @@ def report(Session, grid30, start, end) -> dict:
         f"Events: proposed {len(ev)}, cancelled {int((ev.status == 'cancelled').sum())}, billed {int((ev.status == 'billed').sum())}",
         f"Forecast model: {ev.forecast_model_version.iloc[0] if len(ev) else '-'} | decision policy: "
         f"{ev.decision_policy_version.iloc[0] if len(ev) else '-'}",
+        f"Customer profiling: {ev.profiling_version.dropna().iloc[0] if ev.profiling_version.notna().any() else '-'} | "
+        f"device recommendation: {ev.device_model.dropna().iloc[0] if ev.device_model.notna().any() else '-'}",
         f"Peak days in dataset: {len(peak_days)} | events on peak days: {len(ev_days & peak_days)} | "
         f"false alarms: {len(ev_days - peak_days)} | missed peak days: {len(peak_days - ev_days)}",
         f"Level mix: {ev.level.value_counts().sort_index().to_dict()}",
@@ -80,6 +82,8 @@ def report(Session, grid30, start, end) -> dict:
         f"Responses: {tg.response.value_counts().to_dict()}",
         f"Personalised alerts: {int(tg.personalised.sum())} of {len(tg)} | devices: "
         f"{tg.recommended_device.value_counts().to_dict()}",
+        f"Segments informed: {tg.drop_duplicates('client_id').segment.value_counts().to_dict()}",
+        f"Acceptance by segment: {tg.assign(acc=tg.response.eq('accept')).groupby('segment').acc.mean().round(2).to_dict()}",
         f"Event surcharges billed (final): {eb.surcharge_dt.sum():.3f} DT over {len(eb)} household-events",
         f"Monthly bills: {len(mb)} | cap applied: {int(mb.cap_applied.sum())} | "
         f"mean DR surcharge per household-month: {mb.dr_surcharge_dt.mean():.3f} DT",

@@ -2,11 +2,15 @@
 
 Output columns (one row per household):
     rank, client_id, segment, usual_window_kwh, month_to_date_kwh, projected_month_kwh,
-    contracted_kva, acceptance_rate
+    contracted_kva, acceptance_rate, expected_reduction_kwh, covers_deficit_at_rank, comparison_message
 Sorted by segment priority, then by usual consumption in the event window (descending).
-Segments come from data/customer_profiles.csv (K-means customer profiling); the consumption columns
-are computed here from the 30-min smart-meter readings. Without that file every household is
-"Unknown" and the list is sorted by consumption only.
+
+Two sources, chosen by default_targeting():
+  CustomerProfilingTargeting  the team's K-means model (backend/intelligence/customer_profiling.py,
+                              artifact models/customer_profiling/kmeans_v1) through
+                              segmentation_service.prepare_event(peak_start, peak_end, deficit_kwh, as_of)
+  LocalTargeting              fallback when the profiling outputs are not installed: same columns,
+                              computed here from the 30-min meter readings (segments "Unknown").
 """
 import calendar
 
@@ -71,3 +75,72 @@ def priority_list(meter30: pd.DataFrame, households: pd.DataFrame, start: pd.Tim
     df = df.sort_values(["segment_priority", "usual_window_kwh"], ascending=[True, False]).reset_index(drop=True)
     df.insert(0, "rank", np.arange(1, len(df) + 1))
     return df
+
+
+PRIORITY_COLUMNS = ["rank", "client_id", "segment", "usual_window_kwh", "month_to_date_kwh", "projected_month_kwh",
+                    "contracted_kva", "acceptance_rate", "expected_reduction_kwh", "covers_deficit_at_rank",
+                    "comparison_message"]
+
+
+class LocalTargeting:
+    source = "local priority list"
+
+    def priority_list(self, meter30, households, start, end, asof, exclude_days, deficit_kwh=None) -> pd.DataFrame:
+        df = priority_list(meter30, households, start, end, asof, exclude_days)
+        df["expected_reduction_kwh"] = np.nan
+        df["covers_deficit_at_rank"] = False
+        df["comparison_message"] = None
+        return df[PRIORITY_COLUMNS]
+
+
+class CustomerProfilingTargeting:
+    """Priority list + household context from the team's customer profiling model.
+
+    Only data available at `asof` (the decision time, D-1) is read by prepare_event.
+    """
+
+    def __init__(self, prepare_event=None, version: str | None = None):
+        from backend.services import segmentation_service as ss
+        self._prepare = prepare_event or ss.prepare_event
+        if version is None:
+            meta = ss.load_metadata()
+            version = f"{meta.get('model_name', 'customer_profiling')}_{meta.get('model_version', '')}".rstrip("_")
+        self.source = version
+
+    def priority_list(self, meter30, households, start, end, asof, exclude_days, deficit_kwh=None) -> pd.DataFrame:
+        targeting, context = self._prepare(start, end, float(deficit_kwh or 0.0), as_of=asof)
+        ctx = context.set_index("client_id")
+        df = targeting[["rank", "client_id", "segment", "usual_window_kwh", "acceptance_rate",
+                        "expected_reduction_kwh", "covers_deficit_at_rank"]].copy()
+        df = df[df.client_id.isin(households.index)]
+        df["month_to_date_kwh"] = df.client_id.map(ctx["month_to_date_kwh"]).round(1)
+        df["projected_month_kwh"] = df.client_id.map(ctx["projected_month_kwh"]).round(1)
+        df["comparison_message"] = df.client_id.map(ctx["comparison_message"]) if "comparison_message" in ctx else None
+        df["contracted_kva"] = df.client_id.map(households["contracted_kva"])
+        # households the profiling model does not know (new contracts) go to the end of the list
+        missing = households.index.difference(df.client_id)
+        if len(missing):
+            extra = LocalTargeting().priority_list(meter30, households.loc[missing], start, end, asof, exclude_days)
+            df = pd.concat([df, extra], ignore_index=True)
+        df["usual_window_kwh"] = df["usual_window_kwh"].fillna(0).round(3)
+        df["acceptance_rate"] = df["acceptance_rate"].fillna(households["acceptance_rate"].mean() if len(households) else 0.5)
+        fallback_proj = month_projection(meter30, asof)[1]
+        df["projected_month_kwh"] = df["projected_month_kwh"].fillna(df.client_id.map(fallback_proj)).fillna(0)
+        df["month_to_date_kwh"] = df["month_to_date_kwh"].fillna(0)
+        df["covers_deficit_at_rank"] = df["covers_deficit_at_rank"].fillna(False).astype(bool)
+        df = df.reset_index(drop=True)
+        df["rank"] = np.arange(1, len(df) + 1)
+        return df[PRIORITY_COLUMNS]
+
+
+def profiling_installed() -> bool:
+    try:
+        from backend.services.segmentation_service import profiling_available
+    except ImportError:
+        return False
+    return profiling_available()
+
+
+def default_targeting():
+    """The team's customer profiling model when its outputs are installed, otherwise the local list."""
+    return CustomerProfilingTargeting() if profiling_installed() else LocalTargeting()

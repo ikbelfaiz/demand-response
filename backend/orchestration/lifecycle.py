@@ -1,7 +1,8 @@
 """DR event lifecycle. `Orchestrator.tick(now)` runs every job due at `now` (every 30 min).
 
     D-1 14:30  daily_decision      team's community forecast (issued 14:00) → recommended events → `proposed`
-    operator   confirm / veto      priority list + device recommendation + pricing → one EventTarget per household
+    operator   confirm / veto      customer profiling priority list + NILM device recommendation + pricing
+                                   → one EventTarget per household
     D-1 18:00  send_alerts         alerts in each household's language, quiet hours respected
     D-1 21:00  send_later          second alert for households that answered "Later"
     operator   cancel              cancellation message, no surcharge
@@ -25,7 +26,7 @@ from sqlalchemy import select
 from backend.intelligence import pricing
 from backend.orchestration import data_access, settings as config
 from backend.orchestration.adapters.devices import default_recommender
-from backend.orchestration.adapters.profiling import month_projection, priority_list
+from backend.orchestration.adapters.profiling import default_targeting, month_projection
 from backend.orchestration.decide import decide
 from backend.orchestration.notifications.render import render_for_target
 from backend.orchestration.plan import build_targets
@@ -41,7 +42,7 @@ def _in_quiet(t: pd.Timestamp, start: str, end: str) -> bool:
 
 
 class Orchestrator:
-    def __init__(self, Session, forecaster=None, recommender=None, *, grid30: pd.DataFrame | None = None,
+    def __init__(self, Session, forecaster=None, recommender=None, targeting=None, *, grid30: pd.DataFrame | None = None,
                  meter30: pd.DataFrame | None = None, households: pd.DataFrame | None = None,
                  auto_confirm: bool = False, response_simulator: Callable | None = None, log: Callable = print):
         self.Session = Session
@@ -49,7 +50,8 @@ class Orchestrator:
             from backend.orchestration.adapters.forecast import CommunityDRForecaster
             forecaster = CommunityDRForecaster()
         self.forecaster = forecaster
-        self.recommender = recommender or default_recommender()
+        self.recommender = recommender or default_recommender()      # NILM model, else declared-device rules
+        self.targeting = targeting or default_targeting()            # customer profiling model, else local list
         self.grid30 = data_access.grid30() if grid30 is None else grid30
         self.meter30 = data_access.meter30() if meter30 is None else meter30
         self.households = data_access.households() if households is None else households
@@ -138,15 +140,18 @@ class Orchestrator:
             if ev.status != "proposed":
                 return
             start, end = pd.Timestamp(ev.start_ts), pd.Timestamp(ev.end_ts)
-            prio = priority_list(self.meter30, self.households, start, end, now, self._event_days(s) - {start.date()})
+            prio = self.targeting.priority_list(self.meter30, self.households, start, end, now,
+                                                self._event_days(s) - {start.date()}, ev.shortage_energy_kwh)
             refused = {}
             for ap in s.scalars(select(AppliancePreference).where(AppliancePreference.allow_recommendation.is_(False))):
                 refused.setdefault(ap.client_id, set()).add(ap.device)
             # temperature known at decision time: same window two days earlier (no target-day weather is used)
             lag = pd.Timedelta(days=2)
             mean_temp = float(self.grid30["temperature_c"].loc[start - lag:end - lag - pd.Timedelta(seconds=1)].mean())
-            s.add_all(build_targets(ev, prio, self.households, refused, mean_temp, self.recommender))
+            s.add_all(build_targets(ev, prio, self.households, refused, mean_temp, self.recommender, asof=now))
             ev.status, ev.confirmed_by = "confirmed", by
+            ev.profiling_version = getattr(self.targeting, "source", None)
+            ev.device_model = getattr(self.recommender, "source", None)
             s.commit()
 
     def veto(self, event_id: int, by: str = "operator"):

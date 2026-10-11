@@ -93,6 +93,8 @@ class DREvent(Base):
     recommended_reduction_pct: Mapped[float] = mapped_column(Float)
     forecast_model_version: Mapped[str] = mapped_column(String(64))
     decision_policy_version: Mapped[str] = mapped_column(String(64))
+    profiling_version: Mapped[str | None] = mapped_column(String(64), nullable=True)   # who built the priority list
+    device_model: Mapped[str | None] = mapped_column(String(64), nullable=True)        # NILM model or declared rules
     created_at: Mapped[datetime] = mapped_column(DateTime)
     confirmed_by: Mapped[str | None] = mapped_column(String(64), nullable=True)
     cancel_reason: Mapped[str | None] = mapped_column(String(128), nullable=True)
@@ -120,6 +122,10 @@ class EventTarget(Base):
     device_confidence: Mapped[float | None] = mapped_column(Float, nullable=True)
     expected_saving_dt: Mapped[float] = mapped_column(Float, default=0.0)
     expected_surcharge_dt: Mapped[float] = mapped_column(Float, default=0.0)
+    acceptance_rate: Mapped[float | None] = mapped_column(Float, nullable=True)          # customer profiling, at D-1
+    expected_reduction_kwh: Mapped[float | None] = mapped_column(Float, nullable=True)   # customer profiling
+    covers_deficit: Mapped[bool] = mapped_column(Boolean, default=False)                 # deficit covered at this rank
+    comparison_message: Mapped[str | None] = mapped_column(String(160), nullable=True)   # chatbot context
     response: Mapped[str] = mapped_column(String(16), default="no_response")   # accept | decline | later | no_response
     response_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     event: Mapped[DREvent] = relationship(back_populates="targets")
@@ -223,5 +229,3 @@ def init_db(url: str | None = None, reset: bool = True):
     with Session() as s:
         seed(s)
     return engine
-
-
