@@ -6,14 +6,14 @@ from streamlit.testing.v1 import AppTest
 APP = Path(__file__).resolve().parents[1] / "app.py"
 
 
-@pytest.mark.parametrize("page", ["Community Overview", "Community Grid", "DR Events", "Household Analytics", "DR Detection & Forecasting", "Customer Profiling"])
+@pytest.mark.parametrize("page", ["Community Overview", "Community Grid", "DR Events", "Household Analytics", "DR Detection & Forecasting", "Customer Profiling", "DR Orchestrator"])
 def test_operator_pages_render(page):
     app=AppTest.from_file(APP,default_timeout=120).run()
     next(widget for widget in app.radio if widget.label=="Page").set_value(page); app.run(timeout=120)
     assert not app.exception
 
 
-@pytest.mark.parametrize("page", ["My Energy", "My Household", "My Appliances", "My DR Participation"])
+@pytest.mark.parametrize("page", ["My Energy", "My Household", "My Appliances", "My DR Assistant", "My DR Participation"])
 def test_consumer_pages_render(page):
     app=AppTest.from_file(APP,default_timeout=120).run()
     next(widget for widget in app.radio if widget.label=="Perspective").set_value("Consumer Dashboard"); app.run(timeout=120)

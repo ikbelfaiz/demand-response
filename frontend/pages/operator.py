@@ -10,6 +10,7 @@ from backend.services import segmentation_service as seg
 from backend.services.segmentation_service import consumption_quantiles
 from frontend.charts import bars, donut, dr_replay_chart, heatmap, lines, style
 from frontend.components import page_header, render_chart
+from frontend.pages import dr_orchestrator
 from frontend.styles import COLORS
 
 
@@ -186,4 +187,4 @@ def segments(_grid: pd.DataFrame) -> None:
 
 PAGES={"Community Overview":overview,"Community Grid":community_grid,"DR Events":events,
        "Household Analytics":households,"DR Detection & Forecasting":dr_detection,
-       "Customer Profiling":segments}
+       "Customer Profiling":segments,"DR Orchestrator":dr_orchestrator.operator_page}

@@ -36,6 +36,8 @@ from backend.orchestration.store import (AppliancePreference, Client, DREvent, E
 ACTIVE_RESPONSES = ("accept", "no_response", "later")
 
 
+INACTIVE = ["vetoed", "cancelled", "expired"]   # events that never reach households
+
 def _in_quiet(t: pd.Timestamp, start: str, end: str) -> bool:
     hm = t.strftime("%H:%M")
     return (start <= hm or hm < end) if start > end else (start <= hm < end)
@@ -76,7 +78,7 @@ class Orchestrator:
 
     # ------------------------------------------------------------------ helpers
     def _event_days(self, s) -> set[date]:
-        rows = s.scalars(select(DREvent).where(DREvent.status.notin_(["vetoed", "cancelled"]))).all()
+        rows = s.scalars(select(DREvent).where(DREvent.status.notin_(INACTIVE))).all()
         return {e.start_ts.date() for e in rows}
 
     def _prefs(self, s) -> dict[str, UserPreference]:
@@ -112,7 +114,7 @@ class Orchestrator:
             target = day_ahead.target_day
             week_start = target - pd.Timedelta(days=target.dayofweek)
             n_week = len(s.scalars(select(DREvent).where(
-                DREvent.status.notin_(["vetoed", "cancelled"]),
+                DREvent.status.notin_(INACTIVE),
                 DREvent.start_ts >= week_start.to_pydatetime(),
                 DREvent.start_ts < (week_start + pd.Timedelta(days=7)).to_pydatetime())).all())
             d = decide(fc, day_ahead.recommendations, n_week)
@@ -133,11 +135,17 @@ class Orchestrator:
             self.confirm(event_id, now, by="auto")
         return event_id
 
+    @staticmethod
+    def confirm_deadline(start_ts) -> pd.Timestamp:
+        """Last moment to confirm an event: the alerts of the day before."""
+        h, m = map(int, config.ALERT_TIME.split(":"))
+        return pd.Timestamp(start_ts).normalize() - pd.Timedelta(days=1) + pd.Timedelta(hours=h, minutes=m)
+
     # ------------------------------------------------------------------ operator actions
     def confirm(self, event_id: int, now: pd.Timestamp, by: str = "operator"):
         with self.Session() as s:
             ev = s.get(DREvent, event_id)
-            if ev.status != "proposed":
+            if ev.status != "proposed" or now >= self.confirm_deadline(ev.start_ts):
                 return
             start, end = pd.Timestamp(ev.start_ts), pd.Timestamp(ev.end_ts)
             prio = self.targeting.priority_list(self.meter30, self.households, start, end, now,
@@ -153,6 +161,16 @@ class Orchestrator:
             ev.profiling_version = getattr(self.targeting, "source", None)
             ev.device_model = getattr(self.recommender, "source", None)
             s.commit()
+
+    def set_level(self, event_id: int, level: int, by: str = "operator"):
+        """The operator can change the surcharge level of a proposed event before confirming it."""
+        if level not in pricing.LEVELS:
+            raise ValueError(f"Unknown surcharge level {level}")
+        with self.Session() as s:
+            ev = s.get(DREvent, event_id)
+            if ev.status == "proposed":
+                ev.level = level
+                s.commit()
 
     def veto(self, event_id: int, by: str = "operator"):
         with self.Session() as s:
@@ -186,6 +204,10 @@ class Orchestrator:
     def send_alerts(self, now: pd.Timestamp):
         tomorrow = now.normalize() + pd.Timedelta(days=1)
         with self.Session() as s:
+            for ev in s.scalars(select(DREvent).where(DREvent.status == "proposed")).all():
+                if pd.Timestamp(ev.start_ts).normalize() == tomorrow:     # not confirmed before the alert time
+                    ev.status = "expired"
+                    self.log(f"{now:%Y-%m-%d %H:%M} event {ev.event_id} expired (not confirmed before the alerts)")
             prefs = self._prefs(s)
             evs = s.scalars(select(DREvent).where(DREvent.status == "confirmed")).all()
             for ev in [e for e in evs if pd.Timestamp(e.start_ts).normalize() == tomorrow]:
@@ -214,6 +236,9 @@ class Orchestrator:
     # ------------------------------------------------------------------ during the event
     def run_event_clock(self, now: pd.Timestamp):
         with self.Session() as s:
+            for ev in s.scalars(select(DREvent).where(DREvent.status == "proposed")).all():
+                if now >= pd.Timestamp(ev.start_ts):         # never confirmed by the operator
+                    ev.status = "expired"
             evs = s.scalars(select(DREvent).where(DREvent.status.in_(["notified", "active"]))).all()
             prefs = None
             for ev in evs:

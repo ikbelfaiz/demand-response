@@ -10,6 +10,7 @@ from backend.services.forecast_service import consumer_forecast_dates, forecast_
 from backend.services.participation_service import for_household, response_counts
 from frontend.charts import bars, donut, forecast_chart, heatmap, lines, style
 from frontend.components import page_header, render_chart
+from frontend.pages import dr_orchestrator
 from frontend.styles import COLORS
 
 
@@ -160,10 +161,8 @@ def participation(_frame: pd.DataFrame, client_id: str, _grid: pd.DataFrame) -> 
         st.caption("Cost of an event = kWh consumed in the window × peak price (band price +50%). Rewards are your share of your segment's measured savings.")
     else:
         st.dataframe(history[["event_id","start_ts","end_ts","response","reduction_target_pct"]],hide_index=True,width="stretch",height=350)
-    st.subheader("Demo notification")
-    st.caption("These controls only store a mock response in this browser session. Nothing is sent to STEG and the CSV is never modified.")
-    choice=st.radio("Response",["Later","Accept","Decline"],horizontal=True,key=f"demo_response_{client_id}")
-    if st.button("Save demo response",key=f"save_response_{client_id}"): st.session_state.setdefault("demo_responses",{})[client_id]=choice; st.success("Demo response saved in session state.")
+    dr_orchestrator.participation_section(client_id)
 
 
-PAGES={"My Energy":energy,"My Household":household,"My Appliances":appliances,"My DR Participation":participation}
+PAGES={"My Energy":energy,"My Household":household,"My Appliances":appliances,"My DR Assistant":dr_orchestrator.assistant,
+       "My DR Participation":participation}
