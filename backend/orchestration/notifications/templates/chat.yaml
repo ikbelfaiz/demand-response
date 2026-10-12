@@ -1,0 +1,85 @@
+# Chat answers of the DR assistant (Jinja2). Rendered by backend/orchestration/notifications/assistant.py.
+# Every number comes from the orchestrator database or the pricing engine, never from free text generation.
+
+keywords:            # intent → words that trigger it (lower case, any language)
+  accept: [accept, "i'll reduce", "i will reduce", ok, "d'accord", accepte, "j'accepte", oui, yes, موافق, "نعم"]
+  decline: [decline, refuse, "no thanks", non, "je refuse", "pas cette fois", ارفض, "لا"]
+  later: [later, "plus tard", "remind me", rappel, لاحقا, "لاحقًا"]
+  when: [when, "what time", window, quand, heure, créneau, horaire, متى, الساعة, التوقيت]
+  price: [price, tariff, rate, prix, tarif, millimes, سعر, التعريفة]
+  action: [what should, what can, switch off, turn off, advice, tip, reduce, éteindre, "que faire", conseil, faire, réduire, appareil, ماذا, نصيحة, أفعل]
+  cost: [how much, cost, surcharge, extra, pay, bill, combien, coût, surcoût, payer, facture, كم, الكلفة, الفاتورة]
+  why: [why, reason, pourquoi, raison, لماذا, السبب]
+  compare: [compare, similar, neighbours, neighbors, others, comparer, voisins, autres, مقارنة, الجيران]
+  history: [history, past, participation, historique, passé, السابقة, مشاركتي]
+  help: [help, aide, hello, hi, bonjour, salut, مرحبا, مساعدة]
+
+answers:
+  no_event:
+    en: "There is no peak event planned for you right now. I will tell you the day before if one is planned."
+    fr: "Aucune pointe n'est prévue pour vous en ce moment. Je vous préviendrai la veille si une pointe est prévue."
+    ar: "لا توجد ذروة مبرمجة لك حاليًا. سأعلمك في اليوم السابق إذا تمت برمجة ذروة."
+  when:
+    en: "Critical peak pricing will be active on {{ day }} between {{ start }} and {{ end }}."
+    fr: "La tarification de pointe sera active le {{ day }} entre {{ start }} et {{ end }}."
+    ar: "ستكون تسعيرة الذروة سارية يوم {{ day }} بين {{ start }} و{{ end }}."
+  price:
+    en: "During the peak, your price is {{ peak_price }} millimes/kWh instead of {{ band_price }} millimes (+{{ pct }}%). Outside the peak, nothing changes."
+    fr: "Pendant la pointe, votre prix est de {{ peak_price }} millimes/kWh au lieu de {{ band_price }} millimes (+{{ pct }} %). En dehors de la pointe, rien ne change."
+    ar: "خلال الذروة، سعرك {{ peak_price }} مليم/كيلوواط ساعة بدل {{ band_price }} مليم (+{{ pct }}٪). خارج الذروة لا يتغيّر شيء."
+  price_exempt:
+    en: "You are in the economic band, so your price does not change during the peak ({{ band_price }} millimes/kWh)."
+    fr: "Vous êtes en tranche économique : votre prix ne change pas pendant la pointe ({{ band_price }} millimes/kWh)."
+    ar: "أنت في الشريحة الاقتصادية، لذلك لا يتغيّر سعرك خلال الذروة ({{ band_price }} مليم/كيلوواط ساعة)."
+  action:
+    en: "My advice: {{ action_text }}. If you do, you save about {{ saving }} DT."
+    fr: "Mon conseil : {{ action_text }}. Si vous le faites, vous économisez environ {{ saving }} DT."
+    ar: "نصيحتي: {{ action_text }}. إذا فعلت ذلك، توفّر حوالي {{ saving }} دينار."
+  action_general:
+    en: "My advice: {{ action_text }}. Every kWh you move out of the window costs you {{ band_price }} millimes instead of {{ peak_price }}."
+    fr: "Mon conseil : {{ action_text }}. Chaque kWh déplacé hors du créneau vous coûte {{ band_price }} millimes au lieu de {{ peak_price }}."
+    ar: "نصيحتي: {{ action_text }}. كل كيلوواط ساعة تؤجّله خارج الفترة يكلّفك {{ band_price }} مليم بدل {{ peak_price }}."
+  cost:
+    en: "If you use as much as usual ({{ usual_kwh }} kWh in this window), the extra cost will be about {{ expected_surcharge }} DT. You only pay extra on what you really use."
+    fr: "Si vous consommez comme d'habitude ({{ usual_kwh }} kWh sur ce créneau), le surcoût sera d'environ {{ expected_surcharge }} DT. Vous ne payez le surplus que sur ce que vous consommez réellement."
+    ar: "إذا استهلكت كالمعتاد ({{ usual_kwh }} كيلوواط ساعة في هذه الفترة)، ستكون الكلفة الإضافية حوالي {{ expected_surcharge }} دينار. تدفع الزيادة فقط على ما تستهلكه فعلًا."
+  cost_billed:
+    en: "For the last peak ({{ day }}), you used {{ kwh }} kWh. Extra cost: {{ surcharge }} DT."
+    fr: "Pour la dernière pointe ({{ day }}), vous avez consommé {{ kwh }} kWh. Surcoût : {{ surcharge }} DT."
+    ar: "في آخر ذروة ({{ day }})، استهلكت {{ kwh }} كيلوواط ساعة. الكلفة الإضافية: {{ surcharge }} دينار."
+  why:
+    en: "The forecast shows that our neighbourhood will need more electricity than the grid can supply in this window (about {{ share }}% short). Using less at that time avoids overloading the grid."
+    fr: "La prévision montre que le quartier aura besoin de plus d'électricité que le réseau ne peut fournir sur ce créneau (environ {{ share }} % de déficit). Consommer moins à ce moment évite de surcharger le réseau."
+    ar: "تُظهر التوقعات أن الحي سيحتاج كهرباء أكثر مما تستطيع الشبكة توفيره في هذه الفترة (عجز بحوالي {{ share }}٪). التقليل من الاستهلاك في هذا الوقت يجنّب الشبكة الضغط."
+  compare:
+    en: "{{ message }}"
+    fr: "{{ message }}"
+    ar: "{{ message }}"
+  compare_none:
+    en: "I don't have a comparison with similar households yet."
+    fr: "Je n'ai pas encore de comparaison avec des foyers similaires."
+    ar: "لا تتوفّر لديّ بعد مقارنة مع منازل مشابهة."
+  history:
+    en: "You were informed of {{ n }} peak event(s). You accepted {{ accepted }}. Total extra cost billed: {{ total }} DT."
+    fr: "Vous avez été informé de {{ n }} pointe(s). Vous en avez accepté {{ accepted }}. Surcoût total facturé : {{ total }} DT."
+    ar: "تمّ إعلامك بـ {{ n }} ذروة. قبلت {{ accepted }} منها. مجموع الكلفة الإضافية المفوترة: {{ total }} دينار."
+  accept:
+    en: "Thank you! I noted that you will reduce your consumption between {{ start }} and {{ end }}."
+    fr: "Merci ! J'ai noté que vous réduirez votre consommation entre {{ start }} et {{ end }}."
+    ar: "شكرًا! سجّلت أنك ستخفّض استهلاكك بين {{ start }} و{{ end }}."
+  decline:
+    en: "Noted. Peak pricing still applies to what you use between {{ start }} and {{ end }}."
+    fr: "C'est noté. La tarification de pointe s'applique tout de même à votre consommation entre {{ start }} et {{ end }}."
+    ar: "تمّ التسجيل. تُطبّق تسعيرة الذروة على استهلاكك بين {{ start }} و{{ end }}."
+  later:
+    en: "OK, I will remind you this evening."
+    fr: "D'accord, je vous le rappellerai ce soir."
+    ar: "حسنًا، سأذكّرك هذا المساء."
+  too_late:
+    en: "The peak has already started, so your answer can no longer be changed."
+    fr: "La pointe a déjà commencé, votre réponse ne peut plus être modifiée."
+    ar: "بدأت الذروة بالفعل، لم يعد بإمكانك تغيير إجابتك."
+  help:
+    en: "I can tell you when the next peak is, the peak price, what to switch off, how much it may cost you, why there is a peak, and your past participation. You can also answer accept, decline or later."
+    fr: "Je peux vous dire quand a lieu la prochaine pointe, le prix de pointe, quoi éteindre, combien cela peut vous coûter, pourquoi il y a une pointe, et votre historique. Vous pouvez aussi répondre accepter, refuser ou plus tard."
+    ar: "يمكنني إخبارك بموعد الذروة القادمة، وسعر الذروة، وما يجب إطفاؤه، وكم قد تكلّفك، وسبب الذروة، ومشاركتك السابقة. يمكنك أيضًا الإجابة بالقبول أو الرفض أو لاحقًا."

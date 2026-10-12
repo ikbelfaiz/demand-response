@@ -1,0 +1,5 @@
+segment,n_occupants,has_ac,has_electric_water_heater,occupied_daytime
+"Daytime-occupied, high base load",2.857142857142857,1.0,1.0,0.2857142857142857
+Large evening-peak households,3.8333333333333335,1.0,1.0,0.2222222222222222
+Low consumers without AC,2.75,0.5,0.875,0.0
+Medium AC users,3.2941176470588234,0.8235294117647058,0.17647058823529413,0.29411764705882354

@@ -214,12 +214,13 @@ def test_consumer_evaluation_reports_each_household_separately():
 
 def test_data_explorer_is_completely_removed_from_navigation():
     assert list(OPERATOR_PAGES) == ["Community Overview", "Community Grid", "DR Events",
-                                    "Household Analytics", "DR Detection & Forecasting"]
+                                    "Household Analytics", "DR Detection & Forecasting",
+                                    "Customer Profiling", "DR Orchestrator"]
     assert "Dataset Explorer" not in OPERATOR_PAGES
 
 
 def test_consumer_navigation_has_no_preferences_page():
-    assert list(CONSUMER_PAGES) == ["My Energy", "My Household", "My Appliances", "My DR Participation"]
+    assert list(CONSUMER_PAGES) == ["My Energy", "My Household", "My Appliances", "My DR Assistant", "My DR Participation"]
     assert "Preferences" not in CONSUMER_PAGES
 
 

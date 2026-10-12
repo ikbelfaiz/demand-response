@@ -24,6 +24,7 @@ python scripts/complete_v3.py
 - Complete one-minute canonical data and 30-minute operational resampling.
 - Parquet predicate/column pushdown and cached portfolio scanning.
 - Historical event/participation joins and appliance channels for the 10 panel homes.
+- Customer profiling (Operator ▸ Customer Profiling, Consumer ▸ My Household / My DR Participation): K-means segments trained January–mid-June, acceptance rates, typical curves by season and day type, priority list and chatbot context for each peak window, event costs (CPP +50 %), segment savings and rewards. Train with `python scripts/train_customer_profiling.py`; see [CUSTOMER_PROFILING.md](CUSTOMER_PROFILING.md).
 - Explicit offline forecast training/evaluation; Streamlit only loads versioned artifacts and never retrains.
 
 ## Historical forecast availability
@@ -69,6 +70,25 @@ py -3.13 -m streamlit run app.py
 ```
 
 Saved models and backtest outputs are under `models/community_dr/profile_ridge_v1/`. See [DR_DETECTION_MODEL.md](DR_DETECTION_MODEL.md) and [DR_BACKTEST_REPORT.md](DR_BACKTEST_REPORT.md). Recommendations are historical simulations only and never write to `dr_events.csv`.
+
+## DR orchestrator and chatbot
+
+The orchestrator (`backend/orchestration/`) turns the community D+1 forecast into critical peak pricing events: proposal at 14:30 the day before, operator confirmation before the 18:00 alerts, personalised messages (FR / AR / EN) using customer profiling and NILM, a reminder during the event, and the bill and summary the next morning.
+
+```powershell
+python scripts/run_orchestrator_replay.py --start 2025-06-01 --end 2025-09-30   # whole season, simulated answers
+python -m streamlit run app.py
+```
+
+In the app, the data is historical, so the orchestrator runs on a **demo clock**:
+
+1. *Operator Dashboard ▸ DR Orchestrator* → **Build history** (replays June → the chosen date with simulated household answers).
+2. **Next forecast peak** moves the clock to the next 14:30 decision with a forecast peak → **Confirm** (or change the level / **Veto**).
+3. **Next step** → 18:00: alerts are sent.
+4. *Consumer Dashboard ▸ My DR Assistant* (same household as in the priority list): notification card with **Accept / Decline / Later**, and a chat that answers questions about the window, the price, what to switch off and the expected extra cost.
+5. Back on the operator page, **Next step** runs the event (reminder after the first half-hour) and the bills the next morning; *My DR Participation* shows the extra cost of each event.
+
+State is stored in `outputs/orchestrator/app.db` (git-ignored). The smart-meter readings are historical: answering *Accept* in the demo does not change the consumption that is billed.
 
 ## Test
 
