@@ -1,5 +1,6 @@
 """Application configuration and project-relative v3 dataset paths."""
 from dataclasses import dataclass
+import os
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +37,10 @@ class V3Paths:
 
 
 V3_PATHS = V3Paths()
+NILM_CHECKPOINT_ENV = "NILM_TCN_CHECKPOINT"
+NILM_DEVICE_ENV = "NILM_DEVICE"
+NILM_MAX_REQUEST_MINUTES_ENV = "NILM_MAX_REQUEST_MINUTES"
+DEFAULT_NILM_CHECKPOINT = PROJECT_ROOT / "nilm_research" / "outputs" / "executed_cpu" / "tcn" / "best.pt"
 OPERATIONAL_FREQUENCY = "30min"
 SOURCE_FREQUENCY = "1min"
 EXPECTED_MINUTES_PER_INTERVAL = 30
@@ -51,3 +56,36 @@ def canonical_data_signature() -> tuple[tuple[str,int,int],...]:
     """Change whenever a canonical sensor file is replaced."""
     files=(V3_PATHS.grid,*V3_PATHS.households)
     return tuple((str(path),path.stat().st_size,path.stat().st_mtime_ns) for path in files)
+
+
+def nilm_checkpoint_path() -> Path:
+    """Resolve an administrator-configured, trusted checkpoint under this repo."""
+    configured = Path(os.environ.get(NILM_CHECKPOINT_ENV, str(DEFAULT_NILM_CHECKPOINT)))
+    path = configured if configured.is_absolute() else PROJECT_ROOT / configured
+    path = path.resolve()
+    if not path.is_relative_to(PROJECT_ROOT.resolve()):
+        raise ValueError(f"{NILM_CHECKPOINT_ENV} must point inside the repository")
+    return path
+
+
+def nilm_device() -> str:
+    value = os.environ.get(NILM_DEVICE_ENV, "auto").lower()
+    if value not in {"auto", "cpu", "cuda"}:
+        raise ValueError(f"{NILM_DEVICE_ENV} must be auto, cpu, or cuda")
+    return value
+
+
+def nilm_max_request_minutes() -> int:
+    value = int(os.environ.get(NILM_MAX_REQUEST_MINUTES_ENV, "10080"))
+    if value < 1:
+        raise ValueError(f"{NILM_MAX_REQUEST_MINUTES_ENV} must be positive")
+    return value
+
+
+def nilm_data_signature() -> tuple[tuple[str, int, int], ...]:
+    cleaned = (
+        DATA_DIR / "cleaned_v3" / "households_1min_C001_C025_cleaned.parquet",
+        DATA_DIR / "cleaned_v3" / "households_1min_C026_C050_cleaned.parquet",
+    )
+    files = (*V3_PATHS.households, *cleaned, V3_PATHS.grid, V3_PATHS.household_info)
+    return tuple((str(path), path.stat().st_size, path.stat().st_mtime_ns) for path in files)
